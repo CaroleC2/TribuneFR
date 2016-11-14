@@ -35,12 +35,15 @@ namespace IHM
         {
             //Utilise des methodes d'accès qui renvoient un Dataset 
             //bindingSourceRub.DataSource = objRubDAO.GetRubriques().Tables[0];
+            
             comboBoxRub.DisplayMember = "nomrub";
             comboBoxRub.ValueMember = "idrub";
             comboBoxRub.DataSource = objRubDAO.GetRubriques().Tables[0];
             comboBoxRub.SelectedIndex = 0;
+            DataTable dt = objSujetDAO.GetSujetsByIdRub(comboBoxRub.SelectedValue.ToString()).Tables[0];
+            dgvSujet.DataSource = dt ; 
 
-           // dgvSujet.
+        
         }
 
         #endregion
@@ -53,18 +56,17 @@ namespace IHM
             {
                 //Utilise des methodes d'accès qui renvoient un Dataset 
                 bindingSourceRub.DataSource = objRubDAO.GetRubriquesByIdRub(comboBoxRub.SelectedValue.ToString()).Tables[0];
+                bindingSourceSujet.DataSource = objSujetDAO.GetSujetsByIdRub(comboBoxRub.SelectedValue.ToString()).Tables[0];
                 dgvSujet.DataSource = bindingSourceSujet;
+                
+                //TODO ###################### TRIER LES COLONNES ###############################
+                
             }
         }
 
-        private void btnValider_Click(object sender, EventArgs e)
-        {
-            //Utilise des methodes d'accès qui renvoient un Dataset 
-             bindingSourceRub.DataSource = objRubDAO.GetRubriques().Tables[0];
-             dgvSujet.DataSource = bindingSourceSujet;
-        }
+       
 
-         private void btQuitter_Click(object sender, EventArgs e)
+        private void btQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
         }

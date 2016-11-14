@@ -36,7 +36,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gbRubriques = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnValider = new System.Windows.Forms.Button();
             this.comboBoxRub = new System.Windows.Forms.ComboBox();
             this.btnConnexion = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -113,7 +112,6 @@
             // gbRubriques
             // 
             this.gbRubriques.Controls.Add(this.label1);
-            this.gbRubriques.Controls.Add(this.btnValider);
             this.gbRubriques.Controls.Add(this.comboBoxRub);
             this.gbRubriques.Controls.Add(this.btnConnexion);
             this.gbRubriques.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -134,19 +132,6 @@
             this.label1.Size = new System.Drawing.Size(252, 24);
             this.label1.TabIndex = 10;
             this.label1.Text = "Choisir une rubrique";
-            // 
-            // btnValider
-            // 
-            this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
-            this.btnValider.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnValider.Location = new System.Drawing.Point(692, 29);
-            this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(137, 32);
-            this.btnValider.TabIndex = 9;
-            this.btnValider.Text = "Valider";
-            this.btnValider.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnValider.UseVisualStyleBackColor = true;
-            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // comboBoxRub
             // 
@@ -225,7 +210,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.ComboBox comboBoxRub;
         private System.Windows.Forms.BindingSource bindingSourceSujet;
         private System.Windows.Forms.BindingSource bindingSourceRub;

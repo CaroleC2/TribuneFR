@@ -51,7 +51,7 @@ namespace DAO
         public DataSet GetSujetsByIdRub(string idrub)
         {
             SqlDataBaseDAO database = SqlDataBaseDAO.GetInstance();
-            return _Database.ExecuteDataSet("Select * from SUJET where IDRUB=" + idrub);
+            return _Database.ExecuteDataSet("Select * from SUJET where IDRUB= " + idrub);
         }
 
         public List<Sujet> ListAllSujets()
@@ -96,5 +96,25 @@ namespace DAO
             return liste;
         }
 
+        public List<Sujet> ListSujetsByIdRub(string IdRub)
+        {
+
+            List<Sujet> liste = new List<Sujet>();
+            DataSet objDataSet = _Database.ExecuteDataSet("Select * from SUJET WHERE IDRUB=" + IdRub);
+            foreach (DataRow row in objDataSet.Tables[0].Select())
+            {
+                Sujet Sujet = new Sujet(Convert.ToInt32(row["IDSUJET"]),
+                                        Convert.ToInt32(row["IDRUB"]),
+                                        Convert.ToInt32(row["IDUSER"]),
+                                        row["TITRESUJET"].ToString(),
+                                        row["TEXTSUJET"].ToString(),
+                                        Convert.ToDateTime(row["DATECREATSUJET"])
+                                        );
+                liste.Add(Sujet);
+            }
+
+
+            return liste;
+        }
     }
 }

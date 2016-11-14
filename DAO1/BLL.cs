@@ -24,6 +24,13 @@ namespace DAO
            
         }
 
+        public List<Sujet> ListSujetsByIdRub(string idrub)
+        {
+            return SujetDAO.GetInstance().ListSujetsByIdRub(idrub);
+
+        }
+
+
         #endregion
 
         #region RUBRIQUE
