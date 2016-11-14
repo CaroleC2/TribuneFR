@@ -58,9 +58,14 @@ namespace IHM
                 bindingSourceRub.DataSource = objRubDAO.GetRubriquesByIdRub(comboBoxRub.SelectedValue.ToString()).Tables[0];
                 bindingSourceSujet.DataSource = objSujetDAO.GetSujetsByIdRub(comboBoxRub.SelectedValue.ToString()).Tables[0];
                 dgvSujet.DataSource = bindingSourceSujet;
-                
+                dgvSujet.Columns["IDSUJET"].Visible = false;
+                dgvSujet.Columns["IDRUB"].Visible = false;
+                dgvSujet.Columns["IDUSER"].Visible = false;
+                dgvSujet.Columns["TITRESUJET"].HeaderText = "Titre";
+                dgvSujet.Columns["TEXTSUJET"].HeaderText = "Texte";
+                dgvSujet.Columns["DATECREATSUJET"].HeaderText = "Date de création";
                 //TODO ###################### TRIER LES COLONNES ###############################
-                
+
             }
         }
 
@@ -70,7 +75,11 @@ namespace IHM
         {
             this.Close();
         }
-        
+
         #endregion
+
+
+      
+
     }
 }
