@@ -16,6 +16,8 @@ namespace IHM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // TO DO : A modifier quand la fenêtre sera faite
+            // Application.Run(new FORMS.FormMain());
             Application.Run(new fnAccueil());
         }
     }

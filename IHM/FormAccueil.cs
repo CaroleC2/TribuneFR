@@ -68,18 +68,24 @@ namespace IHM
 
             }
         }
+        #endregion
 
-       
+        #region Quitter l'application 
 
         private void btQuitter_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult res = MessageBox.Show("Voulez-vous quitter l'application ?", "Quitter l'application", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            //this.Close();
         }
-
+        
         #endregion
 
 
-      
+
 
     }
 }

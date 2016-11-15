@@ -182,7 +182,7 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1200, 600);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(901, 475);
+            this.MinimumSize = new System.Drawing.Size(1200, 600);
             this.Name = "fnAccueil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Accueil";
