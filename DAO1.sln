@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metier", "Metier\Metier.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IHM", "IHM\IHM.csproj", "{4A854EA5-6EE6-4DD2-9DFB-D73C7D97F6FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfWebService", "WcfWebService\WcfWebService.csproj", "{8CB0D37F-B023-40B4-A783-A54CD0E865CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4A854EA5-6EE6-4DD2-9DFB-D73C7D97F6FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A854EA5-6EE6-4DD2-9DFB-D73C7D97F6FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A854EA5-6EE6-4DD2-9DFB-D73C7D97F6FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CB0D37F-B023-40B4-A783-A54CD0E865CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB0D37F-B023-40B4-A783-A54CD0E865CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB0D37F-B023-40B4-A783-A54CD0E865CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB0D37F-B023-40B4-A783-A54CD0E865CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
