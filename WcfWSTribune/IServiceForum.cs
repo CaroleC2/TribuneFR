@@ -4,9 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
-namespace WcfWebService
+namespace WcfWSTribune
 {
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom d'interface "IService1" à la fois dans le code et le fichier de configuration.
     [ServiceContract]
@@ -43,7 +44,7 @@ namespace WcfWebService
         [OperationContract]
         DataSet FillRubriqueByIdRub(int idrub);
 
-        
+
         #endregion
 
         #region REPONSE
@@ -57,12 +58,15 @@ namespace WcfWebService
         IList<Sujet> GetReponsesById(int idrep);
 
         [OperationContract]
+        IList<Sujet> GetReponsesByIdSujet(int idsujet);
+
+        [OperationContract]
         DataSet FillReponseById(int idrep);
 
         [OperationContract]
         DataSet FillReponseByIdSujet(int idsujet);
 
-         #endregion
+        #endregion
 
         #region UTILISATEUR
         [OperationContract]
@@ -82,10 +86,9 @@ namespace WcfWebService
         [OperationContract]
         void Disconnect();
 
-        
-    }
 
-   
-        
-    
+
+
+
+    }
 }

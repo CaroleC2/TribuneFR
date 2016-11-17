@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IHM", "IHM\IHM.csproj", "{4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfWebService", "WcfWebService\WcfWebService.csproj", "{8CB0D37F-B023-40B4-A783-A54CD0E865CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfWSTribune", "WcfWSTribune\WcfWSTribune.csproj", "{26743D6A-7302-48D4-878C-A23038FE4FE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8CB0D37F-B023-40B4-A783-A54CD0E865CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CB0D37F-B023-40B4-A783-A54CD0E865CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CB0D37F-B023-40B4-A783-A54CD0E865CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26743D6A-7302-48D4-878C-A23038FE4FE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26743D6A-7302-48D4-878C-A23038FE4FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26743D6A-7302-48D4-878C-A23038FE4FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26743D6A-7302-48D4-878C-A23038FE4FE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

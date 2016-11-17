@@ -9,9 +9,10 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Web.Configuration;
 
-namespace WcfWebService
+namespace WcfWSTribune
 {
-    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code et le fichier de configuration.
+    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" dans le code, le fichier svc et le fichier de configuration.
+    // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class ServiceForum : IServiceForum
     {
 
@@ -52,7 +53,7 @@ namespace WcfWebService
             }
             return sujet;
         }
-        
+
         public IList<Sujet> GetSujets()
         {
 
@@ -74,13 +75,13 @@ namespace WcfWebService
             return liste;
         }
 
-        public IList<Sujet> GetSujetsByIdSujet(int idsujet)
+        public IList<Sujet> GetSujetsById(int idsujet)
         {
             List<Sujet> liste = new List<Sujet>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = cn;
-            cmd.CommandText = "GETSUJETSBYIDSUJET";
+            cmd.CommandText = "GETSUJETSBYID";
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter pIdsujet = new SqlParameter("IdSujet", idsujet);
             cmd.Parameters.Add(pIdsujet);
@@ -153,8 +154,8 @@ namespace WcfWebService
             objDataAdapter.Fill(objDataSet);
             return objDataSet;
         }
-        
-        public int NewSujet(int idsujet, int iduser, int idrub, string titresujet, string textsujet, DateTime datecreatsujet )
+
+        public int NewSujet(int idsujet, int iduser, int idrub, string titresujet, string textsujet, DateTime datecreatsujet)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "NEWSUJET";
@@ -165,7 +166,7 @@ namespace WcfWebService
             cmd.Parameters.Add(new SqlParameter("TitreSujet", titresujet));
             cmd.Parameters.Add(new SqlParameter("TextSujet", textsujet));
             cmd.Parameters.Add(new SqlParameter("DateCreatSujet", datecreatsujet));
-            
+
             cmd.Connection = cn;
 
             return cmd.ExecuteNonQuery();
@@ -218,7 +219,7 @@ namespace WcfWebService
             }
             return liste;
         }
- 
+
         public IList<Rubrique> GetRubriquesById(int idrub)
         {
             List<Rubrique> liste = new List<Rubrique>();
@@ -242,7 +243,7 @@ namespace WcfWebService
             }
             return liste;
         }
-       
+
         public DataSet FillRubriqueByIdRub(int idrub)
         {
 
@@ -258,8 +259,8 @@ namespace WcfWebService
             objDataAdapter.Fill(objDataSet);
             return objDataSet;
         }
-        
-        public int NewRubrique( int idrub, string nomrub, string textrub)
+
+        public int NewRubrique(int idrub, string nomrub, string textrub)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "NEWRUBRIQUE";
@@ -267,14 +268,14 @@ namespace WcfWebService
             cmd.Parameters.Add(new SqlParameter("IdRub", idrub));
             cmd.Parameters.Add(new SqlParameter("NomRub", nomrub));
             cmd.Parameters.Add(new SqlParameter("TextRub", textrub));
-            
+
 
             cmd.Connection = cn;
 
             return cmd.ExecuteNonQuery();
         }
         #endregion
-       
+
         #region REPONSE
 
         public Reponse GetReponse(int idrep)
@@ -317,35 +318,36 @@ namespace WcfWebService
 
             foreach (DataRow row in objDataSet.Tables[0].Select())
             {
-                Reponse reponse = new Reponse( Convert.ToInt32(row["IDREP"]),Convert.ToInt32(row["IDSUJET"]), Convert.ToInt32(row["IDUSER"]), row["TEXTRUB"].ToString(), Convert.ToDateTime(row["DATEENVOIREP"]));
+                Reponse reponse = new Reponse(Convert.ToInt32(row["IDREP"]), Convert.ToInt32(row["IDSUJET"]), Convert.ToInt32(row["IDUSER"]), row["TEXTRUB"].ToString(), Convert.ToDateTime(row["DATEENVOIREP"]));
                 liste.Add(reponse);
             }
             return liste;
         }
 
         public IList<Reponse> GetReponsesById(int idrep)
-                {
-                    List<Reponse> liste = new List<Reponse>();
+        {
+            List<Reponse> liste = new List<Reponse>();
 
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = cn;
-                    cmd.CommandText = "GETREPONSESBYID";
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    SqlParameter pIdRep = new SqlParameter("IdRep", idrep);
-                    cmd.Parameters.Add(pIdRep);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cn;
+            cmd.CommandText = "GETREPONSESBYID";
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter pIdRep = new SqlParameter("IdRep", idrep);
+            cmd.Parameters.Add(pIdRep);
 
-                    SqlDataAdapter objDataAdapter = new SqlDataAdapter(cmd);
+            SqlDataAdapter objDataAdapter = new SqlDataAdapter(cmd);
 
-                    DataSet objDataSet = new DataSet();
-                    objDataAdapter.Fill(objDataSet);
+            DataSet objDataSet = new DataSet();
+            objDataAdapter.Fill(objDataSet);
 
-                    foreach (DataRow row in objDataSet.Tables[0].Select())
-                    {
+            foreach (DataRow row in objDataSet.Tables[0].Select())
+            {
                 Reponse reponse = new Reponse(Convert.ToInt32(row["IDREP"]), Convert.ToInt32(row["IDSUJET"]), Convert.ToInt32(row["IDUSER"]), row["TEXTRUB"].ToString(), Convert.ToDateTime(row["DATEENVOIREP"]));
                 liste.Add(reponse);
-                    }
-                    return liste;
-                }
+            }
+            return liste;
+        }
+
         public IList<Reponse> GetReponsesByIdSujet(int idsujet)
         {
             List<Reponse> liste = new List<Reponse>();
@@ -370,22 +372,22 @@ namespace WcfWebService
             return liste;
         }
 
-        
-         public DataSet FillReponseById(int idrep)
-                {
 
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.CommandText = "GETREPONSESBYID";
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    SqlParameter pIdrep = new SqlParameter("IdRep", idrep);
-                    cmd.Parameters.Add(pIdrep);
-                    cmd.Connection = cn;
-                    SqlDataAdapter objDataAdapter = new SqlDataAdapter(cmd);
+        public DataSet FillReponseById(int idrep)
+        {
 
-                    DataSet objDataSet = new DataSet();
-                    objDataAdapter.Fill(objDataSet);
-                    return objDataSet;
-                }
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "GETREPONSESBYID";
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter pIdrep = new SqlParameter("IdRep", idrep);
+            cmd.Parameters.Add(pIdrep);
+            cmd.Connection = cn;
+            SqlDataAdapter objDataAdapter = new SqlDataAdapter(cmd);
+
+            DataSet objDataSet = new DataSet();
+            objDataAdapter.Fill(objDataSet);
+            return objDataSet;
+        }
 
         public DataSet FillReponseByIdSujet(int idsujet)
         {
@@ -403,8 +405,8 @@ namespace WcfWebService
             return objDataSet;
         }
 
-       
-        public int NewReponse(int idrep,int iduser,int idsujet, DateTime dateenvoirep, string textrep )
+
+        public int NewReponse(int idrep, int iduser, int idsujet, DateTime dateenvoirep, string textrep)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "NEWREPONSE";
@@ -414,7 +416,7 @@ namespace WcfWebService
             cmd.Parameters.Add(new SqlParameter("IdSujet", idsujet));
             cmd.Parameters.Add(new SqlParameter("DateEnvoiRep", dateenvoirep));
             cmd.Parameters.Add(new SqlParameter("TextRep", textrep));
-           
+
 
             cmd.Connection = cn;
 
@@ -464,13 +466,13 @@ namespace WcfWebService
 
             foreach (DataRow row in objDataSet.Tables[0].Select())
             {
-                Utilisateur utilisateur = new Utilisateur(Convert.ToInt32(row["IDUSER"]),  row["NOMUSER"].ToString(), row["MDPUSER"].ToString(), Convert.ToInt32(row["DROITUSER"]));
+                Utilisateur utilisateur = new Utilisateur(Convert.ToInt32(row["IDUSER"]), row["NOMUSER"].ToString(), row["MDPUSER"].ToString(), Convert.ToInt32(row["DROITUSER"]));
                 liste.Add(utilisateur);
             }
             return liste;
         }
 
-     
+
         public IList<Utilisateur> GetUtilisateursById(int iduser)
         {
             List<Utilisateur> liste = new List<Utilisateur>();
@@ -494,7 +496,7 @@ namespace WcfWebService
             }
             return liste;
         }
-        
+
         public DataSet FillUtilisateurById(int iduser)
         {
 
@@ -510,8 +512,8 @@ namespace WcfWebService
             objDataAdapter.Fill(objDataSet);
             return objDataSet;
         }
-        
-        public int NewUtilisateur( int iduser,  string nomuser, string mdpuser, int droituser)
+
+        public int NewUtilisateur(int iduser, string nomuser, string mdpuser, int droituser)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "NEWUTILISATEUR";
@@ -532,6 +534,5 @@ namespace WcfWebService
             cn.Close();
         }
 
-       
     }
 }
