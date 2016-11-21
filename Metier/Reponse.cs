@@ -54,6 +54,12 @@ namespace Metier
                 set { _DateEnvoiRep = value; }
             }
 
+
+            public Reponse()
+            {
+
+            }
+
             public Reponse(int idRep,int idSujet,  int idUser,  string textRep, DateTime dateEnvoiRep)
             {
                 this.IdRep = idRep;

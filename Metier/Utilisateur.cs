@@ -45,6 +45,11 @@ namespace Metier
             }
 
 
+        public Utilisateur()
+        {
+
+        }
+
         public Utilisateur(int idUser, string nomUser, string mdpUser, int droitUser)
             {
                

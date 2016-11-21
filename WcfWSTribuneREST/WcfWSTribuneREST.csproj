@@ -92,18 +92,16 @@
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="ServiceTribune.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Reponse.cs" />
-    <Compile Include="Rubrique.cs" />
     <Compile Include="ServiceTribune.svc.cs">
       <DependentUpon>ServiceTribune.svc</DependentUpon>
     </Compile>
     <Compile Include="IServiceTribune.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sujet.cs" />
-    <Compile Include="Utilisateur.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -119,6 +117,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Metier\Metier.csproj">
+      <Project>{7ce06111-4cd6-4d78-88aa-56f31069abea}</Project>
+      <Name>Metier</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -8,6 +8,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Data;
 using System.Web.Configuration;
+using Metier;
 
 namespace WcfWSTribuneREST
 {
@@ -48,11 +49,14 @@ namespace WcfWSTribuneREST
                 if (reader.Read())
                 {
                     sujet = new Sujet();
-                    sujet.IdSujet = Convert.ToInt32(reader.GetValue(0));
-                    sujet.TitreSujet = Convert.ToString(reader.GetValue(1));
-                    sujet.TextSujet = Convert.ToString(reader.GetValue(2));
+                    sujet.IdSujet        = Convert.ToInt32(reader.GetValue(0));
+                    sujet.IdRub          = Convert.ToInt32(reader.GetValue(1));
+                    sujet.IdUser         = Convert.ToInt32(reader.GetValue(2));
+                    sujet.TitreSujet     = Convert.ToString(reader.GetValue(3));
+                    sujet.TextSujet      = Convert.ToString(reader.GetValue(4));
+                    sujet.DateCreatSujet = Convert.ToDateTime(reader.GetValue(5));
 
-                }
+            }
                 return sujet;
             }
 
@@ -295,11 +299,12 @@ namespace WcfWSTribuneREST
                 if (reader.Read())
                 {
                     reponse = new Reponse();
-                    reponse.IdRep = Convert.ToInt32(reader.GetValue(0));
-                    reponse.IdUser = Convert.ToInt32(reader.GetValue(1));
-                    reponse.IdSujet = Convert.ToInt32(reader.GetValue(2));
-                    reponse.TextRep = Convert.ToString(reader.GetValue(3));
-                    reponse.DateEnvoiRep = Convert.ToDateTime(reader.GetValue(4));
+                    reponse.IdRep        = Convert.ToInt32(reader.GetValue(0));
+                    reponse.IdSujet      = Convert.ToInt32(reader.GetValue(1));
+                    reponse.IdUser       = Convert.ToInt32(reader.GetValue(2));
+                    reponse.IdSujet      = Convert.ToInt32(reader.GetValue(3));
+                    reponse.TextRep      = Convert.ToString(reader.GetValue(4));
+                    reponse.DateEnvoiRep = Convert.ToDateTime(reader.GetValue(5));
 
                 }
                 return reponse;

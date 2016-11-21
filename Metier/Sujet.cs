@@ -61,7 +61,10 @@ namespace Metier
             set { _DateCreatSujet = value; }
         }
 
+        public Sujet()
+        {
 
+        }
 
         public Sujet(int idSujet, int idRub, int idUser, string titreSujet, string textSujet, DateTime dateCreatSujet)
         {
