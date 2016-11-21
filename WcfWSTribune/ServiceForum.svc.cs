@@ -248,7 +248,7 @@ namespace WcfWSTribune
         {
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "GETRUBRIQUESBYIDRUB";
+            cmd.CommandText = "GETRUBRIQUESBYID";
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter pIdrub = new SqlParameter("IdRub", idrub);
             cmd.Parameters.Add(pIdrub);

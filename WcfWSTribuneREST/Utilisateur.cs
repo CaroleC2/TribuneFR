@@ -5,8 +5,9 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WcfWebService
+namespace WcfWSTribuneREST
 {
+    [DataContract]
     public class Utilisateur
     {
         [DataMember]
@@ -23,7 +24,7 @@ namespace WcfWebService
 
         public Utilisateur(int iduser, string nomuser, string mdpuser, int droituser)
         {
-            this.IdUser  = iduser;
+            this.IdUser = iduser;
             this.NomUser = nomuser;
             this.MdpUser = mdpuser;
             this.DroitUser = droituser;

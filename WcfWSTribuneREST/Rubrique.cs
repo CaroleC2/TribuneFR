@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WcfWebService
+namespace WcfWSTribuneREST
 {
     [DataContract]
     public class Rubrique
@@ -19,7 +19,7 @@ namespace WcfWebService
         [DataMember]
         public string TextRub { get; set; }
 
-        
+
 
         public Rubrique(int idrub, string nomrub, string textrub)
         {

@@ -5,8 +5,9 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WcfWebService
+namespace WcfWSTribuneREST
 {
+    [DataContract]
     public class Sujet
     {
         [DataMember]

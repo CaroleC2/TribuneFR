@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WcfWSTribuneREST.ServiceTribune" CodeBehind="ServiceTribune.svc.cs" Factory="System.ServiceModel.Activation.WebServiceHostFactory"  %>

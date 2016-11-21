@@ -55,10 +55,10 @@ namespace WcfWSTribune
         IList<Reponse> GetReponses();
 
         [OperationContract]
-        IList<Sujet> GetReponsesById(int idrep);
+        IList<Reponse> GetReponsesById(int idrep);
 
         [OperationContract]
-        IList<Sujet> GetReponsesByIdSujet(int idsujet);
+        IList<Reponse> GetReponsesByIdSujet(int idsujet);
 
         [OperationContract]
         DataSet FillReponseById(int idrep);
@@ -79,7 +79,7 @@ namespace WcfWSTribune
         IList<Utilisateur> GetUtilisateursById(int iduser);
 
         [OperationContract]
-        DataSet FillUtilisateurByIdUser(int iduser);
+        DataSet FillUtilisateurById(int iduser);
 
         #endregion
 

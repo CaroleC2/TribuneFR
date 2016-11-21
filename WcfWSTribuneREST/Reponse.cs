@@ -5,8 +5,9 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WcfWebService
+namespace WcfWSTribuneREST
 {
+    [DataContract]
     public class Reponse
     {
         [DataMember]
@@ -31,10 +32,10 @@ namespace WcfWebService
             this.IdSujet = idsujet;
             this.TextRep = textrep;
             this.DateEnvoiRep = dateenvoirep;
-            
+
         }
         public Reponse()
         {
         }
     }
-}
+    }

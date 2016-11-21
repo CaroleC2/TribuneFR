@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace WcfWSTribune
 {
-   public class Sujet
+    [DataContract]
+    public class Sujet
     {
         [DataMember]
         public int IdSujet { get; set; }
