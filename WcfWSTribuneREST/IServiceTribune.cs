@@ -25,19 +25,20 @@ namespace WcfWSTribuneREST
     public interface IServiceTribune
     {
         #region SUJET
-        [OperationContract]
-        //[WebGet(UriTemplate = "Sujet/{idsujet}", ResponseFormat = WebMessageFormat.Json)]
-        [WebGet(UriTemplate = "Sujet/{idsujet}")]
-        Sujet GetSujet(int idsujet);
+        //[OperationContract]
+        ////[WebGet(UriTemplate = "Sujet/{idsujet}", ResponseFormat = WebMessageFormat.Json)]
+        //[WebGet(UriTemplate = "Sujet/{idsujet}")]
+        //Sujet GetSujet(string idsujet);
 
         [OperationContract]
-        //[WebGet(UriTemplate = "Sujets", ResponseFormat = WebMessageFormat.Json)]
-        [WebGet(UriTemplate = "Sujet")]
+        [WebGet(UriTemplate = "Sujets", ResponseFormat = WebMessageFormat.Json)]
+        //[WebGet(UriTemplate = "Sujet")]
         IList<Sujet> GetSujets();
 
         [OperationContract]
-        //[WebGet(UriTemplate = "Sujet/{idsujet}", ResponseFormat = WebMessageFormat.Json)]
-        [WebGet(UriTemplate = "Sujet/{idsujet}")]
+       
+        [WebGet(UriTemplate = "Sujet?idsujet={idsujet}", ResponseFormat = WebMessageFormat.Json)]
+        //[WebGet(UriTemplate = "Sujet/{idsujet}")]
         IList<Sujet> GetSujetsById(int idsujet);
 
         [OperationContract]
@@ -170,7 +171,21 @@ namespace WcfWSTribuneREST
 
 
 
+        //[OperationContract]
+        //[WebGet(UriTemplate = "Emps?empno={empno}", ResponseFormat = WebMessageFormat.Json)]
+        //Salarie GetEmpById(string empno);
 
+        //[OperationContract]
+        //[WebGet(UriTemplate = "Emps/{deptno}", ResponseFormat = WebMessageFormat.Json)]
+        //List<Salarie> GetEmpsByDeptno(string deptno);
+
+        //[OperationContract]
+        //[WebGet(UriTemplate = "Emps", ResponseFormat = WebMessageFormat.Json)]
+        //List<Salarie> GetEmps();
+
+        ////[OperationContract]
+
+        //void NewEmp(int empno, string ename, double sal, int deptno);
 
 
 

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Metier
 {
+    [DataContract]
     public class Sujet
     {
+        [DataMember]
         private int _IdSujet;
 
         public int IdSujet
@@ -16,7 +19,7 @@ namespace Metier
             set { _IdSujet = value; }
         }
 
-
+        [DataMember]
         private int _IdRub;
 
         public int IdRub
@@ -25,7 +28,7 @@ namespace Metier
             set { _IdRub = value; }
         }
 
-
+        [DataMember]
         private int _IdUser;
 
         public int IdUser
@@ -34,7 +37,7 @@ namespace Metier
             set { _IdUser = value; }
         }
 
-
+        [DataMember]
         private string _TitreSujet;
 
         public string TitreSujet
@@ -43,7 +46,7 @@ namespace Metier
             set { _TitreSujet = value; }
         }
 
-
+        [DataMember]
         private string _TextSujet;
 
         public string TextSujet
@@ -52,7 +55,7 @@ namespace Metier
             set { _TextSujet = value; }
         }
 
-
+        [DataMember]
         private DateTime _DateCreatSujet;
 
         public DateTime DateCreatSujet

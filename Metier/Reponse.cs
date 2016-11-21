@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Metier
 {
-
-        public class Reponse
+    [DataContract]
+    public class Reponse
         {
-            private int _IdRep;
+        [DataMember]
+        private int _IdRep;
 
             public int IdRep
             {
@@ -17,8 +19,8 @@ namespace Metier
                 set { _IdRep = value; }
             }
 
-
-            private int _IdSujet;
+        [DataMember]
+        private int _IdSujet;
 
             public int IdSujet
             {
@@ -26,8 +28,8 @@ namespace Metier
                 set { _IdSujet = value; }
             }
 
-
-            private int _IdUser;
+        [DataMember]
+        private int _IdUser;
 
             public int IdUser
             {
@@ -36,8 +38,8 @@ namespace Metier
             }
 
 
-
-            private string _TextRep;
+        [DataMember]
+        private string _TextRep;
 
             public string TextRep
         {
@@ -45,8 +47,8 @@ namespace Metier
                 set { _TextRep = value; }
             }
 
-
-            private DateTime _DateEnvoiRep;
+        [DataMember]
+        private DateTime _DateEnvoiRep;
 
             public DateTime DateEnvoiRep
         {

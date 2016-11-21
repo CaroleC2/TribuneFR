@@ -34,9 +34,11 @@ namespace WcfWSTribuneREST
 
             #region SUJET
 
-            public Sujet GetSujet(int idsujet)
+            public Sujet GetSujet(string idsujet)
             {
                 Sujet sujet = null;
+                int idsujetInt = int.Parse(idsujet);
+
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = "GETSUJETBYID";
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -541,6 +543,116 @@ namespace WcfWSTribuneREST
                 cn.Close();
             }
 
-        }
+
+        //public Salarie GetEmpById(string empno)
+        //{
+        //    int empnoInt = int.Parse(empno);
+        //    SqlConnection cn = new SqlConnection();
+        //    cn.ConnectionString = "Data Source=176.31.114.215; Initial Catalog=user10 ;Persist Security Info = true; User Id=user10;Password=026user10";
+        //    cn.Open();
+
+        //    SqlCommand cmd = new SqlCommand();
+        //    cmd.Connection = cn;
+        //    cmd.CommandText = "GetEmpById";
+        //    cmd.CommandType = CommandType.StoredProcedure;
+
+        //    SqlParameter param = cmd.CreateParameter();
+        //    param.ParameterName = "@EMPNO";
+        //    param.Value = empnoInt;
+        //    cmd.Parameters.Add(param);
+
+        //    cmd.ExecuteNonQuery();
+
+        //    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+        //    DataTable datatable = new DataTable();
+        //    adapter.Fill(datatable);
+        //    Salarie salarie = new Salarie();
+        //    foreach (DataRow row in datatable.Rows)
+        //    {
+        //        salarie.Empno = (int)row["EMPNO"];
+        //        salarie.Deptno = (int)row["DEPTNO"];
+        //        salarie.Ename = row["ENAME"].ToString();
+        //    }
+        //    return salarie;
+        //}
+
+        ////CREATE procedure GetEmpById(@empno int) as 
+        ////select empno, ename, deptno from employe where empno = @empno;
+
+
+
+        //public List<Salarie> GetEmpsByDeptno(string deptno)
+        //{
+        //    int deptnoInt = int.Parse(deptno);
+        //    SqlConnection cn = new SqlConnection();
+        //    cn.ConnectionString = "Data Source=176.31.114.215; Initial Catalog=user10 ;Persist Security Info = true; User Id=user10;Password=026user10";
+        //    cn.Open();
+
+        //    SqlCommand cmd = new SqlCommand();
+        //    cmd.Connection = cn;
+        //    cmd.CommandText = "GetEmpsByDeptno";
+        //    cmd.CommandType = CommandType.StoredProcedure;
+
+        //    SqlParameter param = cmd.CreateParameter();
+        //    param.ParameterName = "@DEPTNO";
+        //    param.Value = deptnoInt;
+        //    cmd.Parameters.Add(param);
+
+        //    cmd.ExecuteNonQuery();
+
+        //    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+        //    DataTable dt = new DataTable();
+        //    adapter.Fill(dt);
+
+        //    List<Salarie> listeSalarie = new List<Salarie>();
+
+        //    foreach (DataRow row in dt.Rows)
+        //    {
+        //        Salarie salarie = new Salarie();
+        //        salarie.Deptno = (int)row["DEPTNO"];
+        //        salarie.Ename = row["ENAME"].ToString();
+        //        salarie.Empno = (int)row["EMPNO"];
+        //        listeSalarie.Add(salarie);
+        //    }
+        //    return listeSalarie;
+
+        //}
+
+        ////CREATE procedure GetEmpsByDeptno(@DEPTNO INT) AS
+        ////SELECT* FROM employe WHERE deptno=@DEPTNO;
+
+        //public List<Salarie> GetEmps()
+        //{
+        //    SqlConnection cn = new SqlConnection();
+        //    cn.ConnectionString = "Data Source=176.31.114.215; Initial Catalog=user10 ;Persist Security Info = true; User Id=user10;Password=026user10";
+        //    cn.Open();
+
+        //    SqlCommand cmd = new SqlCommand();
+        //    cmd.Connection = cn;
+        //    cmd.CommandText = "GetEmps";
+        //    cmd.CommandType = CommandType.StoredProcedure;
+
+        //    cmd.ExecuteNonQuery();
+
+        //    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+        //    DataTable datatable = new DataTable();
+        //    adapter.Fill(datatable);
+
+        //    List<Salarie> listeSalarie = new List<Salarie>();
+
+        //    foreach (DataRow row in datatable.Rows)
+        //    {
+        //        Salarie salarie = new Salarie();
+        //        salarie.Empno = (int)row["EMPNO"];
+        //        salarie.Deptno = (int)row["DEPTNO"];
+        //        salarie.Ename = row["ENAME"].ToString();
+        //        salarie.Sal = double.Parse(row["SAL"].ToString());
+        //        listeSalarie.Add(salarie);
+        //    }
+        //    return listeSalarie;
+        //}
+
+
+    }
     }
 
