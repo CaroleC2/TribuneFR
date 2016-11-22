@@ -34,33 +34,33 @@ namespace WcfWSTribuneREST
 
             #region SUJET
 
-            public Sujet GetSujet(string idsujet)
-            {
-                Sujet sujet = null;
-                int idsujetInt = int.Parse(idsujet);
+            //public Sujet GetSujet(string idsujet)
+            //{
+            //    Sujet sujet = null;
+            //    int idsujetInt = int.Parse(idsujet);
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "GETSUJETBYID";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cn;
-                SqlParameter pIdSujet = new SqlParameter("IdSujet", idsujet);
-                cmd.Parameters.Add(pIdSujet);
+            //    SqlCommand cmd = new SqlCommand();
+            //    cmd.CommandText = "GETSUJETBYID";
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    cmd.Connection = cn;
+            //    SqlParameter pIdSujet = new SqlParameter("IdSujet", idsujet);
+            //    cmd.Parameters.Add(pIdSujet);
 
-                SqlDataReader reader = cmd.ExecuteReader();
+            //    SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    sujet = new Sujet();
-                    sujet.IdSujet        = Convert.ToInt32(reader.GetValue(0));
-                    sujet.IdRub          = Convert.ToInt32(reader.GetValue(1));
-                    sujet.IdUser         = Convert.ToInt32(reader.GetValue(2));
-                    sujet.TitreSujet     = Convert.ToString(reader.GetValue(3));
-                    sujet.TextSujet      = Convert.ToString(reader.GetValue(4));
-                    sujet.DateCreatSujet = Convert.ToDateTime(reader.GetValue(5));
+            //    if (reader.Read())
+            //    {
+            //        sujet = new Sujet();
+            //        sujet.IdSujet        = Convert.ToInt32(reader.GetValue(0));
+            //        sujet.IdRub          = Convert.ToInt32(reader.GetValue(1));
+            //        sujet.IdUser         = Convert.ToInt32(reader.GetValue(2));
+            //        sujet.TitreSujet     = Convert.ToString(reader.GetValue(3));
+            //        sujet.TextSujet      = Convert.ToString(reader.GetValue(4));
+            //        sujet.DateCreatSujet = Convert.ToDateTime(reader.GetValue(5));
 
-            }
-                return sujet;
-            }
+            //}
+            //    return sujet;
+            //}
 
             public IList<Sujet> GetSujets()
             {
@@ -83,7 +83,7 @@ namespace WcfWSTribuneREST
                 return liste;
             }
 
-            public IList<Sujet> GetSujetsById(int idsujet)
+            public IList<Sujet> GetSujetsById(string idsujet)
             {
                 List<Sujet> liste = new List<Sujet>();
 
@@ -107,7 +107,7 @@ namespace WcfWSTribuneREST
                 return liste;
             }
 
-            public IList<Sujet> GetSujetsByIdRub(int idrub)
+            public IList<Sujet> GetSujetsByIdRub(string idrub)
             {
                 List<Sujet> liste = new List<Sujet>();
 
@@ -184,28 +184,28 @@ namespace WcfWSTribuneREST
 
             #region RUBRIQUE
 
-            public Rubrique GetRubrique(int idrub)
-            {
-                Rubrique rubrique = null;
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "GETRUBRIQUEBYID";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cn;
-                SqlParameter pIdRub = new SqlParameter("IdRub", idrub);
-                cmd.Parameters.Add(pIdRub);
+            //public Rubrique GetRubrique(int idrub)
+            //{
+            //    Rubrique rubrique = null;
+            //    SqlCommand cmd = new SqlCommand();
+            //    cmd.CommandText = "GETRUBRIQUEBYID";
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    cmd.Connection = cn;
+            //    SqlParameter pIdRub = new SqlParameter("IdRub", idrub);
+            //    cmd.Parameters.Add(pIdRub);
 
-                SqlDataReader reader = cmd.ExecuteReader();
+            //    SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    rubrique = new Rubrique();
-                    rubrique.IdRub = Convert.ToInt32(reader.GetValue(0));
-                    rubrique.NomRub = Convert.ToString(reader.GetValue(1));
-                    rubrique.TextRub = Convert.ToString(reader.GetValue(2));
+            //    if (reader.Read())
+            //    {
+            //        rubrique = new Rubrique();
+            //        rubrique.IdRub = Convert.ToInt32(reader.GetValue(0));
+            //        rubrique.NomRub = Convert.ToString(reader.GetValue(1));
+            //        rubrique.TextRub = Convert.ToString(reader.GetValue(2));
 
-                }
-                return rubrique;
-            }
+            //    }
+            //    return rubrique;
+            //}
 
             public IList<Rubrique> GetRubriques()
             {
@@ -228,7 +228,7 @@ namespace WcfWSTribuneREST
                 return liste;
             }
 
-            public IList<Rubrique> GetRubriquesById(int idrub)
+            public IList<Rubrique> GetRubriquesById(string idrub)
             {
                 List<Rubrique> liste = new List<Rubrique>();
 
@@ -286,31 +286,31 @@ namespace WcfWSTribuneREST
 
             #region REPONSE
 
-            public Reponse GetReponse(int idrep)
-            {
-                Reponse reponse = null;
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "GETREPONSEBYID";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cn;
-                SqlParameter pIdRep = new SqlParameter("IdRep", idrep);
-                cmd.Parameters.Add(pIdRep);
+            //public Reponse GetReponse(int idrep)
+            //{
+            //    Reponse reponse = null;
+            //    SqlCommand cmd = new SqlCommand();
+            //    cmd.CommandText = "GETREPONSEBYID";
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    cmd.Connection = cn;
+            //    SqlParameter pIdRep = new SqlParameter("IdRep", idrep);
+            //    cmd.Parameters.Add(pIdRep);
 
-                SqlDataReader reader = cmd.ExecuteReader();
+            //    SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    reponse = new Reponse();
-                    reponse.IdRep        = Convert.ToInt32(reader.GetValue(0));
-                    reponse.IdSujet      = Convert.ToInt32(reader.GetValue(1));
-                    reponse.IdUser       = Convert.ToInt32(reader.GetValue(2));
-                    reponse.IdSujet      = Convert.ToInt32(reader.GetValue(3));
-                    reponse.TextRep      = Convert.ToString(reader.GetValue(4));
-                    reponse.DateEnvoiRep = Convert.ToDateTime(reader.GetValue(5));
+            //    if (reader.Read())
+            //    {
+            //        reponse = new Reponse();
+            //        reponse.IdRep        = Convert.ToInt32(reader.GetValue(0));
+            //        reponse.IdSujet      = Convert.ToInt32(reader.GetValue(1));
+            //        reponse.IdUser       = Convert.ToInt32(reader.GetValue(2));
+            //        reponse.IdSujet      = Convert.ToInt32(reader.GetValue(3));
+            //        reponse.TextRep      = Convert.ToString(reader.GetValue(4));
+            //        reponse.DateEnvoiRep = Convert.ToDateTime(reader.GetValue(5));
 
-                }
-                return reponse;
-            }
+            //    }
+            //    return reponse;
+            //}
 
             public IList<Reponse> GetReponses()
             {
@@ -333,7 +333,7 @@ namespace WcfWSTribuneREST
                 return liste;
             }
 
-            public IList<Reponse> GetReponsesById(int idrep)
+            public IList<Reponse> GetReponsesById(string idrep)
             {
                 List<Reponse> liste = new List<Reponse>();
 
@@ -357,7 +357,7 @@ namespace WcfWSTribuneREST
                 return liste;
             }
 
-            public IList<Reponse> GetReponsesByIdSujet(int idsujet)
+            public IList<Reponse> GetReponsesByIdSujet(string idsujet)
             {
                 List<Reponse> liste = new List<Reponse>();
 
@@ -436,29 +436,29 @@ namespace WcfWSTribuneREST
 
             #region UTILISATEUR
 
-            public Utilisateur GetUtilisateur(int iduser)
-            {
-                Utilisateur utilisateur = null;
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "GETUTILISATEURBYID";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = cn;
-                SqlParameter pIdUser = new SqlParameter("IdUser", iduser);
-                cmd.Parameters.Add(pIdUser);
+            //public Utilisateur GetUtilisateur(int iduser)
+            //{
+            //    Utilisateur utilisateur = null;
+            //    SqlCommand cmd = new SqlCommand();
+            //    cmd.CommandText = "GETUTILISATEURBYID";
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    cmd.Connection = cn;
+            //    SqlParameter pIdUser = new SqlParameter("IdUser", iduser);
+            //    cmd.Parameters.Add(pIdUser);
 
-                SqlDataReader reader = cmd.ExecuteReader();
+            //    SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    utilisateur = new Utilisateur();
-                    utilisateur.IdUser = Convert.ToInt32(reader.GetValue(0));
-                    utilisateur.NomUser = Convert.ToString(reader.GetValue(1));
-                    utilisateur.MdpUser = Convert.ToString(reader.GetValue(2));
-                    utilisateur.DroitUser = Convert.ToInt32(reader.GetValue(3));
+            //    if (reader.Read())
+            //    {
+            //        utilisateur = new Utilisateur();
+            //        utilisateur.IdUser = Convert.ToInt32(reader.GetValue(0));
+            //        utilisateur.NomUser = Convert.ToString(reader.GetValue(1));
+            //        utilisateur.MdpUser = Convert.ToString(reader.GetValue(2));
+            //        utilisateur.DroitUser = Convert.ToInt32(reader.GetValue(3));
 
-                }
-                return utilisateur;
-            }
+            //    }
+            //    return utilisateur;
+            //}
 
             public IList<Utilisateur> GetUtilisateurs()
             {
@@ -482,7 +482,7 @@ namespace WcfWSTribuneREST
             }
 
 
-            public IList<Utilisateur> GetUtilisateursById(int iduser)
+            public IList<Utilisateur> GetUtilisateursById(string iduser)
             {
                 List<Utilisateur> liste = new List<Utilisateur>();
 

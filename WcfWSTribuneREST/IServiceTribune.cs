@@ -39,21 +39,21 @@ namespace WcfWSTribuneREST
        
         [WebGet(UriTemplate = "Sujet?idsujet={idsujet}", ResponseFormat = WebMessageFormat.Json)]
         //[WebGet(UriTemplate = "Sujet/{idsujet}")]
-        IList<Sujet> GetSujetsById(int idsujet);
+        IList<Sujet> GetSujetsById(string idsujet);
 
-        [OperationContract]
+       
         DataSet FillSujetByIdSujet(int idsujet);
 
-        [OperationContract]
+        
         DataSet FillSujetByIdRub(int idrub);
 
         #endregion
 
         #region RUBRIQUE
-        [OperationContract]
-        //[WebGet(UriTemplate = "Rubrique/{idrub}", ResponseFormat = WebMessageFormat.Json)]
-        [WebGet(UriTemplate = "Rubrique/{idrub}")]
-        Rubrique GetRubrique(int idrub);
+        //[OperationContract]
+        ////[WebGet(UriTemplate = "Rubrique?idrub={idrub}", ResponseFormat = WebMessageFormat.Json)]
+        //[WebGet(UriTemplate = "Rubrique/{idrub}")]
+        //Rubrique GetRubrique(string idrub);
 
         [OperationContract]
         //[WebGet(UriTemplate = "Rubriques", ResponseFormat = WebMessageFormat.Json)]
@@ -61,21 +61,21 @@ namespace WcfWSTribuneREST
         IList<Rubrique> GetRubriques();
 
         [OperationContract]
-        //[WebGet(UriTemplate = "Rubrique/{idrub}", ResponseFormat = WebMessageFormat.Json)]
-        [WebGet(UriTemplate = "Rubrique/{idrub}")]
-        IList<Rubrique> GetRubriquesById(int idrub);
+        [WebGet(UriTemplate = "Rubrique?idrub={idrub}", ResponseFormat = WebMessageFormat.Json)]
+        //[WebGet(UriTemplate = "Rubrique/{idrub}")]
+        IList<Rubrique> GetRubriquesById(string idrub);
 
-        [OperationContract]
+        
         DataSet FillRubriqueByIdRub(int idrub);
 
 
         #endregion
 
         #region REPONSE
-        [OperationContract]
-        //[WebGet(UriTemplate = "Reponse/{idrep}", ResponseFormat = WebMessageFormat.Json)]
-        [WebGet(UriTemplate = "Reponse/{idrep}")]
-        Reponse GetReponse(int idrep);
+        //[OperationContract]
+        ////[WebGet(UriTemplate = "Reponse/{idrep}", ResponseFormat = WebMessageFormat.Json)]
+        //[WebGet(UriTemplate = "Reponse/{idrep}")]
+        //Reponse GetReponse(int idrep);
 
         [OperationContract]
         //[WebGet(UriTemplate = "Reponses", ResponseFormat = WebMessageFormat.Json)]
@@ -83,28 +83,28 @@ namespace WcfWSTribuneREST
         IList<Reponse> GetReponses();
 
         [OperationContract]
-        //[WebGet(UriTemplate = "Reponse/{idrep}", ResponseFormat = WebMessageFormat.Json)]
-        [WebGet(UriTemplate = "Reponse/{idrep}")]
-        IList<Reponse> GetReponsesById(int idrep);
+        [WebGet(UriTemplate = "Reponse?idrep={idrep}", ResponseFormat = WebMessageFormat.Json)]
+        //[WebGet(UriTemplate = "Reponse?idrep={idrep}")]
+        IList<Reponse> GetReponsesById(string idrep);
 
-        [OperationContract]
-        //[WebGet(UriTemplate = "Reponse/{idsujet}", ResponseFormat = WebMessageFormat.Json)]
-        [WebGet(UriTemplate = "Reponse/{idsujet}")]
-        IList<Reponse> GetReponsesByIdSujet(int idsujet);
+        
+        [WebGet(UriTemplate = "Reponse/{idsujet}", ResponseFormat = WebMessageFormat.Json)]
+        //[WebGet(UriTemplate = "Reponse/{idsujet}")]
+        IList<Reponse> GetReponsesByIdSujet(string idsujet);
 
-        [OperationContract]
+        
         DataSet FillReponseById(int idrep);
 
-        [OperationContract]
+      
         DataSet FillReponseByIdSujet(int idsujet);
 
         #endregion
 
         #region UTILISATEUR
-        [OperationContract]
-        //[WebGet(UriTemplate = "Utilisateur/{iduser}", ResponseFormat = WebMessageFormat.Json)]
-        [WebGet(UriTemplate = "Utilisateur/{iduser}")]
-        Utilisateur GetUtilisateur(int iduser);
+        //[OperationContract]
+        ////[WebGet(UriTemplate = "Utilisateur/{iduser}", ResponseFormat = WebMessageFormat.Json)]
+        //[WebGet(UriTemplate = "Utilisateur/{iduser}")]
+        //Utilisateur GetUtilisateur(int iduser);
 
         [OperationContract]
         //[WebGet(UriTemplate = "Utilisateurs", ResponseFormat = WebMessageFormat.Json)]
@@ -112,11 +112,11 @@ namespace WcfWSTribuneREST
         IList<Utilisateur> GetUtilisateurs();
 
         [OperationContract]
-        //[WebGet(UriTemplate = "Utilisateur/{iduser}", ResponseFormat = WebMessageFormat.Json)]
-        [WebGet(UriTemplate = "Utilisateur/{iduser}")]
-        IList<Utilisateur> GetUtilisateursById(int iduser);
+        [WebGet(UriTemplate = "Utilisateur/{iduser}", ResponseFormat = WebMessageFormat.Json)]
+        //[WebGet(UriTemplate = "Utilisateur /{iduser}"")]
+        IList<Utilisateur> GetUtilisateursById(string iduser);
 
-        [OperationContract]
+     
         DataSet FillUtilisateurById(int iduser);
 
         #endregion
