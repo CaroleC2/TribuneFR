@@ -40,7 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ReponseDAO.cs" />
     <Compile Include="RubriqueDAO.cs" />
     <Compile Include="SqlDataBaseDAO.cs" />
@@ -49,8 +53,15 @@
     <Compile Include="UtilisateurDAO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Metier\Metier.csproj">
-      <Project>{7ce06111-4cd6-4d78-88aa-56f31069abea}</Project>
+      <Project>{7CE06111-4CD6-4D78-88AA-56F31069ABEA}</Project>
       <Name>Metier</Name>
     </ProjectReference>
   </ItemGroup>

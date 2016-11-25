@@ -1,4 +1,5 @@
-﻿using Metier;
+﻿
+using Metier;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,27 +26,27 @@ namespace WcfWSTribuneREST
     public interface IServiceTribune
     {
         #region SUJET
-        //[OperationContract]
-        ////[WebGet(UriTemplate = "Sujet/{idsujet}", ResponseFormat = WebMessageFormat.Json)]
-        //[WebGet(UriTemplate = "Sujet/{idsujet}")]
-        //Sujet GetSujet(string idsujet);
-
+  
+        /// <summary>
+        /// Renvoi tous les sujets
+        /// </summary>
+        /// <returns></returns>
         [OperationContract]
         [WebGet(UriTemplate = "Sujets", ResponseFormat = WebMessageFormat.Json)]
         //[WebGet(UriTemplate = "Sujet")]
         IList<Sujet> GetSujets();
 
+        /// <summary>
+        /// Renvoi les sujets par id sujet
+        /// </summary>
+        /// <param name="idsujet"></param>
+        /// <returns></returns>
         [OperationContract]
-       
         [WebGet(UriTemplate = "Sujet?idsujet={idsujet}", ResponseFormat = WebMessageFormat.Json)]
         //[WebGet(UriTemplate = "Sujet/{idsujet}")]
         IList<Sujet> GetSujetsById(string idsujet);
 
        
-        DataSet FillSujetByIdSujet(int idsujet);
-
-        
-        DataSet FillSujetByIdRub(int idrub);
 
         #endregion
 

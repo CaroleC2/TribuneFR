@@ -40,6 +40,9 @@
             this.btnConnexion = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelLogo = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.bindingSourceSujet = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSourceRub = new System.Windows.Forms.BindingSource(this.components);
             this.panel3.SuspendLayout();
@@ -47,6 +50,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.gbRubriques.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSujet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRub)).BeginInit();
             this.SuspendLayout();
@@ -168,10 +172,47 @@
             // 
             // panelLogo
             // 
+            this.panelLogo.BackColor = System.Drawing.SystemColors.GrayText;
+            this.panelLogo.Controls.Add(this.label4);
+            this.panelLogo.Controls.Add(this.label3);
+            this.panelLogo.Controls.Add(this.label2);
             this.panelLogo.Location = new System.Drawing.Point(3, 3);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(1178, 88);
             this.panelLogo.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Castellar", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label4.Location = new System.Drawing.Point(720, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(137, 58);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Dev";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Castellar", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.AliceBlue;
+            this.label3.Location = new System.Drawing.Point(432, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(267, 58);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Tribune";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Castellar", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label2.Location = new System.Drawing.Point(282, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 58);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "2isa";
             // 
             // fnAccueil
             // 
@@ -193,6 +234,8 @@
             this.gbRubriques.ResumeLayout(false);
             this.gbRubriques.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panelLogo.ResumeLayout(false);
+            this.panelLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSujet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRub)).EndInit();
             this.ResumeLayout(false);
@@ -213,6 +256,9 @@
         private System.Windows.Forms.ComboBox comboBoxRub;
         private System.Windows.Forms.BindingSource bindingSourceSujet;
         private System.Windows.Forms.BindingSource bindingSourceRub;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
 

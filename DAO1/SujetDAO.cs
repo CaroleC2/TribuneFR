@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using Metier;
+using System.Data.SqlClient;
 
 namespace DAO
 {
     public class SujetDAO
     {
-
+        
         //Classe d'accès aux entites Sujet
         //Cette classe utilise les méthodes de la classe AccessDataBaseDAO
         private static SujetDAO _Instance;
@@ -28,93 +28,41 @@ namespace DAO
             return _Instance;
         }
 
-        //Méthodes qui retournent DataSet
-        //public DataSet GetAllSujets()
-        //{
-
-        //    return _Database.ExecuteDataSet("Select * from SUJET order by IDSUJET");
-        //}
-
-        //public DataSet GetSujetsById(int idsujet)
-        //{
-        //    SqlDataBaseDAO database = SqlDataBaseDAO.GetInstance();
-        //    return _Database.ExecuteDataSet("Select * from SUJET where IDSUJET = " + idsujet);
-
-        //}
-        
         public DataSet GetSujets()
         {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = SqlDataBaseDAO.GetInstance().GetConnection();
+            cmd.CommandText = "GetSujets";
+            cmd.CommandType = CommandType.StoredProcedure;
 
-            return _Database.ExecuteDataSet("Select * from SUJET order by TitreSujet");
+            SqlDataAdapter objDataAdapter = new SqlDataAdapter(cmd);
+            DataSet objDataSet = new DataSet();
+            objDataAdapter.Fill(objDataSet);
+
+
+            return objDataSet;
         }
 
-        public DataSet GetSujetsByIdRub(string idrub)
+        public DataSet GetSujetByIdRub(int idrub)
         {
-            SqlDataBaseDAO database = SqlDataBaseDAO.GetInstance();
-            return _Database.ExecuteDataSet("Select * from SUJET where IDRUB= " + idrub);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = SqlDataBaseDAO.GetInstance().GetConnection();
+            cmd.CommandText = "GetSujetByIdRub";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter pIdrub = new SqlParameter("IDRUB", idrub);
+            cmd.Parameters.Add(pIdrub);
+
+            SqlDataAdapter objDataAdapter = new SqlDataAdapter(cmd);
+            DataSet objDataSet = new DataSet();
+            objDataAdapter.Fill(objDataSet);
+
+
+            return objDataSet;
         }
 
-        public List<Sujet> ListAllSujets()
-        {
 
-            List<Sujet> liste = new List<Sujet>();
-            DataSet objDataSet = _Database.ExecuteDataSet("Select * from SUJET order by TitreSujet");
-            foreach (DataRow row in objDataSet.Tables[0].Select())
-            {
-                Sujet Sujet = new Sujet(Convert.ToInt32(row["IDSUJET"]),
-                                        Convert.ToInt32(row["IDRUB"]),
-                                        Convert.ToInt32(row["IDUSER"]),
-                                        row["TITRESUJET"].ToString(),
-                                        row["TEXTSUJET"].ToString(),
-                                        Convert.ToDateTime(row["DATECREATSUJET"])
-                                        );
-                liste.Add(Sujet);
-            }
-
-               
-            return liste;
-        }
-
-        public List<Sujet> ListSujetsByTitreSujet(string TitreSujet)
-        {
-
-            List<Sujet> liste = new List<Sujet>();
-            DataSet objDataSet = _Database.ExecuteDataSet("Select * from SUJET WHERE TITRESUJET=" + TitreSujet);
-            foreach (DataRow row in objDataSet.Tables[0].Select())
-            {
-                Sujet Sujet = new Sujet(Convert.ToInt32(row["IDSUJET"]),
-                                        Convert.ToInt32(row["IDRUB"]),
-                                        Convert.ToInt32(row["IDUSER"]),
-                                        row["TITRESUJET"].ToString(),
-                                        row["TEXTSUJET"].ToString(),
-                                        Convert.ToDateTime(row["DATECREATSUJET"])
-                                        );
-                liste.Add(Sujet);
-            }
-
-
-            return liste;
-        }
-
-        public List<Sujet> ListSujetsByIdRub(string IdRub)
-        {
-
-            List<Sujet> liste = new List<Sujet>();
-            DataSet objDataSet = _Database.ExecuteDataSet("Select * from SUJET WHERE IDRUB=" + IdRub);
-            foreach (DataRow row in objDataSet.Tables[0].Select())
-            {
-                Sujet Sujet = new Sujet(Convert.ToInt32(row["IDSUJET"]),
-                                        Convert.ToInt32(row["IDRUB"]),
-                                        Convert.ToInt32(row["IDUSER"]),
-                                        row["TITRESUJET"].ToString(),
-                                        row["TEXTSUJET"].ToString(),
-                                        Convert.ToDateTime(row["DATECREATSUJET"])
-                                        );
-                liste.Add(Sujet);
-            }
-
-
-            return liste;
-        }
+       
+       
     }
 }

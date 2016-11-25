@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DAO;
+using BLLOutils;
+using Metier;
 
 namespace IHM
 {
@@ -15,20 +16,13 @@ namespace IHM
   
     public partial class fnAccueil : Form
     {
-
-         private SujetDAO objSujetDAO;
-        // private ReponseDAO objReponseDAO;
-        private RubriqueDAO objRubDAO;
-        // private UtilisateurDAO objUtilisateurDAO;
-
+        
+        //BLL blloutils = new BLL();
         public fnAccueil()
         {
             InitializeComponent();
             //L'IHM s'adresse directement aux classes d'accès aux données
-            objSujetDAO = SujetDAO.GetInstance();
-           // objReponseDAO = ReponseDAO.GetInstance();
-            objRubDAO = RubriqueDAO.GetInstance();
-          //  objUtilisateurDAO = UtilisateurDAO.GetInstance();
+        
         }
         #region Load Fenêtre
         private void fnAccueil_Load(object sender, EventArgs e)
@@ -38,10 +32,10 @@ namespace IHM
             
             comboBoxRub.DisplayMember = "nomrub";
             comboBoxRub.ValueMember = "idrub";
-            comboBoxRub.DataSource = objRubDAO.GetRubriques().Tables[0];
+            comboBoxRub.DataSource = BLL.ListAllRubriques();
             comboBoxRub.SelectedIndex = 0;
-            DataTable dt = objSujetDAO.GetSujetsByIdRub(comboBoxRub.SelectedValue.ToString()).Tables[0];
-            dgvSujet.DataSource = dt ; 
+            List<Sujet> sujets = BLL.ListSujetsByIdRub(int.Parse(comboBoxRub.SelectedValue.ToString()));
+            dgvSujet.DataSource = sujets; 
 
         
         }
@@ -55,8 +49,8 @@ namespace IHM
             if (comboBoxRub.SelectedValue != null)
             {
                 //Utilise des methodes d'accès qui renvoient un Dataset 
-                bindingSourceRub.DataSource = objRubDAO.GetRubriquesByIdRub(comboBoxRub.SelectedValue.ToString()).Tables[0];
-                bindingSourceSujet.DataSource = objSujetDAO.GetSujetsByIdRub(comboBoxRub.SelectedValue.ToString()).Tables[0];
+                bindingSourceRub.DataSource = BLL.ListRubriquesById(int.Parse(comboBoxRub.SelectedValue.ToString()));
+                bindingSourceSujet.DataSource = BLL.ListSujetsByIdRub(int.Parse(comboBoxRub.SelectedValue.ToString()));
                 dgvSujet.DataSource = bindingSourceSujet;
                 dgvSujet.Columns["IDSUJET"].Visible = false;
                 dgvSujet.Columns["IDRUB"].Visible = false;
@@ -81,11 +75,12 @@ namespace IHM
             }
             //this.Close();
         }
-        
+
+
+
+
         #endregion
 
-
-
-
+       
     }
 }
