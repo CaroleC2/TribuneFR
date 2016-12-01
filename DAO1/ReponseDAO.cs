@@ -82,21 +82,24 @@ namespace DAO
         }
 
         /* ################ TRAVAIL EN COURS ############################*/
-        public static int NewReponse(int idUser, int idSujet, string textrep)
+        public int NewReponse( int idSujet,string nomUser, string textrep, DateTime dateenvoirep)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = SqlDataBaseDAO.GetInstance().GetConnection();
             cmd.CommandText = "NewReponse";
             cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlParameter pIdUser = new SqlParameter("IDUSER", idUser);
-            cmd.Parameters.Add(pIdUser);
-
             SqlParameter pIdSujet = new SqlParameter("IDSUJET", idSujet);
             cmd.Parameters.Add(pIdSujet);
+            
+            SqlParameter pNomUser = new SqlParameter("NOMUSER", nomUser);
+            cmd.Parameters.Add(pNomUser);
 
             SqlParameter pTextrep = new SqlParameter("TEXTREP", textrep);
             cmd.Parameters.Add(pTextrep);
+
+            SqlParameter pDateenvoirep = new SqlParameter("DATEENVOIRREP", dateenvoirep);
+            cmd.Parameters.Add(pDateenvoirep);
 
             // Ou .......... :
             //cmd.Parameters.Add(new SqlParameter("IDUSER", idUser));

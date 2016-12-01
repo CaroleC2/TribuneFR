@@ -18,14 +18,17 @@ namespace IHM
 
         internal Reponse reponse;
 
-
+        internal Utilisateur utilisateur;
 
         public FormReponse()
         {
             InitializeComponent();
+
+            DateTime now = DateTime.Now;
+            lbDate.Text = now.ToString();
         }
 
-        private void FormModifReponse_Load(object sender, EventArgs e)
+        private void FormReponse_Load(object sender, EventArgs e)
         {
             //Utilise des methodes d'accès qui renvoient un Dataset 
             //bindingSourceRub.DataSource = objRubDAO.GetRubriques().Tables[0];
@@ -38,38 +41,21 @@ namespace IHM
         private void btAjoutRep_Click(object sender, EventArgs e)
         {
 
+            //Test ajout d'un réponse
 
-            BLLOutils.BLL.NewReponse(sujet.IdSujet, txtBoxRep.Text);
-            
-        
+            string idSujet = lbSujet.Text;
+            string NomUser = lbUser.Text;
+            string textRep = txtBoxRep.Text;
+            string now = lbDate.Text;
+
+            BLLOutils.BLL.NewReponse(lbSujet.Text, lbUser.Text,txtBoxRep.Text, lbDate.Text);
 
 
+            //BLLOutils.BLL.NewReponse(utilisateur.idUser, sujet.IdSujet, txtBoxRep.Text);
+          
+        }
+
+       
     }
-
-    //private void comboBoxRub_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    //if (comboBoxRub.SelectedValue != null)
-    //    //{
-    //    //    //Utilise des methodes d'accès qui renvoient un Dataset 
-    //    //    bindingSourceRep.DataSource = BLL.ListRubriquesById(int.Parse(comboBoxRub.SelectedValue.ToString()));
-    //    //    bindingSourceRep.DataSource = BLL.ListSujetsByIdRub(int.Parse(comboBoxRub.SelectedValue.ToString()));
-
-    //    //    dgvRep.DataSource = bindingSourceRep;
-    //    //    dgvRep.Columns["IDREP"].Visible = false;
-    //    //    dgvRep.Columns["IDUSER"].Visible = false;
-    //    //    dgvRep.Columns["IDSUJET"].Visible = false;
-
-    //    //    dgvRep.Columns["TEXTREP"].HeaderText = "Texte";
-    //    //    dgvRep.Columns["DATEENVOICREAT"].HeaderText = "Date d'envoi";
-
-
-    //    }
-
-
-    //private void dgvRep_CellContentClick(object sender, DataGridViewCellEventArgs e)
-    //{
-
-    //}
-}
 }
 

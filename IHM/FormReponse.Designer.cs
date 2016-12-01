@@ -32,6 +32,7 @@ namespace IHM
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReponse));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btQuitter = new System.Windows.Forms.Button();
             this.txtBoxRep = new System.Windows.Forms.RichTextBox();
             this.btAjoutRep = new System.Windows.Forms.Button();
             this.lbDate = new System.Windows.Forms.Label();
@@ -42,7 +43,10 @@ namespace IHM
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.bindingSourceRep = new System.Windows.Forms.BindingSource(this.components);
-            this.btQuitter = new System.Windows.Forms.Button();
+            this.lbNomUtilisateur = new System.Windows.Forms.Label();
+            this.lbIdSujet = new System.Windows.Forms.Label();
+            this.lbUser = new System.Windows.Forms.Label();
+            this.lbSujet = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -53,36 +57,55 @@ namespace IHM
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.btQuitter, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 95);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.033887F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 97.96612F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 464F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1178, 464);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbSujet);
+            this.groupBox1.Controls.Add(this.lbUser);
+            this.groupBox1.Controls.Add(this.lbIdSujet);
+            this.groupBox1.Controls.Add(this.lbNomUtilisateur);
+            this.groupBox1.Controls.Add(this.btQuitter);
             this.groupBox1.Controls.Add(this.txtBoxRep);
             this.groupBox1.Controls.Add(this.btAjoutRep);
             this.groupBox1.Controls.Add(this.lbDate);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.lblDateEnvoi);
-            this.groupBox1.Location = new System.Drawing.Point(3, 10);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1172, 348);
+            this.groupBox1.Size = new System.Drawing.Size(1172, 458);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ajout Réponse";
+            // 
+            // btQuitter
+            // 
+            this.btQuitter.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btQuitter.BackColor = System.Drawing.SystemColors.GrayText;
+            this.btQuitter.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btQuitter.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btQuitter.Image")));
+            this.btQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btQuitter.Location = new System.Drawing.Point(902, 266);
+            this.btQuitter.Name = "btQuitter";
+            this.btQuitter.Size = new System.Drawing.Size(198, 38);
+            this.btQuitter.TabIndex = 5;
+            this.btQuitter.Text = "Quitter";
+            this.btQuitter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btQuitter.UseVisualStyleBackColor = false;
             // 
             // txtBoxRep
             // 
             this.txtBoxRep.Location = new System.Drawing.Point(118, 76);
             this.txtBoxRep.Name = "txtBoxRep";
-            this.txtBoxRep.Size = new System.Drawing.Size(609, 254);
+            this.txtBoxRep.Size = new System.Drawing.Size(609, 317);
             this.txtBoxRep.TabIndex = 18;
             this.txtBoxRep.Text = "";
             // 
@@ -93,11 +116,11 @@ namespace IHM
             this.btAjoutRep.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btAjoutRep.Image = ((System.Drawing.Image)(resources.GetObject("btAjoutRep.Image")));
             this.btAjoutRep.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btAjoutRep.Location = new System.Drawing.Point(995, 48);
+            this.btAjoutRep.Location = new System.Drawing.Point(902, 139);
             this.btAjoutRep.Name = "btAjoutRep";
-            this.btAjoutRep.Size = new System.Drawing.Size(143, 41);
+            this.btAjoutRep.Size = new System.Drawing.Size(198, 41);
             this.btAjoutRep.TabIndex = 10;
-            this.btAjoutRep.Text = "Réponse";
+            this.btAjoutRep.Text = "Poster Réponse";
             this.btAjoutRep.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btAjoutRep.UseVisualStyleBackColor = false;
             this.btAjoutRep.Click += new System.EventHandler(this.btAjoutRep_Click);
@@ -105,7 +128,7 @@ namespace IHM
             // lbDate
             // 
             this.lbDate.AutoSize = true;
-            this.lbDate.Location = new System.Drawing.Point(257, 37);
+            this.lbDate.Location = new System.Drawing.Point(237, 39);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(30, 13);
             this.lbDate.TabIndex = 17;
@@ -175,21 +198,43 @@ namespace IHM
             this.label2.TabIndex = 0;
             this.label2.Text = "2isa";
             // 
-            // btQuitter
+            // lbNomUtilisateur
             // 
-            this.btQuitter.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btQuitter.BackColor = System.Drawing.SystemColors.GrayText;
-            this.btQuitter.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btQuitter.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btQuitter.Image")));
-            this.btQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btQuitter.Location = new System.Drawing.Point(1032, 393);
-            this.btQuitter.Name = "btQuitter";
-            this.btQuitter.Size = new System.Drawing.Size(143, 38);
-            this.btQuitter.TabIndex = 5;
-            this.btQuitter.Text = "Quitter";
-            this.btQuitter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btQuitter.UseVisualStyleBackColor = false;
+            this.lbNomUtilisateur.AutoSize = true;
+            this.lbNomUtilisateur.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNomUtilisateur.Location = new System.Drawing.Point(369, 33);
+            this.lbNomUtilisateur.Name = "lbNomUtilisateur";
+            this.lbNomUtilisateur.Size = new System.Drawing.Size(146, 19);
+            this.lbNomUtilisateur.TabIndex = 19;
+            this.lbNomUtilisateur.Text = "Nom Utilisateur";
+            // 
+            // lbIdSujet
+            // 
+            this.lbIdSujet.AutoSize = true;
+            this.lbIdSujet.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIdSujet.Location = new System.Drawing.Point(699, 31);
+            this.lbIdSujet.Name = "lbIdSujet";
+            this.lbIdSujet.Size = new System.Drawing.Size(77, 19);
+            this.lbIdSujet.TabIndex = 20;
+            this.lbIdSujet.Text = "Id Sujet";
+            // 
+            // lbUser
+            // 
+            this.lbUser.AutoSize = true;
+            this.lbUser.Location = new System.Drawing.Point(566, 39);
+            this.lbUser.Name = "lbUser";
+            this.lbUser.Size = new System.Drawing.Size(53, 13);
+            this.lbUser.TabIndex = 21;
+            this.lbUser.Text = "Utilisateur";
+            // 
+            // lbSujet
+            // 
+            this.lbSujet.AutoSize = true;
+            this.lbSujet.Location = new System.Drawing.Point(910, 37);
+            this.lbSujet.Name = "lbSujet";
+            this.lbSujet.Size = new System.Drawing.Size(40, 13);
+            this.lbSujet.TabIndex = 22;
+            this.lbSujet.Text = "IdSujet";
             // 
             // FormReponse
             // 
@@ -205,7 +250,7 @@ namespace IHM
             this.MinimumSize = new System.Drawing.Size(1200, 600);
             this.Name = "FormReponse";
             this.Text = "Réponse";
-            this.Load += new System.EventHandler(this.FormModifReponse_Load);
+            this.Load += new System.EventHandler(this.FormReponse_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -231,5 +276,9 @@ namespace IHM
         private System.Windows.Forms.RichTextBox txtBoxRep;
         private System.Windows.Forms.BindingSource bindingSourceRep;
         private System.Windows.Forms.Button btQuitter;
+        private System.Windows.Forms.Label lbSujet;
+        private System.Windows.Forms.Label lbUser;
+        private System.Windows.Forms.Label lbIdSujet;
+        private System.Windows.Forms.Label lbNomUtilisateur;
     }
 }
