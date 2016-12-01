@@ -29,13 +29,6 @@ namespace DAO
             return _Instance;
         }
 
-        
-        
-
-
-        
-
-       
 
         public DataSet GetReponses()
         {
@@ -88,70 +81,52 @@ namespace DAO
             return objDataSet;
         }
 
+        /* ################ TRAVAIL EN COURS ############################*/
+        public static int NewReponse(int idUser, int idSujet, string textrep)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = SqlDataBaseDAO.GetInstance().GetConnection();
+            cmd.CommandText = "NewReponse";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter pIdUser = new SqlParameter("IDUSER", idUser);
+            cmd.Parameters.Add(pIdUser);
+
+            SqlParameter pIdSujet = new SqlParameter("IDSUJET", idSujet);
+            cmd.Parameters.Add(pIdSujet);
+
+            SqlParameter pTextrep = new SqlParameter("TEXTREP", textrep);
+            cmd.Parameters.Add(pTextrep);
+
+            // Ou .......... :
+            //cmd.Parameters.Add(new SqlParameter("IDUSER", idUser));
+            //cmd.Parameters.Add(new SqlParameter("IDSUJET", idSujet));
+            //cmd.Parameters.Add(new SqlParameter("TEXTREP", textrep));
 
 
+            int nbLigne = cmd.ExecuteNonQuery();
+   
+        
+            return nbLigne;
+        }
+
+        
+        public static int DeleteReponseById(int idRep)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = SqlDataBaseDAO.GetInstance().GetConnection();
+            cmd.CommandText = "DeleteReponseById";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter pIdRep = new SqlParameter("IDREP", idRep);
+            cmd.Parameters.Add(pIdRep);
+
+            int nbLigne = cmd.ExecuteNonQuery();
+           
+            return nbLigne;
+        }
 
 
-
-
-
-
-        //public List<Reponse> ListAllReponses()
-        //{
-
-        //    List<Reponse> liste = new List<Reponse>();
-        //    DataSet objDataSet = _Database.ExecuteDataSet("Select * from REPONSE order by IDREP");
-        //    foreach (DataRow row in objDataSet.Tables[0].Select())
-        //    {
-        //        Reponse reponse = new Reponse(Convert.ToInt32(row["IDREP"]),
-        //                                Convert.ToInt32(row["IDSUJET"]),
-        //                                Convert.ToInt32(row["IDUSER"]),
-        //                                row["TEXTREP"].ToString(),
-        //                                Convert.ToDateTime(row["DATEENVOIREP"])
-        //                                );
-        //        liste.Add(reponse);
-        //    }
-
-
-        //    return liste;
-        //}
-
-        //public List<Reponse> ListReponsesById(int idrep)
-        //{
-
-        //    List<Reponse> liste = new List<Reponse>();
-        //    DataSet objDataSet = _Database.ExecuteDataSet("Select * from REPONSE WHERE IDREP=" + idrep);
-        //    foreach (DataRow row in objDataSet.Tables[0].Select())
-        //    {
-        //        Reponse reponse = new Reponse(Convert.ToInt32(row["IDREP"]),
-        //                                Convert.ToInt32(row["IDSUJET"]),
-        //                                Convert.ToInt32(row["IDUSER"]),
-        //                                row["TEXTREP"].ToString(),
-        //                                Convert.ToDateTime(row["DATEENVOIREP"])
-        //                                );
-        //        liste.Add(reponse);
-        //    }
-
-        //    return liste;
-        //}
-
-        //public List<Reponse> ListReponsesByIdSujet(int idsujet)
-        //{
-
-        //    List<Reponse> liste = new List<Reponse>();
-        //    DataSet objDataSet = _Database.ExecuteDataSet("Select * from REPONSE WHERE IDSUJET=" + idsujet);
-        //    foreach (DataRow row in objDataSet.Tables[0].Select())
-        //    {
-        //        Reponse reponse = new Reponse(Convert.ToInt32(row["IDREP"]),
-        //                                Convert.ToInt32(row["IDSUJET"]),
-        //                                Convert.ToInt32(row["IDUSER"]),
-        //                                row["TEXTREP"].ToString(),
-        //                                Convert.ToDateTime(row["DATEENVOIREP"])
-        //                                );
-        //        liste.Add(reponse);
-        //    }
-
-        //    return liste;
-        //}
+        
     }
 }

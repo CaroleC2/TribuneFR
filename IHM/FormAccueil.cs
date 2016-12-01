@@ -17,7 +17,7 @@ namespace IHM
     public partial class fnAccueil : Form
     {
         
-        //BLL blloutils = new BLL();
+        
         public fnAccueil()
         {
             InitializeComponent();
@@ -27,17 +27,23 @@ namespace IHM
         #region Load Fenêtre
         private void fnAccueil_Load(object sender, EventArgs e)
         {
-            //Utilise des methodes d'accès qui renvoient un Dataset 
-            //bindingSourceRub.DataSource = objRubDAO.GetRubriques().Tables[0];
-            
+          
+            //ComboBox Rubrique
             comboBoxRub.DisplayMember = "nomrub";
             comboBoxRub.ValueMember = "idrub";
             comboBoxRub.DataSource = BLL.ListAllRubriques();
             comboBoxRub.SelectedIndex = 0;
             List<Sujet> sujets = BLL.ListSujetsByIdRub(int.Parse(comboBoxRub.SelectedValue.ToString()));
-            dgvSujet.DataSource = sujets; 
+            
+            
+            //ComboBox Sujet
+            comboBoxSujet.DisplayMember = "titresujet";
+            comboBoxSujet.ValueMember = "idsujet";
+            comboBoxSujet.DataSource = sujets;
+            comboBoxSujet.SelectedIndex = 0;
+            List<Reponse> reponses = BLL.ListReponsesByIdSujet(int.Parse(comboBoxSujet.SelectedValue.ToString()));
+            dgvReponse.DataSource = reponses;
 
-        
         }
 
         #endregion
@@ -49,22 +55,96 @@ namespace IHM
             if (comboBoxRub.SelectedValue != null)
             {
                 //Utilise des methodes d'accès qui renvoient un Dataset 
-                bindingSourceRub.DataSource = BLL.ListRubriquesById(int.Parse(comboBoxRub.SelectedValue.ToString()));
-                bindingSourceSujet.DataSource = BLL.ListSujetsByIdRub(int.Parse(comboBoxRub.SelectedValue.ToString()));
-                dgvSujet.DataSource = bindingSourceSujet;
-                dgvSujet.Columns["IDSUJET"].Visible = false;
-                dgvSujet.Columns["IDRUB"].Visible = false;
-                dgvSujet.Columns["IDUSER"].Visible = false;
-                dgvSujet.Columns["TITRESUJET"].HeaderText = "Titre";
-                dgvSujet.Columns["TEXTSUJET"].HeaderText = "Texte";
-                dgvSujet.Columns["DATECREATSUJET"].HeaderText = "Date de création";
-                //TODO ###################### TRIER LES COLONNES ###############################
-
+                
+                List<Sujet> sujets = BLL.ListSujetsByIdRub(int.Parse(comboBoxRub.SelectedValue.ToString()));
+                
+                //ComboBox Sujet
+                comboBoxSujet.DisplayMember = "titresujet";
+                comboBoxSujet.ValueMember = "idsujet";
+                comboBoxSujet.DataSource = sujets;
+                
             }
         }
+
+
+
+        private void comboBoxSujet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (comboBoxSujet != null)
+            {
+                
+                bindingSourceRep.DataSource = BLL.ListReponsesByIdSujet(int.Parse(comboBoxSujet.SelectedValue.ToString()));
+            }
+
+            dgvReponse.DataSource = bindingSourceRep;
+            dgvReponse.Columns["IDREP"].Visible = false;
+            dgvReponse.Columns["IDSUJET"].Visible = false;
+            dgvReponse.Columns["IDUSER"].Visible = false;
+
+            dgvReponse.Columns["TEXTREP"].HeaderText = "Texte";
+            dgvReponse.Columns["DATEENVOIREP"].HeaderText = "Date d'envoi";
+
+
+        }
+
+        private void btDeleteRep_Click(object sender, EventArgs e)
+        {
+            int idOffre = Convert.ToInt32(dgvReponse.CurrentRow.Cells[2].Value);
+
+            if (MessageBox.Show("Voulez vous supprimer cette réponse ?", "Validation de la suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                
+                
+            }
+
+        }
+
+        private void btDeleteSujet_Click(object sender, EventArgs e)
+        {
+            int idOffre = Convert.ToInt32(dgvReponse.CurrentRow.Cells[2].Value);
+
+            if (MessageBox.Show("Voulez vous supprimer ce sujet ?", "Validation de la suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                
+            }
+        }
+
+        private void btModifSujet_Click(object sender, EventArgs e)
+        {
+            
+           
+
+        }
+
+        private void btAjoutSujet_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btAjoutRep_Click(object sender, EventArgs e)
+        {
+            
+                
+        }
+
+        private void dgvReponse_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int CurrentRow = e.RowIndex;
+            DataGridViewRow row = dgvReponse.Rows[CurrentRow];
+
+            using (FormReponse formReponse = new FormReponse())
+            {
+                formReponse.reponse.TextRep = row.Cells["Texte"].Value.ToString();
+            }
+
+
+
+        }
+
         #endregion
 
-        #region Quitter l'application 
+            #region Quitter l'application 
 
         private void btQuitter_Click(object sender, EventArgs e)
         {
@@ -79,8 +159,12 @@ namespace IHM
 
 
 
+
+
         #endregion
 
        
     }
+
+   
 }

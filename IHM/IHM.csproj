@@ -52,6 +52,24 @@
     <Compile Include="FormAccueil.Designer.cs">
       <DependentUpon>FormAccueil.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReponse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReponse.Designer.cs">
+      <DependentUpon>FormReponse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSujet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSujet.Designer.cs">
+      <DependentUpon>FormSujet.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORMS\FormActionSujet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +92,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAccueil.resx">
       <DependentUpon>FormAccueil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReponse.resx">
+      <DependentUpon>FormReponse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSujet.resx">
+      <DependentUpon>FormSujet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\FormActionSujet.resx">
       <DependentUpon>FormActionSujet.cs</DependentUpon>
