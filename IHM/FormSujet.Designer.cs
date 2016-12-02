@@ -1,6 +1,6 @@
 ﻿namespace IHM
 {
-    partial class FormModifSujet
+    partial class FormSujet
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormModifSujet));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSujet));
             this.SuspendLayout();
             // 
-            // FormModifSujet
+            // FormSujet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -41,7 +41,7 @@
             this.MaximumSize = new System.Drawing.Size(1200, 600);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1200, 600);
-            this.Name = "FormModifSujet";
+            this.Name = "FormSujet";
             this.Text = "FormSujet";
             this.ResumeLayout(false);
 

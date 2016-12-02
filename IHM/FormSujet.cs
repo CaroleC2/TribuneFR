@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace IHM
 {
-    public partial class FormModifSujet : Form
+    public partial class FormSujet : Form
     {
-        public FormModifSujet()
+        public FormSujet()
         {
             InitializeComponent();
         }

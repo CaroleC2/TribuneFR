@@ -61,8 +61,93 @@ namespace DAO
             return objDataSet;
         }
 
+        
+        public int NewSujet( int idRub, string nomUser,string titresujet, string textsujet, DateTime datecreatsujet)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = SqlDataBaseDAO.GetInstance().GetConnection();
+            cmd.CommandText = "NewSujet";
+            cmd.CommandType = CommandType.StoredProcedure;
+            
+            SqlParameter pIdRub = new SqlParameter("IDRUB", idRub);
+            cmd.Parameters.Add(pIdRub);
 
-       
-       
+            SqlParameter pNomUser = new SqlParameter("NOMUSER", nomUser);
+            cmd.Parameters.Add(pNomUser);
+
+            SqlParameter pTitresujet = new SqlParameter("TITRESUJET", titresujet);
+            cmd.Parameters.Add(pTitresujet);
+
+            SqlParameter pTextsujet = new SqlParameter("TEXTSUJET", textsujet);
+            cmd.Parameters.Add(pTextsujet);
+
+            SqlParameter pDatecreatsujet = new SqlParameter("DATECREATSUJET", datecreatsujet);
+            cmd.Parameters.Add(pDatecreatsujet);
+
+            // Ou .......... :
+            //cmd.Parameters.Add(new SqlParameter("IDUSER", idUser));
+            //cmd.Parameters.Add(new SqlParameter("IDSUJET", idSujet));
+            //cmd.Parameters.Add(new SqlParameter("TEXTREP", textrep));
+
+
+            int nbLigne = cmd.ExecuteNonQuery();
+
+
+            return nbLigne;
+        }
+
+
+        public static int DeleteSujet(int idSujet)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = SqlDataBaseDAO.GetInstance().GetConnection();
+            cmd.CommandText = "DeleteSujet";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter pIdSujet = new SqlParameter("IDSUJET", idSujet);
+            cmd.Parameters.Add(pIdSujet);
+
+            int nbLigne = cmd.ExecuteNonQuery();
+
+            return nbLigne;
+        }
+
+
+        public int UpdateSujet(int idRub, string nomUser, string titresujet, string textsujet, DateTime datecreatsujet)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = SqlDataBaseDAO.GetInstance().GetConnection();
+            cmd.CommandText = "NewSujet";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter pIdRub = new SqlParameter("IDRUB", idRub);
+            cmd.Parameters.Add(pIdRub);
+
+            SqlParameter pNomUser = new SqlParameter("NOMUSER", nomUser);
+            cmd.Parameters.Add(pNomUser);
+
+            SqlParameter pTitresujet = new SqlParameter("TITRESUJET", titresujet);
+            cmd.Parameters.Add(pTitresujet);
+
+            SqlParameter pTextsujet = new SqlParameter("TEXTSUJET", textsujet);
+            cmd.Parameters.Add(pTextsujet);
+
+            SqlParameter pDatecreatsujet = new SqlParameter("DATECREATSUJET", datecreatsujet);
+            cmd.Parameters.Add(pDatecreatsujet);
+
+            // Ou .......... :
+            //cmd.Parameters.Add(new SqlParameter("IDUSER", idUser));
+            //cmd.Parameters.Add(new SqlParameter("IDSUJET", idSujet));
+            //cmd.Parameters.Add(new SqlParameter("TEXTREP", textrep));
+
+
+            int nbLigne = cmd.ExecuteNonQuery();
+
+
+            return nbLigne;
+        }
+
+
+
     }
 }

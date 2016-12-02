@@ -88,6 +88,7 @@ namespace IHM
 
         }
 
+        //TODO
         private void btDeleteRep_Click(object sender, EventArgs e)
         {
             int idrep = Convert.ToInt32(dgvReponse.CurrentRow.Cells[0].Value);
@@ -100,6 +101,7 @@ namespace IHM
 
         }
 
+        //TODO
         private void btDeleteSujet_Click(object sender, EventArgs e)
         {
             //int idrep = Convert.ToInt32(dgvReponse.CurrentRow.Cells[1].Value);
@@ -113,7 +115,8 @@ namespace IHM
 
 
         }
-
+        
+        //TODO
         private void btModifSujet_Click(object sender, EventArgs e)
         {
             
@@ -121,28 +124,41 @@ namespace IHM
 
         }
 
+        //TODO
         private void btAjoutSujet_Click(object sender, EventArgs e)
         {
-            //Test ajout d'un sujet
-            string titreSujet = txtBoxTitre.Text;
-            string textSujet = txtBoxTexte.Text;
-            DateTime dateCreatSujet = txtBoxDate.Text;
+            ////Test ajout d'un sujet
+            //string titreSujet = txtBoxTitre.Text;
+            //string textSujet = txtBoxTexte.Text;
+            //DateTime dateCreatSujet = txtBoxDate.Text;
 
-            BLLOutils.BLL.NewSujets(txtBoxTitre.Text, txtBoxTexte.Text, txtBoxDate.Text);
+            //BLLOutils.BLL.NewSujets(txtBoxTitre.Text, txtBoxTexte.Text, txtBoxDate.Text);
 
-         
+            using (FormSujet formSujet = new FormSujet());
+            {
+                formSujet.rubrique = (Rubrique).comboBoxRubrique.SelectedItem;
+            }
 
+
+
+            
         }
 
         private void btAjoutRep_Click(object sender, EventArgs e)
         {
-            //Test ajout d'un réponse
-            int idUser = Convert.ToInt32(txtBoxIdUser.Text);
-            int idSujet = Convert.ToInt32(txtBoxIdSujet.Text);
-            string textRep = txtBoxTextRep.Text;
+            using (FormReponse formReponse = new FormReponse())
+            {
+                formReponse.sujet = (Sujet).comboBoxSujet.SelectedItem;
+            }
 
-            BLLOutils.BLL.NewReponses(txtBoxIdUser.Text, txtBoxIdSujet.Text, txtBoxTextRep.Text);
-            
+
+            ////Test ajout d'un réponse
+            //int idUser = Convert.ToInt32(txtBoxIdUser.Text);
+            //int idSujet = Convert.ToInt32(txtBoxIdSujet.Text);
+            //string textRep = txtBoxTextRep.Text;
+
+            //BLLOutils.BLL.NewReponses(txtBoxIdUser.Text, txtBoxIdSujet.Text, txtBoxTextRep.Text);
+
         }
 
         private void dgvReponse_CellContentClick(object sender, DataGridViewCellEventArgs e)

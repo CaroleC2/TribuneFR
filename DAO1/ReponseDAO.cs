@@ -114,16 +114,16 @@ namespace DAO
         }
 
         
-        public static int DeleteReponseById(int idRep)
+        public static int DeleteReponse(int idRep )
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = SqlDataBaseDAO.GetInstance().GetConnection();
-            cmd.CommandText = "DeleteReponseById";
+            cmd.CommandText = "DeleteReponse";
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlParameter pIdRep = new SqlParameter("IDREP", idRep);
             cmd.Parameters.Add(pIdRep);
-
+            
             int nbLigne = cmd.ExecuteNonQuery();
            
             return nbLigne;
