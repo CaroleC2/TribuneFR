@@ -81,7 +81,7 @@ namespace DAO
             return objDataSet;
         }
 
-        /* ################ TRAVAIL EN COURS ############################*/
+       
         public int NewReponse( int idSujet,string nomUser, string textrep, DateTime dateenvoirep)
         {
             SqlCommand cmd = new SqlCommand();
@@ -98,7 +98,7 @@ namespace DAO
             SqlParameter pTextrep = new SqlParameter("TEXTREP", textrep);
             cmd.Parameters.Add(pTextrep);
 
-            SqlParameter pDateenvoirep = new SqlParameter("DATEENVOIRREP", dateenvoirep);
+            SqlParameter pDateenvoirep = new SqlParameter("DATEENVOIREP", dateenvoirep);
             cmd.Parameters.Add(pDateenvoirep);
 
             // Ou .......... :

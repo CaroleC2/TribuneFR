@@ -26,36 +26,61 @@ namespace IHM
 
             DateTime now = DateTime.Now;
             lbDate.Text = now.ToString();
+           
         }
 
         private void FormReponse_Load(object sender, EventArgs e)
         {
             //Utilise des methodes d'accès qui renvoient un Dataset 
             //bindingSourceRub.DataSource = objRubDAO.GetRubriques().Tables[0];
-
-
-           
-
+            txtBoxSujet.Text = sujet.TitreSujet;
         }
 
         private void btAjoutRep_Click(object sender, EventArgs e)
         {
+            
+            //string idSujet = lbSujet.Text;
+            //string NomUser = lbUser.Text;
+            //string textRep = txtBoxRep.Text;
+            //string now = lbDate.Text;
 
-            //Test ajout d'un réponse
+            //BLLOutils.BLL.NewReponse(int.Parse(lbSujet.Text), lbUser.Text,txtBoxRep.Text, Convert.ToDateTime(lbDate.Text));
 
-            string idSujet = lbSujet.Text;
-            string NomUser = lbUser.Text;
-            string textRep = txtBoxRep.Text;
-            string now = lbDate.Text;
+            if (BLLOutils.BLL.NewReponse(sujet.IdSujet, txtBoxUser.Text, txtBoxRep.Text, Convert.ToDateTime(lbDate.Text)) == 1)
+            {
+                
+                MessageBox.Show("Validation de l'ajout de votre réponse ");
 
-            BLLOutils.BLL.NewReponse(lbSujet.Text, lbUser.Text,txtBoxRep.Text, lbDate.Text);
+                this.Close();
+            }
 
+            else
+            {
+                MessageBox.Show("Echec de l'ajout de votre réponse ");
+            }
 
-            //BLLOutils.BLL.NewReponse(utilisateur.idUser, sujet.IdSujet, txtBoxRep.Text);
-          
         }
 
-       
+        private void btAnnuler_Click(object sender, EventArgs e)
+        {
+           
+            DialogResult res = MessageBox.Show("Voulez-vous annuler l'opération en cours ?", "Annuler l'opération", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            
+        }
+
+        private void btQuitter_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Voulez-vous quitter l'application ?", "Quitter l'application", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+
+        }
     }
 }
 

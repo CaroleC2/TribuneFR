@@ -32,9 +32,8 @@ namespace IHM
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReponse));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbSujet = new System.Windows.Forms.Label();
-            this.lbUser = new System.Windows.Forms.Label();
-            this.lbIdSujet = new System.Windows.Forms.Label();
+            this.btAnnuler = new System.Windows.Forms.Button();
+            this.lbTitreSujet = new System.Windows.Forms.Label();
             this.lbNomUtilisateur = new System.Windows.Forms.Label();
             this.btQuitter = new System.Windows.Forms.Button();
             this.txtBoxRep = new System.Windows.Forms.RichTextBox();
@@ -47,7 +46,8 @@ namespace IHM
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.bindingSourceRep = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtBoxUser = new System.Windows.Forms.TextBox();
+            this.txtBoxSujet = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -69,10 +69,10 @@ namespace IHM
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.lbSujet);
-            this.groupBox1.Controls.Add(this.lbUser);
-            this.groupBox1.Controls.Add(this.lbIdSujet);
+            this.groupBox1.Controls.Add(this.txtBoxSujet);
+            this.groupBox1.Controls.Add(this.txtBoxUser);
+            this.groupBox1.Controls.Add(this.btAnnuler);
+            this.groupBox1.Controls.Add(this.lbTitreSujet);
             this.groupBox1.Controls.Add(this.lbNomUtilisateur);
             this.groupBox1.Controls.Add(this.btQuitter);
             this.groupBox1.Controls.Add(this.txtBoxRep);
@@ -80,6 +80,8 @@ namespace IHM
             this.groupBox1.Controls.Add(this.lbDate);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.lblDateEnvoi);
+            this.groupBox1.Font = new System.Drawing.Font("Broadway", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1172, 458);
@@ -87,33 +89,31 @@ namespace IHM
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ajout Réponse";
             // 
-            // lbSujet
+            // btAnnuler
             // 
-            this.lbSujet.AutoSize = true;
-            this.lbSujet.Location = new System.Drawing.Point(910, 37);
-            this.lbSujet.Name = "lbSujet";
-            this.lbSujet.Size = new System.Drawing.Size(40, 13);
-            this.lbSujet.TabIndex = 22;
-            this.lbSujet.Text = "IdSujet";
+            this.btAnnuler.BackColor = System.Drawing.SystemColors.GrayText;
+            this.btAnnuler.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAnnuler.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btAnnuler.Image")));
+            this.btAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btAnnuler.Location = new System.Drawing.Point(902, 175);
+            this.btAnnuler.Name = "btAnnuler";
+            this.btAnnuler.Size = new System.Drawing.Size(198, 41);
+            this.btAnnuler.TabIndex = 23;
+            this.btAnnuler.Text = "Annuler";
+            this.btAnnuler.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btAnnuler.UseVisualStyleBackColor = false;
+            this.btAnnuler.Click += new System.EventHandler(this.btAnnuler_Click);
             // 
-            // lbUser
+            // lbTitreSujet
             // 
-            this.lbUser.AutoSize = true;
-            this.lbUser.Location = new System.Drawing.Point(566, 39);
-            this.lbUser.Name = "lbUser";
-            this.lbUser.Size = new System.Drawing.Size(53, 13);
-            this.lbUser.TabIndex = 21;
-            this.lbUser.Text = "Utilisateur";
-            // 
-            // lbIdSujet
-            // 
-            this.lbIdSujet.AutoSize = true;
-            this.lbIdSujet.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIdSujet.Location = new System.Drawing.Point(699, 31);
-            this.lbIdSujet.Name = "lbIdSujet";
-            this.lbIdSujet.Size = new System.Drawing.Size(77, 19);
-            this.lbIdSujet.TabIndex = 20;
-            this.lbIdSujet.Text = "Id Sujet";
+            this.lbTitreSujet.AutoSize = true;
+            this.lbTitreSujet.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitreSujet.Location = new System.Drawing.Point(777, 32);
+            this.lbTitreSujet.Name = "lbTitreSujet";
+            this.lbTitreSujet.Size = new System.Drawing.Size(100, 19);
+            this.lbTitreSujet.TabIndex = 20;
+            this.lbTitreSujet.Text = "Titre Sujet";
             // 
             // lbNomUtilisateur
             // 
@@ -140,6 +140,7 @@ namespace IHM
             this.btQuitter.Text = "Quitter";
             this.btQuitter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btQuitter.UseVisualStyleBackColor = false;
+            this.btQuitter.Click += new System.EventHandler(this.btQuitter_Click);
             // 
             // txtBoxRep
             // 
@@ -168,9 +169,10 @@ namespace IHM
             // lbDate
             // 
             this.lbDate.AutoSize = true;
-            this.lbDate.Location = new System.Drawing.Point(237, 39);
+            this.lbDate.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.lbDate.Location = new System.Drawing.Point(221, 36);
             this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(30, 13);
+            this.lbDate.Size = new System.Drawing.Size(40, 15);
             this.lbDate.TabIndex = 17;
             this.lbDate.Text = "Date";
             // 
@@ -238,20 +240,20 @@ namespace IHM
             this.label2.TabIndex = 0;
             this.label2.Text = "2isa";
             // 
-            // button1
+            // txtBoxUser
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.GrayText;
-            this.button1.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(902, 175);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(198, 41);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "Annuler";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
+            this.txtBoxUser.Location = new System.Drawing.Point(533, 33);
+            this.txtBoxUser.Name = "txtBoxUser";
+            this.txtBoxUser.Size = new System.Drawing.Size(206, 22);
+            this.txtBoxUser.TabIndex = 24;
+            // 
+            // txtBoxSujet
+            // 
+            this.txtBoxSujet.Location = new System.Drawing.Point(902, 29);
+            this.txtBoxSujet.Name = "txtBoxSujet";
+            this.txtBoxSujet.ReadOnly = true;
+            this.txtBoxSujet.Size = new System.Drawing.Size(198, 22);
+            this.txtBoxSujet.TabIndex = 25;
             // 
             // FormReponse
             // 
@@ -287,16 +289,16 @@ namespace IHM
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btAjoutRep;
-        private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblDateEnvoi;
-        private System.Windows.Forms.RichTextBox txtBoxRep;
         private System.Windows.Forms.BindingSource bindingSourceRep;
         private System.Windows.Forms.Button btQuitter;
-        private System.Windows.Forms.Label lbSujet;
-        private System.Windows.Forms.Label lbUser;
-        private System.Windows.Forms.Label lbIdSujet;
+        private System.Windows.Forms.Label lbTitreSujet;
         private System.Windows.Forms.Label lbNomUtilisateur;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btAnnuler;
+        public System.Windows.Forms.Label lbDate;
+        public System.Windows.Forms.RichTextBox txtBoxRep;
+        private System.Windows.Forms.TextBox txtBoxSujet;
+        private System.Windows.Forms.TextBox txtBoxUser;
     }
 }

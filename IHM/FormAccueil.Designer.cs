@@ -42,6 +42,8 @@
             this.dgvReponse = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gbRubriques = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxSujet = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxRub = new System.Windows.Forms.ComboBox();
             this.btnConnexion = new System.Windows.Forms.Button();
@@ -52,8 +54,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.bindingSourceSujet = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSourceRub = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBoxSujet = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.bindingSourceRep = new System.Windows.Forms.BindingSource(this.components);
             this.panel3.SuspendLayout();
             this.gbModerateur.SuspendLayout();
@@ -154,7 +154,6 @@
             this.btModifSujet.Text = "Sujet";
             this.btModifSujet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btModifSujet.UseVisualStyleBackColor = false;
-            this.btModifSujet.Click += new System.EventHandler(this.btModifSujet_Click);
             // 
             // gbUser
             // 
@@ -213,7 +212,6 @@
             this.dgvReponse.Size = new System.Drawing.Size(1178, 294);
             this.dgvReponse.TabIndex = 0;
             this.dgvReponse.TabStop = false;
-            this.dgvReponse.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReponse_CellContentClick);
             // 
             // tableLayoutPanel1
             // 
@@ -251,6 +249,25 @@
             this.gbRubriques.TabStop = false;
             this.gbRubriques.Text = "Rubriques";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(605, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(189, 24);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Choisir un sujet";
+            // 
+            // comboBoxSujet
+            // 
+            this.comboBoxSujet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSujet.FormattingEnabled = true;
+            this.comboBoxSujet.Location = new System.Drawing.Point(508, 45);
+            this.comboBoxSujet.Name = "comboBoxSujet";
+            this.comboBoxSujet.Size = new System.Drawing.Size(349, 32);
+            this.comboBoxSujet.TabIndex = 11;
+            this.comboBoxSujet.SelectedIndexChanged += new System.EventHandler(this.comboBoxSujet_SelectedIndexChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -262,6 +279,7 @@
             // 
             // comboBoxRub
             // 
+            this.comboBoxRub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRub.FormattingEnabled = true;
             this.comboBoxRub.Location = new System.Drawing.Point(41, 45);
             this.comboBoxRub.Name = "comboBoxRub";
@@ -336,24 +354,6 @@
             this.label2.Size = new System.Drawing.Size(134, 58);
             this.label2.TabIndex = 0;
             this.label2.Text = "2isa";
-            // 
-            // comboBoxSujet
-            // 
-            this.comboBoxSujet.FormattingEnabled = true;
-            this.comboBoxSujet.Location = new System.Drawing.Point(508, 45);
-            this.comboBoxSujet.Name = "comboBoxSujet";
-            this.comboBoxSujet.Size = new System.Drawing.Size(349, 32);
-            this.comboBoxSujet.TabIndex = 11;
-            this.comboBoxSujet.SelectedIndexChanged += new System.EventHandler(this.comboBoxSujet_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(605, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(189, 24);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Choisir un sujet";
             // 
             // fnAccueil
             // 
