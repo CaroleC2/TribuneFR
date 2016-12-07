@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="TribuneDevWinPhone.DetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TribuneDevWinPhone.MVVM.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{StaticResource StyleTexte}"  x:Name="txtTitre" Margin="0,56,0,0.5" TextWrapping="Wrap"  Text="Titre" Grid.Row="0"   />
+
+        <ScrollViewer HorizontalAlignment="Left" Height="100" Margin="155,170.5,0,0" Grid.Row="2"  VerticalAlignment="Top" Width="100"/>
+
+
+
+
+        <TextBlock Style="{StaticResource ErrorTexte}" x:Name="txtError"  Margin="119,460.5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="LabelError" VerticalAlignment="Top"/>
+
+
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar IsSticky="True" x:Name="appBar">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Back" x:Name="AppBarButtonGoBack" IsCompact="False" Label="Back"  />
+                <AppBarButton Icon="Sync" x:Name="AppBarButtonsync" IsCompact="False" Label="Synchro" />
+
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Back"/>
+                <AppBarButton Label="Synchro"/>
+
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+</Page>

@@ -34,6 +34,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBoxUser = new System.Windows.Forms.TextBox();
+            this.txtBoxTitreSujet = new System.Windows.Forms.TextBox();
             this.lbTitre = new System.Windows.Forms.Label();
             this.btModifSujet = new System.Windows.Forms.Button();
             this.btAnnuler = new System.Windows.Forms.Button();
@@ -46,8 +48,6 @@
             this.lbDate = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblDateEnvoi = new System.Windows.Forms.Label();
-            this.txtBoxTitreSujet = new System.Windows.Forms.TextBox();
-            this.txtBoxUser = new System.Windows.Forms.TextBox();
             this.panelLogo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +120,21 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ajout/Modification Sujet";
+            // 
+            // txtBoxUser
+            // 
+            this.txtBoxUser.Location = new System.Drawing.Point(594, 33);
+            this.txtBoxUser.Name = "txtBoxUser";
+            this.txtBoxUser.Size = new System.Drawing.Size(195, 22);
+            this.txtBoxUser.TabIndex = 27;
+            // 
+            // txtBoxTitreSujet
+            // 
+            this.txtBoxTitreSujet.Location = new System.Drawing.Point(594, 88);
+            this.txtBoxTitreSujet.Name = "txtBoxTitreSujet";
+            this.txtBoxTitreSujet.ReadOnly = true;
+            this.txtBoxTitreSujet.Size = new System.Drawing.Size(195, 22);
+            this.txtBoxTitreSujet.TabIndex = 26;
             // 
             // lbTitre
             // 
@@ -264,20 +279,6 @@
             this.lblDateEnvoi.Size = new System.Drawing.Size(177, 19);
             this.lblDateEnvoi.TabIndex = 14;
             this.lblDateEnvoi.Text = "Date Création Sujet";
-            // 
-            // txtBoxTitreSujet
-            // 
-            this.txtBoxTitreSujet.Location = new System.Drawing.Point(594, 88);
-            this.txtBoxTitreSujet.Name = "txtBoxTitreSujet";
-            this.txtBoxTitreSujet.Size = new System.Drawing.Size(195, 22);
-            this.txtBoxTitreSujet.TabIndex = 26;
-            // 
-            // txtBoxUser
-            // 
-            this.txtBoxUser.Location = new System.Drawing.Point(594, 33);
-            this.txtBoxUser.Name = "txtBoxUser";
-            this.txtBoxUser.Size = new System.Drawing.Size(195, 22);
-            this.txtBoxUser.TabIndex = 27;
             // 
             // FormSujet
             // 
