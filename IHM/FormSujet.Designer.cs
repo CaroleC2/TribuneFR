@@ -132,7 +132,6 @@
             // 
             this.txtBoxTitreSujet.Location = new System.Drawing.Point(594, 88);
             this.txtBoxTitreSujet.Name = "txtBoxTitreSujet";
-            this.txtBoxTitreSujet.ReadOnly = true;
             this.txtBoxTitreSujet.Size = new System.Drawing.Size(195, 22);
             this.txtBoxTitreSujet.TabIndex = 26;
             // 

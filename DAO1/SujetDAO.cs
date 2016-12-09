@@ -113,27 +113,33 @@ namespace DAO
         }
 
 
-        public int UpdateSujet(int idRub, string nomUser, string titresujet, string textsujet, DateTime datecreatsujet)
+        public int UpdateSujet(int idSujet,  string titresujet,string ancientitre, string textsujet, string ancientext)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = SqlDataBaseDAO.GetInstance().GetConnection();
-            cmd.CommandText = "NewSujet";
+            cmd.CommandText = "UpdateSujet";
             cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlParameter pIdRub = new SqlParameter("IDRUB", idRub);
-            cmd.Parameters.Add(pIdRub);
+            SqlParameter pISujet = new SqlParameter("IDSUJET", idSujet);
+            cmd.Parameters.Add(pISujet);
 
-            SqlParameter pNomUser = new SqlParameter("NOMUSER", nomUser);
-            cmd.Parameters.Add(pNomUser);
+            //SqlParameter pNomUser = new SqlParameter("NOMUSER", nomUser);
+            //cmd.Parameters.Add(pNomUser);
 
             SqlParameter pTitresujet = new SqlParameter("TITRESUJET", titresujet);
             cmd.Parameters.Add(pTitresujet);
 
+            SqlParameter pAncienTitre = new SqlParameter("ANCIENTITRE", ancientitre);
+            cmd.Parameters.Add(pAncienTitre);
+
             SqlParameter pTextsujet = new SqlParameter("TEXTSUJET", textsujet);
             cmd.Parameters.Add(pTextsujet);
 
-            SqlParameter pDatecreatsujet = new SqlParameter("DATECREATSUJET", datecreatsujet);
-            cmd.Parameters.Add(pDatecreatsujet);
+            SqlParameter pAncienText = new SqlParameter("ANCIENTEXT", ancientext);
+            cmd.Parameters.Add(pAncienText);
+
+            //SqlParameter pDatecreatsujet = new SqlParameter("DATECREATSUJET", datecreatsujet);
+            //cmd.Parameters.Add(pDatecreatsujet);
 
             // Ou .......... :
             //cmd.Parameters.Add(new SqlParameter("IDUSER", idUser));

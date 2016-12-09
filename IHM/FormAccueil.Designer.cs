@@ -42,6 +42,7 @@
             this.dgvReponse = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gbRubriques = new System.Windows.Forms.GroupBox();
+            this.txtBoxSujet = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxSujet = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -154,6 +155,7 @@
             this.btModifSujet.Text = "Sujet";
             this.btModifSujet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btModifSujet.UseVisualStyleBackColor = false;
+            this.btModifSujet.Click += new System.EventHandler(this.btModifSujet_Click_1);
             // 
             // gbUser
             // 
@@ -209,7 +211,7 @@
             this.dgvReponse.Name = "dgvReponse";
             this.dgvReponse.ReadOnly = true;
             this.dgvReponse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReponse.Size = new System.Drawing.Size(1178, 294);
+            this.dgvReponse.Size = new System.Drawing.Size(1178, 194);
             this.dgvReponse.TabIndex = 0;
             this.dgvReponse.TabStop = false;
             // 
@@ -227,13 +229,14 @@
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.36612F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.63388F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 77F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1184, 561);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // gbRubriques
             // 
+            this.gbRubriques.Controls.Add(this.txtBoxSujet);
             this.gbRubriques.Controls.Add(this.label5);
             this.gbRubriques.Controls.Add(this.comboBoxSujet);
             this.gbRubriques.Controls.Add(this.label1);
@@ -242,48 +245,62 @@
             this.gbRubriques.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbRubriques.Font = new System.Drawing.Font("Broadway", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbRubriques.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.gbRubriques.Location = new System.Drawing.Point(3, 97);
+            this.gbRubriques.Location = new System.Drawing.Point(3, 148);
             this.gbRubriques.Name = "gbRubriques";
-            this.gbRubriques.Size = new System.Drawing.Size(1178, 83);
+            this.gbRubriques.Size = new System.Drawing.Size(1178, 132);
             this.gbRubriques.TabIndex = 1;
             this.gbRubriques.TabStop = false;
             this.gbRubriques.Text = "Rubriques";
             // 
+            // txtBoxSujet
+            // 
+            this.txtBoxSujet.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxSujet.Location = new System.Drawing.Point(498, 23);
+            this.txtBoxSujet.Name = "txtBoxSujet";
+            this.txtBoxSujet.ReadOnly = true;
+            this.txtBoxSujet.Size = new System.Drawing.Size(451, 96);
+            this.txtBoxSujet.TabIndex = 14;
+            this.txtBoxSujet.Text = "";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(605, 18);
+            this.label5.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(9, 92);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(189, 24);
+            this.label5.Size = new System.Drawing.Size(145, 19);
             this.label5.TabIndex = 12;
             this.label5.Text = "Choisir un sujet";
             // 
             // comboBoxSujet
             // 
             this.comboBoxSujet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSujet.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxSujet.FormattingEnabled = true;
-            this.comboBoxSujet.Location = new System.Drawing.Point(508, 45);
+            this.comboBoxSujet.Location = new System.Drawing.Point(207, 92);
             this.comboBoxSujet.Name = "comboBoxSujet";
-            this.comboBoxSujet.Size = new System.Drawing.Size(349, 32);
+            this.comboBoxSujet.Size = new System.Drawing.Size(262, 27);
             this.comboBoxSujet.TabIndex = 11;
             this.comboBoxSujet.SelectedIndexChanged += new System.EventHandler(this.comboBoxSujet_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(138, 19);
+            this.label1.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(9, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 24);
+            this.label1.Size = new System.Drawing.Size(192, 19);
             this.label1.TabIndex = 10;
             this.label1.Text = "Choisir une rubrique";
             // 
             // comboBoxRub
             // 
             this.comboBoxRub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRub.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxRub.FormattingEnabled = true;
-            this.comboBoxRub.Location = new System.Drawing.Point(41, 45);
+            this.comboBoxRub.Location = new System.Drawing.Point(207, 39);
             this.comboBoxRub.Name = "comboBoxRub";
-            this.comboBoxRub.Size = new System.Drawing.Size(349, 32);
+            this.comboBoxRub.Size = new System.Drawing.Size(262, 27);
             this.comboBoxRub.TabIndex = 8;
             this.comboBoxRub.SelectedIndexChanged += new System.EventHandler(this.comboBoxRub_SelectedIndexChanged);
             // 
@@ -306,9 +323,9 @@
             // 
             this.panel2.Controls.Add(this.dgvReponse);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 186);
+            this.panel2.Location = new System.Drawing.Point(3, 286);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1178, 294);
+            this.panel2.Size = new System.Drawing.Size(1178, 194);
             this.panel2.TabIndex = 2;
             // 
             // panelLogo
@@ -414,6 +431,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxSujet;
         private System.Windows.Forms.BindingSource bindingSourceRep;
+        private System.Windows.Forms.RichTextBox txtBoxSujet;
     }
 }
 

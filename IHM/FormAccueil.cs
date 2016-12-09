@@ -44,6 +44,14 @@ namespace IHM
             List<Reponse> reponses = BLL.ListReponsesByIdSujet(int.Parse(comboBoxSujet.SelectedValue.ToString()));
             dgvReponse.DataSource = reponses;
 
+
+            //TxtBox Sujet
+            bindingSourceSujet.DataSource = sujets;
+            Sujet sujetCourant = (Sujet)comboBoxSujet.SelectedItem;
+            txtBoxSujet.Text = sujetCourant.TextSujet;
+
+
+
         }
 
         #endregion
@@ -54,7 +62,7 @@ namespace IHM
         {
             if (comboBoxRub.SelectedValue != null)
             {
-                //Utilise des methodes d'accès qui renvoient un Dataset 
+                //Utilise des méthodes d'accès qui renvoient un Dataset 
                 
                 List<Sujet> sujets = BLL.ListSujetsByIdRub(int.Parse(comboBoxRub.SelectedValue.ToString()));
                 
@@ -63,13 +71,14 @@ namespace IHM
                 comboBoxSujet.ValueMember = "idsujet";
                 comboBoxSujet.DataSource = sujets;
 
-                
+                bindingSourceSujet.DataSource = sujets;
+                Sujet sujetCourant = (Sujet)comboBoxSujet.SelectedItem;
+                txtBoxSujet.Text = sujetCourant.TextSujet;
+
+
             }
         }
-
         
-  
-
         private void comboBoxSujet_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -87,12 +96,12 @@ namespace IHM
             dgvReponse.Columns["TEXTREP"].HeaderText = "Texte";
             dgvReponse.Columns["DATEENVOIREP"].HeaderText = "Date d'envoi";
 
-
+            
+            Sujet sujetCourant = (Sujet)comboBoxSujet.SelectedItem;
+            txtBoxSujet.Text = sujetCourant.TextSujet;
         }
 
-
-        /* ----------------- Ne MARCHE PAS -------------------------*/
-        //TODO
+        
         private void btDeleteRep_Click(object sender, EventArgs e)
         {
 
@@ -120,7 +129,7 @@ namespace IHM
 
         }
 
-        /* ----------------- Ne MARCHE PAS -------------------------*/
+        
         
         private void btDeleteSujet_Click(object sender, EventArgs e)
         {
@@ -145,49 +154,23 @@ namespace IHM
 
 
 
-                    DialogResult res = MessageBox.Show("Voulez vous supprimer ce sujet ?", "Validation de la suppression",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (res == DialogResult.Yes)
-                    {
-                        BLL.DeleteSujet((int)comboBoxSujet.SelectedValue);
-                    }
+                    //DialogResult res = MessageBox.Show("Voulez vous supprimer ce sujet ?", "Validation de la suppression",
+                    //    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    //if (res == DialogResult.Yes)
+                    //{
+                    //    BLL.DeleteSujet((int)comboBoxSujet.SelectedValue);
+                    //}
                     
                 }
             }
 
         }
         
-
-           //TODO
-           private void btModifSujet_Click(object sender, EventArgs e)
-              {
-            
-            using (FormSujet formModifSujet = new FormSujet())
-            {
-                formModifSujet.rubrique = (Rubrique)comboBoxRub.SelectedItem;
-                formModifSujet.sujet = (Sujet)comboBoxSujet.SelectedItem;
-                formModifSujet.Text = string.Format("Modifier le sujet {0} dans la rubrique {1}", formModifSujet.sujet.TextSujet, formModifSujet.rubrique.NomRub);
-
-                formModifSujet.ShowDialog();
-                
-                List<Sujet> sujets = BLL.ListSujetsByIdRub((int)comboBoxSujet.SelectedValue);
-
-                dgvReponse.DataSource = bindingSourceRep;
-                dgvReponse.Columns["IDREP"].Visible = false;
-                dgvReponse.Columns["IDSUJET"].Visible = false;
-                dgvReponse.Columns["IDUSER"].Visible = false;
-
-                dgvReponse.Columns["TEXTREP"].HeaderText = "Texte";
-                dgvReponse.Columns["DATEENVOIREP"].HeaderText = "Date d'envoi";
-
-            }
-            }
-
-        /* ---------- EN COURS ------------------*/
         private void btAjoutSujet_Click(object sender, EventArgs e)
         {
             using (FormSujet formSujet = new FormSujet())
             {
+                formSujet.modif = false;
                 formSujet.rubrique = (Rubrique) comboBoxRub.SelectedItem;
                 formSujet.Text = string.Format("Ajouter un sujet dans la rubrique {0}", formSujet.rubrique.NomRub);
                 formSujet.ShowDialog();
@@ -219,9 +202,6 @@ namespace IHM
 
             }
 
-
-           
-
         }
 
     private void btQuitter_Click(object sender, EventArgs e)
@@ -230,6 +210,32 @@ namespace IHM
             if (res == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+
+        }
+
+        private void btModifSujet_Click_1(object sender, EventArgs e)
+        {
+            using (FormSujet formModifSujet = new FormSujet())
+            {
+                formModifSujet.modif = true;
+                formModifSujet.rubrique = (Rubrique)comboBoxRub.SelectedItem;
+                formModifSujet.sujet = (Sujet)comboBoxSujet.SelectedItem;
+                
+                formModifSujet.Text = string.Format("Modifier le sujet {0} dans la rubrique {1}", formModifSujet.sujet.TextSujet, formModifSujet.rubrique.NomRub);
+
+                formModifSujet.ShowDialog();
+
+                List<Sujet> sujets = BLL.ListSujetsByIdRub((int)comboBoxSujet.SelectedValue);
+
+                dgvReponse.DataSource = bindingSourceRep;
+                dgvReponse.Columns["IDREP"].Visible = false;
+                dgvReponse.Columns["IDSUJET"].Visible = false;
+                dgvReponse.Columns["IDUSER"].Visible = false;
+
+                dgvReponse.Columns["TEXTREP"].HeaderText = "Texte";
+                dgvReponse.Columns["DATEENVOIREP"].HeaderText = "Date d'envoi";
+
             }
 
         }

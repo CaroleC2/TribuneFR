@@ -15,7 +15,8 @@ namespace IHM
     {
         internal Rubrique rubrique;
         internal Sujet sujet;
-        
+        internal Utilisateur utilisateur;
+        internal bool modif = false;
 
         public FormSujet()
         {
@@ -27,8 +28,17 @@ namespace IHM
 
          private void FormSujet_Load(object sender, EventArgs e)
          {
-            
-            lbNomRub.Text = rubrique.NomRub;
+             if (modif)
+             {
+                lbNomRub.Text = rubrique.NomRub;
+                lbDate.Text = sujet.DateCreatSujet.ToString();
+                utilisateur = new Utilisateur();
+                utilisateur = BLLOutils.BLL.ListUtilisateursById(sujet.IdUser);
+                txtBoxUser.Text = utilisateur.NomUser;
+                txtBoxTitreSujet.Text = sujet.TitreSujet;
+                txtBoxTextSujet.Text = sujet.TextSujet;
+            }
+             
          }
 
         private void btAjoutSujet_Click(object sender, EventArgs e)
@@ -56,7 +66,17 @@ namespace IHM
 
         private void btModifSujet_Click(object sender, EventArgs e)
         {
+            if (BLLOutils.BLL.UpdateSujet(sujet.IdSujet,txtBoxTitreSujet.Text,sujet.TitreSujet,txtBoxTextSujet.Text, sujet.TextSujet) == 1)
+            {
+                MessageBox.Show("Validation de la modification de votre sujet ");
 
+                this.Close();
+            }
+
+            else
+            {
+                MessageBox.Show("Echec de la modificaton de votre sujet ");
+            }
         }
 
         private void btAnnuler_Click(object sender, EventArgs e)
