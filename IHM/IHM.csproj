@@ -136,9 +136,9 @@
       <Project>{30f62df7-d3f1-42e0-bf1c-ec4e7023af0e}</Project>
       <Name>BLLOutils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Metier\Metier.csproj">
-      <Project>{7ce06111-4cd6-4d78-88aa-56f31069abea}</Project>
-      <Name>Metier</Name>
+    <ProjectReference Include="..\TribuneDevMETIER\TribuneDevMETIER.csproj">
+      <Project>{10016007-5160-4959-bf05-e0c55c8ddda9}</Project>
+      <Name>TribuneDevMETIER</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

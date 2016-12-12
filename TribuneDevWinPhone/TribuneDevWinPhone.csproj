@@ -121,6 +121,12 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsumeWebServiceRest\ConsumeWebServiceRest.csproj">
+      <Project>{0d5cd7bc-71ca-45cf-87b1-4350f29b56a8}</Project>
+      <Name>ConsumeWebServiceRest</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

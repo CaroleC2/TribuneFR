@@ -8,7 +8,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Data;
 using System.Web.Configuration;
-using Metier;
+using TribuneDevMETIER;
 using BLLOutils;
 
 namespace WcfWSTribuneREST
