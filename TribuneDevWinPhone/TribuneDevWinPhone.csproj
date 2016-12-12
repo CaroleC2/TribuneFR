@@ -89,7 +89,9 @@
     <Compile Include="Extensions\IListExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="MVVM\ViewsModels\MonitorViewModel.cs" />
-    <Compile Include="MVVM\ViewsModels\UserViewModel.cs" />
+    <Compile Include="MVVM\ViewsModels\ReponseViewModel.cs" />
+    <Compile Include="MVVM\ViewsModels\SujetViewModel.cs" />
+    <Compile Include="MVVM\ViewsModels\RubriqueViewModel.cs" />
     <Compile Include="MVVM\ViewsModels\ViewModelBase.cs" />
     <Compile Include="MVVM\Views\DetailsPage.xaml.cs">
       <DependentUpon>DetailsPage.xaml</DependentUpon>

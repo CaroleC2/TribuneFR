@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Xaml;
-using System.Threading;
-
-// A modifier
-using RDMDALWSR;
+using ConsumeWebServiceRest;
 
 namespace TribuneDevWinPhone.MVVM.ViewsModels
 {
-   
-        public class UserViewModel : ViewModelBase, IComparable<UserViewModel>, IEquatable<UserViewModel>
+    
+        public class SujetViewModel : ViewModelBase, IComparable<RubriqueViewModel>, IEquatable<RubriqueViewModel>
         {
             private const int INTERVAL_DOWNLOADIMAGE = 1; // 1s
 
@@ -27,7 +23,7 @@ namespace TribuneDevWinPhone.MVVM.ViewsModels
             #region Constructeurs
 
             // Constructeur internal car c'est la classe MonitorViewModel qui construit les User
-            internal UserViewModel(string pseudoDownload, RdmDalWSR rdmDAL)
+            internal RubriqueViewModel(string pseudoDownload, RdmDalWSR rdmDAL)
             {
                 _pseudoDownload = pseudoDownload;
                 _rdmDAL = rdmDAL;
@@ -146,7 +142,7 @@ namespace TribuneDevWinPhone.MVVM.ViewsModels
 
             #region IComparable<UserVM> Membres
 
-            public int CompareTo(UserViewModel other)
+            public int CompareTo(RubriqueViewModel other)
             {
                 return PseudoDownload.CompareTo(other.PseudoDownload);
             }
@@ -155,7 +151,7 @@ namespace TribuneDevWinPhone.MVVM.ViewsModels
 
             #region IEquatable<UserVM> Membres
 
-            public bool Equals(UserViewModel other)
+            public bool Equals(RubriqueViewModel other)
             {
                 return PseudoDownload.Equals(other.PseudoDownload);
             }

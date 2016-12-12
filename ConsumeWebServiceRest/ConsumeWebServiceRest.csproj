@@ -49,8 +49,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Serialize.cs" />
-    <Compile Include="WSR_Params.cs" />
-    <Compile Include="WSR_Result.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TribuneDevMETIER\TribuneDevMETIER.csproj">
+      <Project>{10016007-5160-4959-bf05-e0c55c8ddda9}</Project>
+      <Name>TribuneDevMETIER</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
