@@ -119,6 +119,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLLOutils\BLLOutils.csproj">
+      <Project>{30f62df7-d3f1-42e0-bf1c-ec4e7023af0e}</Project>
+      <Name>BLLOutils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Metier\Metier.csproj">
       <Project>{7ce06111-4cd6-4d78-88aa-56f31069abea}</Project>
       <Name>Metier</Name>

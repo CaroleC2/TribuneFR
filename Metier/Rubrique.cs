@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Metier
 {
-        #region PROPRIETES
+    #region PROPRIETES
 
+    [DataContract]
     public class Rubrique
         {
   
             private int _IdRub;
 
+            [DataMember]
             public int IdRub
             {
                 get { return _IdRub; }
@@ -23,6 +26,7 @@ namespace Metier
 
             private string _NomRub;
 
+            [DataMember]
             public string NomRub
             {
                 get { return _NomRub; }
@@ -32,7 +36,8 @@ namespace Metier
 
             private string _TextRub;
 
-            public string TextRub
+        [DataMember]
+        public string TextRub
         {
                 get { return _TextRub; }
                 set { _TextRub = value; }
