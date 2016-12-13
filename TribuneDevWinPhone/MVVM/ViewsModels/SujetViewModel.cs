@@ -14,18 +14,18 @@ namespace TribuneDevWinPhone.MVVM.ViewsModels
 
     public class SujetViewModel : ViewModelBase, IComparable<SujetViewModel>, IEquatable<SujetViewModel>
     {
-        private ConsumeWebServiceRest.ConsumeWSR _consumeWSR;
+        private ConsumeWSR _consumeWSR;
         private int _idsujet;
         private int _idrub;
         private int _iduser;
         private string _titresujet;
         private string _textsujet;
         private DateTime _datecreatsujet;
-        private ObservableCollection<ReponseViewModel> _colReponsesViewModel;
+        private ObservableCollection<SujetViewModel> _colSujetsViewModel;
         
         #region Constructeurs
 
-        // Constructeur internal car c'est la classe MonitorViewModel qui construit les Rubriques
+        // Constructeur internal car c'est la classe MonitorViewModel qui construit les Sujets
         internal SujetViewModel(Sujet sujet ,ConsumeWSR consumeWSR)
         {
             _idsujet = sujet.IdSujet;
@@ -71,24 +71,25 @@ namespace TribuneDevWinPhone.MVVM.ViewsModels
             get { return _datecreatsujet; }
         }
 
-        public ReadOnlyObservableCollection<ReponseViewModel> Reponses
+        public ReadOnlyObservableCollection<SujetViewModel> Sujets
         {
-            get { return new ReadOnlyObservableCollection<ReponseViewModel>(_colReponsesViewModel); }
+            get { return new ReadOnlyObservableCollection<SujetViewModel>(_colSujetsViewModel); }
         }
+
         #endregion Propriétés
-
-
-      
+        
         #region Méthodes
 
         public async Task GetListSujets(CancellationToken cancel)
         {
             //On apelle le webservice qui renvoi une liste de rubrique
-            List<Sujet> sujets = await _consumeWSR.CallSujet(cancel);
+            List<Sujet> sujets = await _consumeWSR.CallSujet(IdSujet.ToString(), cancel);
             //A partir de cette liste de rubriques on met à jour la collection observable
             MAJ_ListeSujets(sujets);
 
         }
+        
+        
 
         #endregion Méthodes
 
@@ -97,20 +98,22 @@ namespace TribuneDevWinPhone.MVVM.ViewsModels
 
         private void MAJ_ListeSujets(List<Sujet> lstSujets)
         {
-            _colReponsesViewModel.Clear();
+            _colSujetsViewModel.Clear();
 
             // Ajout des nouvelles rubriques
             foreach (Sujet sujet in lstSujets)
             {
-                ReponseViewModel sujetVm = new ReponseViewModel(sujet, _consumeWSR);
+                SujetViewModel sujetVm = new SujetViewModel(sujet, _consumeWSR);
 
-                if (!_colReponsesViewModel.Contains(sujetVm))
+                if (!_colSujetsViewModel.Contains(sujetVm))
                 {
-                // On utilise la méthode d'extention de la classe 'IListExtensions'
-                _colReponsesViewModel.AddSorted(sujetVm);
+                    // On utilise la méthode d'extention de la classe 'IListExtensions'
+                    _colSujetsViewModel.AddSorted(sujetVm);
                 }
             }
         }
+
+        
 
         #endregion Fonctions perso
 
