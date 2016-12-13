@@ -4,163 +4,147 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsumeWebServiceRest;
+using System.Collections.ObjectModel;
+using System.Threading;
+using TribuneDevMETIER;
+using TribuneDevWinPhone.MVVM.Extensions;
 
 namespace TribuneDevWinPhone.MVVM.ViewsModels
 {
-    
-        public class SujetViewModel : ViewModelBase, IComparable<RubriqueViewModel>, IEquatable<RubriqueViewModel>
+
+    public class SujetViewModel : ViewModelBase, IComparable<SujetViewModel>, IEquatable<SujetViewModel>
+    {
+        private ConsumeWebServiceRest.ConsumeWSR _consumeWSR;
+        private int _idsujet;
+        private int _idrub;
+        private int _iduser;
+        private string _titresujet;
+        private string _textsujet;
+        private DateTime _datecreatsujet;
+        private ObservableCollection<ReponseViewModel> _colReponsesViewModel;
+        
+        #region Constructeurs
+
+        // Constructeur internal car c'est la classe MonitorViewModel qui construit les Rubriques
+        internal SujetViewModel(Sujet sujet ,ConsumeWSR consumeWSR)
         {
-            private const int INTERVAL_DOWNLOADIMAGE = 1; // 1s
+            _idsujet = sujet.IdSujet;
+            _idrub = sujet.IdRub;
+            _iduser = sujet.IdUser;
+            _titresujet = sujet.TitreSujet;
+            _textsujet = sujet.TextSujet;
+            _datecreatsujet = sujet.DateCreatSujet;
+            _consumeWSR = consumeWSR;
 
-            private RdmDalWSR _rdmDAL;
-            private string _pseudoDownload;
-            private string _errorMessage;
-            private volatile bool _isLogged;
-            private DispatcherTimer _timer;
-
-            private string _image;
-
-            #region Constructeurs
-
-            // Constructeur internal car c'est la classe MonitorViewModel qui construit les User
-            internal RubriqueViewModel(string pseudoDownload, RdmDalWSR rdmDAL)
-            {
-                _pseudoDownload = pseudoDownload;
-                _rdmDAL = rdmDAL;
-                _timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, INTERVAL_DOWNLOADIMAGE) };
-                _timer.Tick += dispatcherTimer_Tick;
-            }
-
-            #endregion Constructeurs
-
-            #region Propriétés
-
-            public string PseudoDownload
-            {
-                get { return _pseudoDownload; }
-            }
-
-            #endregion Propriétés
-
-            #region Propriétés Bindables
-
-            public string Image
-            {
-                get { return _image; }
-                private set
-                {
-                    if (_image != value)
-                    {
-                        _image = value;
-                        RaisePropertyChanged();
-                    }
-                }
-            }
-
-            public string ErrorMessage
-            {
-                get { return _errorMessage; }
-                private set
-                {
-                    if (_errorMessage != value)
-                    {
-                        _errorMessage = value;
-                        RaisePropertyChanged();
-                    }
-                }
-            }
-
-            public bool IsLogged
-            {
-                get { return _isLogged; }
-
-                private set
-                {
-                    if (_isLogged != value)
-                    {
-                        _isLogged = value;
-
-                        if (!_isLogged) // Logout
-                        {
-                            _timer.Stop();
-                            Image = null;
-                        }
-
-                        RaisePropertyChanged();
-                    }
-                }
-            }
-
-            #endregion propriétés Bindables
-
-            #region Méthodes
-
-            public async Task<bool> DownloadImage(CancellationToken cancel)
-            {
-                RdmDalWSRResult ret = await _rdmDAL.DownloadDataAsync(PseudoDownload, cancel);
-
-                if (ret.IsSuccess && IsLogged)
-                {
-                    Image = (string)ret.Data;
-                }
-
-                ErrorMessage = ret.ErrorMessage;
-                IsLogged = _rdmDAL.IsLogged;
-
-                return ret.IsSuccess;
-            }
-
-            public void StartTimerDownloadImage()
-            {
-                _timer.Start();
-            }
-
-            public void StopTimerDownloadImage()
-            {
-                _timer.Stop();
-            }
-
-            #endregion
-
-            #region ToString
-
-            public override string ToString()
-            {
-                return PseudoDownload;
-            }
-
-            #endregion ToString
-
-            #region Fonctions perso
-
-            private async void dispatcherTimer_Tick(object sender, object e)
-            {
-                await DownloadImage(CancellationToken.None);
-            }
-
-            #endregion Fonctions perso
-
-            #region IComparable<UserVM> Membres
-
-            public int CompareTo(RubriqueViewModel other)
-            {
-                return PseudoDownload.CompareTo(other.PseudoDownload);
-            }
-
-            #endregion
-
-            #region IEquatable<UserVM> Membres
-
-            public bool Equals(RubriqueViewModel other)
-            {
-                return PseudoDownload.Equals(other.PseudoDownload);
-            }
-
-            public override int GetHashCode()
-            {
-                return PseudoDownload.GetHashCode();
-            }
-
-            #endregion
         }
+
+        #endregion Constructeurs
+
+        #region Propriétés
+
+        public int IdSujet
+        {
+            get { return _idsujet; }
+        }
+
+        public int IdRub
+        {
+            get { return _idrub; }
+        }
+
+        public int IdUser
+        {
+            get { return _iduser; }
+        }
+        public string TitreSujet
+        {
+            get { return _titresujet; }
+        }
+
+        public string TextSujet
+        {
+            get { return _textsujet; }
+        }
+
+        public DateTime DateCreateSujet
+        {
+            get { return _datecreatsujet; }
+        }
+
+        public ReadOnlyObservableCollection<ReponseViewModel> Reponses
+        {
+            get { return new ReadOnlyObservableCollection<ReponseViewModel>(_colReponsesViewModel); }
+        }
+        #endregion Propriétés
+
+
+      
+        #region Méthodes
+
+        public async Task GetListSujets(CancellationToken cancel)
+        {
+            //On apelle le webservice qui renvoi une liste de rubrique
+            List<Sujet> sujets = await _consumeWSR.CallSujet(cancel);
+            //A partir de cette liste de rubriques on met à jour la collection observable
+            MAJ_ListeSujets(sujets);
+
+        }
+
+        #endregion Méthodes
+
+        #region Fonctions perso
+
+
+        private void MAJ_ListeSujets(List<Sujet> lstSujets)
+        {
+            _colReponsesViewModel.Clear();
+
+            // Ajout des nouvelles rubriques
+            foreach (Sujet sujet in lstSujets)
+            {
+                ReponseViewModel sujetVm = new ReponseViewModel(sujet, _consumeWSR);
+
+                if (!_colReponsesViewModel.Contains(sujetVm))
+                {
+                // On utilise la méthode d'extention de la classe 'IListExtensions'
+                _colReponsesViewModel.AddSorted(sujetVm);
+                }
+            }
+        }
+
+        #endregion Fonctions perso
+
+        #region ToString
+
+        public override string ToString()
+        {
+            return TitreSujet;
+        }
+
+        #endregion ToString
+        
+
+        #region IComparable<SujetVM> Membres
+
+        public int CompareTo(SujetViewModel other)
+        {
+            return TitreSujet.CompareTo(other.TitreSujet);
+        }
+
+        #endregion
+
+        #region IEquatable<SujetVM> Membres
+
+        public bool Equals(SujetViewModel other)
+        {
+            return TitreSujet.Equals(other.TitreSujet);
+        }
+
+        public override int GetHashCode()
+        {
+            return TitreSujet.GetHashCode();
+        }
+
+        #endregion
     }
+}
