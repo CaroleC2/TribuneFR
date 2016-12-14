@@ -8,7 +8,52 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal">
+            
+            <AppBarButton x:Name="mnuQuitter" x:Uid="MainPage_MnuQuit" Icon="ViewAll" Label="Quit" Margin="55,0,0,0" Click="mnuQuitter_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid x:Name="grdLst" Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="lblLogo" x:Uid="MainPage_Logo" Grid.Row="0" Text="Tribune Dev 2ISA" Style="{StaticResource StyleTitres}"/>
+
+        <TextBlock x:Name="lblTitre" x:Uid="MainPage_Titre" Grid.Row="1" Text="Liste des Rubriques" Style="{StaticResource StyleTitres}"/>
+
+        <ListView x:Name="lstvPseudos" Grid.Row="2" ItemsSource="{Binding Users}" Background="Transparent" Margin="10,50,10,60" VerticalAlignment="Top" >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemContainerTransitions>
+                <TransitionCollection>
+                    <AddDeleteThemeTransition/>
+                </TransitionCollection>
+            </ListView.ItemContainerTransitions>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Click="ListView_Click">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="22" Text="{Binding PseudoDownload}" VerticalAlignment="Center"/>
+                                <Image Source="{Binding Image, Converter={StaticResource StringToBitmapImageConverter}}" VerticalAlignment="Center"  Width="200" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock x:Name="txtErreur" Grid.Row="3" Text="{Binding ErrorMessage}"  Style="{StaticResource StyleErreur}" />
+
 
     </Grid>
 </Page>

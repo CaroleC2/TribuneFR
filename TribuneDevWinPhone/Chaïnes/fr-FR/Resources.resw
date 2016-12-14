@@ -138,6 +138,9 @@
   <data name="MainPage_BtPhoto.Content" xml:space="preserve">
     <value>Prendre une photo</value>
   </data>
+  <data name="MainPage_Logo.Text" xml:space="preserve">
+    <value>Tribune Dev 2ISA</value>
+  </data>
   <data name="MainPage_MnuParams.Label" xml:space="preserve">
     <value>Paramètres</value>
   </data>
@@ -148,7 +151,7 @@
     <value>Synchro</value>
   </data>
   <data name="MainPage_Titre.Text" xml:space="preserve">
-    <value>Utilisateurs connectés</value>
+    <value>Liste des Rubriques</value>
   </data>
   <data name="ParamsPage_Adr.Text" xml:space="preserve">
     <value>Adresse service :</value>

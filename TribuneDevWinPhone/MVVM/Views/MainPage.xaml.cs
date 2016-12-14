@@ -17,11 +17,14 @@ using Windows.UI.Xaml.Navigation;
 
 namespace TribuneDevWinPhone
 {
+   
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private MonitorViewModel _monitorViewModel = new MonitorViewModel();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -36,6 +39,7 @@ namespace TribuneDevWinPhone
         /// Ce paramètre est généralement utilisé pour configurer la page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            DataContext = _monitorViewModel;
             // TODO: préparer la page pour affichage ici.
 
             // TODO: si votre application comporte plusieurs pages, assurez-vous que vous

@@ -88,7 +88,7 @@ namespace ConsumeWebServiceRest
 
             #region SUJET
             
-            public async Task<List<Sujet>> CallSujet(string idsujet,CancellationToken cancel)
+            public async Task<List<Sujet>> CallSujet(string idrub,CancellationToken cancel)
             {
                 // Création de l'instance HttpClient avec Timeout infini car c'est le CancellationToken qui gère l'arrêt ou le TimeOut de la tâche
                 // ATTENTION, en Windows phone on a quand même un timeout au bout de 60s
@@ -99,7 +99,7 @@ namespace ConsumeWebServiceRest
                     client.DefaultRequestHeaders.IfModifiedSince = DateTimeOffset.Now;
 
                     // Appel du service Rest (en asynchrone)
-                    using (HttpResponseMessage wcfResponse = await client.GetAsync(string.Format(ADRESSE_GET_SUJET,idsujet), cancel))
+                    using (HttpResponseMessage wcfResponse = await client.GetAsync(string.Format(ADRESSE_GET_SUJET,idrub), cancel))
                     {
                         if (wcfResponse.IsSuccessStatusCode)
                         {

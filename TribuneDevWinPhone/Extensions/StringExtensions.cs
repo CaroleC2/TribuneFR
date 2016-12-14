@@ -12,9 +12,30 @@ namespace TribuneDevWinPhone.MVVM.Extensions
     {
         #region MessageDialog
 
-        public enum MsgButton { OK, OKCancel, RetryCancel, YesNo, YesNoCancel }
-        public enum MsgDefaultButton { Button1, Button2, Button3 }
-        public enum MsgResult { OK, Cancel, Retry, Yes, No };
+        public enum MsgButton
+        {
+            OK,
+            OKCancel,
+            RetryCancel,
+            YesNo,
+            YesNoCancel
+        }
+
+        public enum MsgDefaultButton
+        {
+            Button1,
+            Button2,
+            Button3
+        }
+
+        public enum MsgResult
+        {
+            OK,
+            Cancel,
+            Retry,
+            Yes,
+            No
+        };
 
         private const int BT_OK = 1;
         private const int BT_CANCEL = 2;
@@ -30,7 +51,8 @@ namespace TribuneDevWinPhone.MVVM.Extensions
         /// <param name="msgButton">Boutons à afficher</param>
         /// <param name="msgDefaultButton">Bouton par défaut</param>
         /// <returns>Bouton cliqué par l'utilisateur ou Cancel si le message est annulé</returns>
-        public async static Task<MsgResult> MsgChoix(this string msg, string title, MsgButton msgButton, MsgDefaultButton msgDefaultButton)
+        public async static Task<MsgResult> MsgChoix(this string msg, string title, MsgButton msgButton,
+            MsgDefaultButton msgDefaultButton)
         {
             MessageDialog msgDialog = null;
             MsgResult reponse = MsgResult.OK;
@@ -49,27 +71,27 @@ namespace TribuneDevWinPhone.MVVM.Extensions
             switch (msgButton)
             {
                 case MsgButton.OK:
-                    msgDialog.Commands.Add(new UICommand("BT_OK".ReadResMsg()) { Id = BT_OK });
+                    msgDialog.Commands.Add(new UICommand("BT_OK".ReadResMsg()) {Id = BT_OK});
                     break;
                 case MsgButton.OKCancel:
-                    msgDialog.Commands.Add(new UICommand("BT_OK".ReadResMsg()) { Id = BT_OK });
-                    msgDialog.Commands.Add(new UICommand("BT_CANCEL".ReadResMsg()) { Id = BT_CANCEL });
+                    msgDialog.Commands.Add(new UICommand("BT_OK".ReadResMsg()) {Id = BT_OK});
+                    msgDialog.Commands.Add(new UICommand("BT_CANCEL".ReadResMsg()) {Id = BT_CANCEL});
                     break;
                 case MsgButton.RetryCancel:
-                    msgDialog.Commands.Add(new UICommand("BT_RETRY".ReadResMsg()) { Id = BT_RETRY });
-                    msgDialog.Commands.Add(new UICommand("BT_CANCEL".ReadResMsg()) { Id = BT_CANCEL });
+                    msgDialog.Commands.Add(new UICommand("BT_RETRY".ReadResMsg()) {Id = BT_RETRY});
+                    msgDialog.Commands.Add(new UICommand("BT_CANCEL".ReadResMsg()) {Id = BT_CANCEL});
                     break;
                 case MsgButton.YesNo:
-                    msgDialog.Commands.Add(new UICommand("BT_YES".ReadResMsg()) { Id = BT_YES });
-                    msgDialog.Commands.Add(new UICommand("BT_NO".ReadResMsg()) { Id = BT_NO });
+                    msgDialog.Commands.Add(new UICommand("BT_YES".ReadResMsg()) {Id = BT_YES});
+                    msgDialog.Commands.Add(new UICommand("BT_NO".ReadResMsg()) {Id = BT_NO});
                     break;
                 case MsgButton.YesNoCancel:
-                    msgDialog.Commands.Add(new UICommand("BT_YES".ReadResMsg()) { Id = BT_YES });
-                    msgDialog.Commands.Add(new UICommand("BT_NO".ReadResMsg()) { Id = BT_NO });
-                    msgDialog.Commands.Add(new UICommand("BT_CANCEL".ReadResMsg()) { Id = BT_CANCEL });
+                    msgDialog.Commands.Add(new UICommand("BT_YES".ReadResMsg()) {Id = BT_YES});
+                    msgDialog.Commands.Add(new UICommand("BT_NO".ReadResMsg()) {Id = BT_NO});
+                    msgDialog.Commands.Add(new UICommand("BT_CANCEL".ReadResMsg()) {Id = BT_CANCEL});
                     break;
                 default:
-                    msgDialog.Commands.Add(new UICommand("BT_OK".ReadResMsg()) { Id = BT_OK });
+                    msgDialog.Commands.Add(new UICommand("BT_OK".ReadResMsg()) {Id = BT_OK});
                     break;
             }
 
@@ -96,7 +118,7 @@ namespace TribuneDevWinPhone.MVVM.Extensions
             if (result != null)
             {
                 // Récupération du bouton 'cliqué' par l'utilisateur
-                switch ((int)result.Id)
+                switch ((int) result.Id)
                 {
                     case BT_OK:
                         reponse = MsgResult.OK;
@@ -134,7 +156,8 @@ namespace TribuneDevWinPhone.MVVM.Extensions
         /// <param name="msgButton">Boutons à afficher</param>
         /// <param name="msgDefaultButton">Bouton par défaut</param>
         /// <returns>Bouton cliqué par l'utilisateur ou Cancel si le message est annulé</returns>
-        public async static Task<MsgResult> MsgChoix(this string msg, MsgButton msgButton, MsgDefaultButton msgDefaultButton)
+        public async static Task<MsgResult> MsgChoix(this string msg, MsgButton msgButton,
+            MsgDefaultButton msgDefaultButton)
         {
             return await MsgChoix(msg, null, msgButton, msgDefaultButton);
         }
@@ -171,8 +194,11 @@ namespace TribuneDevWinPhone.MVVM.Extensions
         public static string ReadResMsg(this string resourceName)
         {
             string ressource = ResourceLoader.GetForCurrentView("Messages").GetString(resourceName);
-            return String.IsNullOrEmpty(ressource) ? ResourceLoader.GetForCurrentView("Messages").GetString("MSG_RESNOTFOUND") : ressource;
+            return String.IsNullOrEmpty(ressource)
+                ? ResourceLoader.GetForCurrentView("Messages").GetString("MSG_RESNOTFOUND")
+                : ressource;
         }
 
         #endregion Ressources
     }
+}

@@ -9,7 +9,7 @@ using System.Threading;
 using TribuneDevMETIER;
 using TribuneDevWinPhone.MVVM.Extensions;
 
-namespace TribuneDevWinPhone.MVVM.ViewsModels
+namespace TribuneDevWinPhone
 {
 
     public class SujetViewModel : ViewModelBase, IComparable<SujetViewModel>, IEquatable<SujetViewModel>
@@ -21,7 +21,7 @@ namespace TribuneDevWinPhone.MVVM.ViewsModels
         private string _titresujet;
         private string _textsujet;
         private DateTime _datecreatsujet;
-        private ObservableCollection<SujetViewModel> _colSujetsViewModel;
+        private ObservableCollection<ReponseViewModel> _colReponsesViewModel;
         
         #region Constructeurs
 
@@ -34,58 +34,108 @@ namespace TribuneDevWinPhone.MVVM.ViewsModels
             _titresujet = sujet.TitreSujet;
             _textsujet = sujet.TextSujet;
             _datecreatsujet = sujet.DateCreatSujet;
+            _colReponsesViewModel = new ObservableCollection<ReponseViewModel>();
             _consumeWSR = consumeWSR;
 
         }
 
         #endregion Constructeurs
 
-        #region Propriétés
+        #region Propriétés Bindables
 
         public int IdSujet
         {
             get { return _idsujet; }
+            private set
+            {
+                if (_idsujet != value)
+                {
+                    _idsujet = value;
+                    RaisePropertyChanged();
+                }
+            }
+
         }
 
         public int IdRub
         {
             get { return _idrub; }
+            private set
+            {
+                if (_idrub != value)
+                {
+                    _idrub = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
 
         public int IdUser
         {
             get { return _iduser; }
+            private set
+            {
+                if (_iduser != value)
+                {
+                    _iduser = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
         public string TitreSujet
         {
             get { return _titresujet; }
+            private set
+            {
+                if (_titresujet != value)
+                {
+                    _titresujet = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
 
         public string TextSujet
         {
             get { return _textsujet; }
+            private set
+            {
+                if (_textsujet != value)
+                {
+                    _textsujet = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
 
         public DateTime DateCreateSujet
         {
             get { return _datecreatsujet; }
+            private set
+            {
+                if (_datecreatsujet != value)
+                {
+                    _datecreatsujet = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
 
-        public ReadOnlyObservableCollection<SujetViewModel> Sujets
+        public ReadOnlyObservableCollection<ReponseViewModel> Reponses
         {
-            get { return new ReadOnlyObservableCollection<SujetViewModel>(_colSujetsViewModel); }
+            get { return new ReadOnlyObservableCollection<ReponseViewModel>(_colReponsesViewModel); }
         }
 
-        #endregion Propriétés
-        
+        #endregion Propriétés Bindables
+
         #region Méthodes
 
-        public async Task GetListSujets(CancellationToken cancel)
+        public async Task GetListReponses(CancellationToken cancel)
         {
             //On apelle le webservice qui renvoi une liste de rubrique
-            List<Sujet> sujets = await _consumeWSR.CallSujet(IdSujet.ToString(), cancel);
+            List<Reponse> reponses = await _consumeWSR.CallReponse(IdSujet.ToString(), cancel);
             //A partir de cette liste de rubriques on met à jour la collection observable
-            MAJ_ListeSujets(sujets);
+            MAJ_ListeReponse(reponses);
 
         }
         
@@ -96,19 +146,19 @@ namespace TribuneDevWinPhone.MVVM.ViewsModels
         #region Fonctions perso
 
 
-        private void MAJ_ListeSujets(List<Sujet> lstSujets)
+        private void MAJ_ListeReponse(List<Reponse> lstReponses)
         {
-            _colSujetsViewModel.Clear();
+            _colReponsesViewModel.Clear();
 
             // Ajout des nouvelles rubriques
-            foreach (Sujet sujet in lstSujets)
+            foreach (Reponse rep in lstReponses)
             {
-                SujetViewModel sujetVm = new SujetViewModel(sujet, _consumeWSR);
+                ReponseViewModel reponseVm = new ReponseViewModel(rep, _consumeWSR);
 
-                if (!_colSujetsViewModel.Contains(sujetVm))
+                if (!_colReponsesViewModel.Contains(reponseVm))
                 {
                     // On utilise la méthode d'extention de la classe 'IListExtensions'
-                    _colSujetsViewModel.AddSorted(sujetVm);
+                    _colReponsesViewModel.AddSorted(reponseVm);
                 }
             }
         }
