@@ -8,20 +8,28 @@
     <Application.Resources>
 
         <!--<SolidColorBrush x:Key="BrushRouge" Color="Red"/>-->
-
-        <Style x:Key="StyleTexte" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Yellow" />
+        
+        <Style x:Key="StyleLogo" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFF3FDFC" />
             <Setter Property="FontSize" Value="35" />
             <Setter Property="FontFamily" Value="Elephant" />
-            <Setter Property="Margin" Value="20 20 0 20" />
+          
             <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
 
-        <Style x:Key="ErrorTexte" TargetType="TextBlock">
+        <Style x:Key="StyleTitres" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFBBF1ED" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontFamily" Value="Elephant" />
+            
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="StyleErreur" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Red" />
             <Setter Property="FontSize" Value="20" />
             <Setter Property="FontFamily" Value="Elephant" />
-            <Setter Property="Margin" Value="0 20 0 20" />
+            
             <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
 

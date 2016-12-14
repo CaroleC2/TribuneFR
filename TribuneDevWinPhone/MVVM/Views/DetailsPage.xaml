@@ -16,14 +16,14 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{StaticResource StyleTexte}"  x:Name="txtTitre" Margin="0,56,0,0.5" TextWrapping="Wrap"  Text="Titre" Grid.Row="0"   />
+        <TextBlock Style="{StaticResource StyleTitres}"  x:Name="txtTitre" Margin="0,56,0,0.5" TextWrapping="Wrap"  Text="Titre" Grid.Row="0"   />
 
         <ScrollViewer HorizontalAlignment="Left" Height="100" Margin="155,170.5,0,0" Grid.Row="2"  VerticalAlignment="Top" Width="100"/>
 
 
 
 
-        <TextBlock Style="{StaticResource ErrorTexte}" x:Name="txtError"  Margin="119,460.5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="LabelError" VerticalAlignment="Top"/>
+        <TextBlock Style="{StaticResource StyleErreur}" x:Name="txtError"  Margin="119,460.5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="LabelError" VerticalAlignment="Top"/>
 
 
     </Grid>

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -37,16 +39,46 @@ namespace TribuneDevWinPhone
         /// </summary>
         /// <param name="e">Données d'événement décrivant la manière dont l'utilisateur a accédé à cette page.
         /// Ce paramètre est généralement utilisé pour configurer la page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            // Binding de la source de données (MonitorViewModel) avec le contexte de la page
             DataContext = _monitorViewModel;
-            // TODO: préparer la page pour affichage ici.
 
-            // TODO: si votre application comporte plusieurs pages, assurez-vous que vous
-            // gérez le bouton Retour physique en vous inscrivant à l’événement
-            // Événement Windows.Phone.UI.Input.HardwareButtons.BackPressed.
-            // Si vous utilisez le NavigationHelper fourni par certains modèles,
-            // cet événement est géré automatiquement.
+            // On s'abonne à l'événement système 'HardwareButtons_BackPressed'          
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+
+            
+                // On rafraichit la liste des rubriques
+                await _monitorViewModel.GetListRubriques(CancellationToken.None);
+           
+           
+                    // On lance la fenêtre de paramètrage
+                    //Frame.Navigate(typeof(ParamsPage));
+                
+        }
+
+        protected override void OnNavigatingFrom
+            (NavigatingCancelEventArgs e)
+        {
+            HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
+        }
+
+
+        private void ListView_Click(object sender, RoutedEventArgs e)
+        {
+            RubriqueViewModel rubriqueViewModel = (RubriqueViewModel)((Button)sender).DataContext;
+            Frame.Navigate(typeof(DetailsPage), rubriqueViewModel);
+        }
+
+        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            // On interdit la sortie de l'application par ce bouton
+            e.Handled = true;
+        }
+
+        private void mnuQuitter_Click_1(object sender, RoutedEventArgs e)
+        {
+            App.Current.Exit();
         }
     }
 }

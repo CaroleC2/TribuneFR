@@ -18,7 +18,7 @@ namespace ConsumeWebServiceRest
         {
 
             
-            private const string ADRESSE_GET = "http://user10.2isa.org/ServiceFR.svc/" ;
+            private const string ADRESSE_GET = "http://user10.2isa.org/ServiceTribune.svc/" ;
             private const string ADRESSE_GET_RUBRIQUE = ADRESSE_GET + ("Rubrique");
             private const string ADRESSE_GET_SUJET = ADRESSE_GET_RUBRIQUE + ("Sujet/{0}");
             private const string ADRESSE_GET_REPONSE = ADRESSE_GET_SUJET + ("Reponse/{0}");
