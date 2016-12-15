@@ -17,16 +17,16 @@ using Windows.UI.Xaml.Navigation;
 
 // Pour en savoir plus sur le modèle d’élément Page vierge, consultez la page http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace TribuneDevWinPhone
+namespace TribuneDevWinPhone.MVVM.Views
 {
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class DetailsPage : Page
+    public sealed partial class SujetPage : Page
     {
         private MonitorViewModel _monitorViewModel = new MonitorViewModel();
 
-        public DetailsPage()
+        public SujetPage()
         {
             this.InitializeComponent();
         }
@@ -58,8 +58,8 @@ namespace TribuneDevWinPhone
 
         private void ListView_Click(object sender, RoutedEventArgs e)
         {
-            ReponseViewModel reponseViewModel = (ReponseViewModel)((Button)sender).DataContext;
-            Frame.Navigate(typeof(DetailsPage), reponseViewModel);
+            SujetViewModel sujetViewModel = (SujetViewModel)((Button)sender).DataContext;
+            Frame.Navigate(typeof(ReponsePage), sujetViewModel);
         }
 
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
@@ -72,7 +72,5 @@ namespace TribuneDevWinPhone
         {
             App.Current.Exit();
         }
-
-
     }
 }
