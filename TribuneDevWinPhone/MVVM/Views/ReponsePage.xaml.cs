@@ -17,14 +17,14 @@ using Windows.UI.Xaml.Navigation;
 
 // Pour en savoir plus sur le modèle d’élément Page vierge, consultez la page http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace TribuneDevWinPhone.MVVM.Views
+namespace TribuneDevWinPhone
 {
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
     public sealed partial class ReponsePage : Page
     {
-        private MonitorViewModel _monitorViewModel = new MonitorViewModel();
+        private SujetViewModel _sujetViewModel = null;
 
         public ReponsePage()
         {
@@ -38,15 +38,18 @@ namespace TribuneDevWinPhone.MVVM.Views
         /// Ce paramètre est généralement utilisé pour configurer la page.</param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            _sujetViewModel = (SujetViewModel)e.Parameter;
             // Binding de la source de données (MonitorViewModel) avec le contexte de la page
-            DataContext = _monitorViewModel;
+            DataContext = _sujetViewModel;
 
             // On s'abonne à l'événement système 'HardwareButtons_BackPressed'          
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 
 
             // On rafraichit la liste des rubriques
-            await _monitorViewModel.GetListRubriques(CancellationToken.None);
+            await _sujetViewModel.GetListReponses(CancellationToken.None);
+
+            
         }
 
         protected override void OnNavigatingFrom
@@ -62,6 +65,7 @@ namespace TribuneDevWinPhone.MVVM.Views
             Frame.Navigate(typeof(DetailsPage), reponseViewModel);
         }
 
+  
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
             // On interdit la sortie de l'application par ce bouton

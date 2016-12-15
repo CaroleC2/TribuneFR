@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="TribuneDevWinPhone.MVVM.Views.SujetPage"
+    x:Class="TribuneDevWinPhone.SujetPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:TribuneDevWinPhone.MVVM.Views"
+    xmlns:local="using:TribuneDevWinPhone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -26,7 +26,7 @@
 
         <TextBlock x:Name="lblLogo" x:Uid="MainPage_Logo" Grid.Row="0" Text="Tribune Dev 2ISA" Style="{StaticResource StyleLogo}"/>
 
-        <TextBlock x:Name="lblRubrique" x:Uid="MainPage_Rubrique" Grid.Row="1" Text="Titre Rubrique" Style="{StaticResource StyleTitres}"/>
+        <TextBlock x:Name="lblRubrique" x:Uid="MainPage_Rubrique" Grid.Row="1" Text="{Binding NomRub}" Style="{StaticResource StyleTitres}"/>
 
         <TextBlock x:Name="lblTitre" x:Uid="MainPage_Titre" Grid.Row="2" Text="Liste des Sujets" Style="{StaticResource StyleTitres2}"/>
 
@@ -45,9 +45,9 @@
                 <DataTemplate>
                     <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Click="ListView_Click">
                         <Button.Content>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
                                 <TextBlock FontSize="22" Text="{Binding TitreSujet}" VerticalAlignment="Center"/>
-                                <TextBlock FontSize="22" Text="{Binding TextSujet}" VerticalAlignment="Center"/>
+                                <TextBlock FontSize="22" Text="{Binding TextSujet}" TextWrapping="Wrap" VerticalAlignment="Center"/>
                                 <TextBlock FontSize="22" Text="{Binding NomUser}" VerticalAlignment="Center"/>
                                 <TextBlock FontSize="22" Text="{Binding DateCreatSujet}" VerticalAlignment="Center"/>
 

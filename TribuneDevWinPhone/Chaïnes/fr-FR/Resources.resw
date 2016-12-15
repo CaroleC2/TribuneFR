@@ -117,44 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DetailsPage_DateEnvoi.Text" xml:space="preserve">
+    <value>Date Envoi :</value>
+  </data>
+  <data name="DetailsPage_DetailRep.Text" xml:space="preserve">
+    <value>Détail Réponse</value>
+  </data>
   <data name="DetailsPage_MnuFerm.Label" xml:space="preserve">
     <value>Fermer</value>
   </data>
-  <data name="DetailsPage_MnuParams.Label" xml:space="preserve">
-    <value>Paramètres</value>
+  <data name="DetailsPage_NomUser.Text" xml:space="preserve">
+    <value>Nom Utilisateur :</value>
   </data>
-  <data name="DetailsPage_MnuSync.Label" xml:space="preserve">
-    <value>Synchro</value>
+  <data name="DetailsPage_Text.Text" xml:space="preserve">
+    <value>Texte :</value>
   </data>
   <data name="DetailsPage_Titre.Text" xml:space="preserve">
-    <value>Ecran de :</value>
-  </data>
-  <data name="MainPage_BtConnect.Content" xml:space="preserve">
-    <value>Connecter</value>
-  </data>
-  <data name="MainPage_BtDisconnect.Content" xml:space="preserve">
-    <value>Déconnecter</value>
-  </data>
-  <data name="MainPage_BtPhoto.Content" xml:space="preserve">
-    <value>Prendre une photo</value>
+    <value>Titre Sujet :</value>
   </data>
   <data name="MainPage_Logo.Text" xml:space="preserve">
     <value>Tribune Dev 2ISA</value>
   </data>
-  <data name="MainPage_MnuParams.Label" xml:space="preserve">
-    <value>Paramètres</value>
-  </data>
   <data name="MainPage_MnuQuit.Label" xml:space="preserve">
     <value>Quitter</value>
   </data>
-  <data name="MainPage_MnuSync.Label" xml:space="preserve">
-    <value>Synchro</value>
-  </data>
   <data name="MainPage_Titre.Text" xml:space="preserve">
     <value>Liste des Rubriques</value>
-  </data>
-  <data name="ParamsPage_Adr.Text" xml:space="preserve">
-    <value>Adresse service :</value>
   </data>
   <data name="ParamsPage_MnuAnn.Label" xml:space="preserve">
     <value>Annuler</value>
@@ -162,13 +150,7 @@
   <data name="ParamsPage_MnuVal.Label" xml:space="preserve">
     <value>Valider</value>
   </data>
-  <data name="ParamsPage_Pseudo.Text" xml:space="preserve">
-    <value>Votre pseudo :</value>
-  </data>
-  <data name="ParamsPage_Titre.Text" xml:space="preserve">
-    <value>Paramètres</value>
-  </data>
-  <data name="ParamsPage_TmpUp.Text" xml:space="preserve">
-    <value>Tempo upload :</value>
+  <data name="ReponsePage_Sujet.Text" xml:space="preserve">
+    <value>Titre Sujet</value>
   </data>
 </root>

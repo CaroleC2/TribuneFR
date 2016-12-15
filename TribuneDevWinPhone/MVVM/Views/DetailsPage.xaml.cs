@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using TribuneDevMETIER;
 
 // Pour en savoir plus sur le modèle d’élément Page vierge, consultez la page http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -24,10 +25,13 @@ namespace TribuneDevWinPhone
     /// </summary>
     public sealed partial class DetailsPage : Page
     {
-        private MonitorViewModel _monitorViewModel = new MonitorViewModel();
+      
+
+        private ReponseViewModel _reponseViewModel = null;
 
         public DetailsPage()
         {
+
             this.InitializeComponent();
         }
 
@@ -38,39 +42,50 @@ namespace TribuneDevWinPhone
         /// Ce paramètre est généralement utilisé pour configurer la page.</param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            // Binding de la source de données (MonitorViewModel) avec le contexte de la page
-            DataContext = _monitorViewModel;
+            
+
+            // On récupère le ViewModel (UserViewModel). UserViewModel est la source de données
+            _reponseViewModel = (ReponseViewModel)e.Parameter;
+
+            // Binding de la source de données (UserViewModel) avec le contexte de la page
+            DataContext = _reponseViewModel;
+
+            // On fixe le titre de la page
+            txtTitre.Text = txtTitre.Text + _reponseViewModel.IdSujet;
+
+            txtNomUser.Text = txtNomUser.Text + _reponseViewModel.IdUser;
+            txtDateEnvoi.Text = txtDateEnvoi.Text + _reponseViewModel.DateEnvoiRep;
+            txtTextRep.Text = txtTextRep.Text + _reponseViewModel.TextRep;
+            
+
+
 
             // On s'abonne à l'événement système 'HardwareButtons_BackPressed'          
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 
+            
 
-            // On rafraichit la liste des rubriques
-            await _monitorViewModel.GetListRubriques(CancellationToken.None);
+            //// On rafraichit la liste des réponses
+            //await _monitorViewModel.GetListReponses(CancellationToken.None);
         }
 
-        protected override void OnNavigatingFrom
-           (NavigatingCancelEventArgs e)
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
+            // On se désabonne de l'événement système 'HardwareButtons_BackPressed'
             HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
         }
 
-
-        private void ListView_Click(object sender, RoutedEventArgs e)
-        {
-            ReponseViewModel reponseViewModel = (ReponseViewModel)((Button)sender).DataContext;
-            Frame.Navigate(typeof(DetailsPage), reponseViewModel);
-        }
+        
 
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
-            // On interdit la sortie de l'application par ce bouton
             e.Handled = true;
+            Frame.Navigate(typeof(MainPage));
         }
 
         private void mnuQuitter_Click_1(object sender, RoutedEventArgs e)
         {
-            App.Current.Exit();
+            Frame.Navigate(typeof(MainPage));
         }
 
 

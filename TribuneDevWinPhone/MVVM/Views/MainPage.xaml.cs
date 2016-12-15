@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
+using TribuneDevWinPhone;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Phone.UI.Input;
@@ -67,7 +68,7 @@ namespace TribuneDevWinPhone
         private void ListView_Click(object sender, RoutedEventArgs e)
         {
             RubriqueViewModel rubriqueViewModel = (RubriqueViewModel)((Button)sender).DataContext;
-            Frame.Navigate(typeof(DetailsPage), rubriqueViewModel);
+            Frame.Navigate(typeof(SujetPage), rubriqueViewModel);
         }
 
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
