@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\TribuneDevWinPhone.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -80,7 +81,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <PRIResource Include="Chaïnes\en\Resources.resw" />
+    <PRIResource Include="Chaines\en\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -153,13 +154,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Chaïnes\en\Messages.resw" />
+    <PRIResource Include="Chaines\en\Messages.resw" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Chaïnes\fr-FR\Resources.resw" />
+    <PRIResource Include="Chaines\fr-FR\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Chaïnes\fr-FR\Messages.resw" />
+    <PRIResource Include="Chaines\fr-FR\Messages.resw" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

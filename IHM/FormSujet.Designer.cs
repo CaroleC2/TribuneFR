@@ -39,8 +39,6 @@
             this.lbTitre = new System.Windows.Forms.Label();
             this.btModifSujet = new System.Windows.Forms.Button();
             this.btAnnuler = new System.Windows.Forms.Button();
-            this.lbNomRub = new System.Windows.Forms.Label();
-            this.lbIRubrique = new System.Windows.Forms.Label();
             this.txtBoxSujet = new System.Windows.Forms.Label();
             this.btQuitter = new System.Windows.Forms.Button();
             this.txtBoxTextSujet = new System.Windows.Forms.RichTextBox();
@@ -103,8 +101,6 @@
             this.groupBox1.Controls.Add(this.lbTitre);
             this.groupBox1.Controls.Add(this.btModifSujet);
             this.groupBox1.Controls.Add(this.btAnnuler);
-            this.groupBox1.Controls.Add(this.lbNomRub);
-            this.groupBox1.Controls.Add(this.lbIRubrique);
             this.groupBox1.Controls.Add(this.txtBoxSujet);
             this.groupBox1.Controls.Add(this.btQuitter);
             this.groupBox1.Controls.Add(this.txtBoxTextSujet);
@@ -123,14 +119,14 @@
             // 
             // txtBoxUser
             // 
-            this.txtBoxUser.Location = new System.Drawing.Point(594, 33);
+            this.txtBoxUser.Location = new System.Drawing.Point(185, 36);
             this.txtBoxUser.Name = "txtBoxUser";
             this.txtBoxUser.Size = new System.Drawing.Size(195, 22);
             this.txtBoxUser.TabIndex = 27;
             // 
             // txtBoxTitreSujet
             // 
-            this.txtBoxTitreSujet.Location = new System.Drawing.Point(594, 88);
+            this.txtBoxTitreSujet.Location = new System.Drawing.Point(185, 88);
             this.txtBoxTitreSujet.Name = "txtBoxTitreSujet";
             this.txtBoxTitreSujet.Size = new System.Drawing.Size(195, 22);
             this.txtBoxTitreSujet.TabIndex = 26;
@@ -139,7 +135,7 @@
             // 
             this.lbTitre.AutoSize = true;
             this.lbTitre.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitre.Location = new System.Drawing.Point(396, 87);
+            this.lbTitre.Location = new System.Drawing.Point(6, 88);
             this.lbTitre.Name = "lbTitre";
             this.lbTitre.Size = new System.Drawing.Size(100, 19);
             this.lbTitre.TabIndex = 25;
@@ -177,31 +173,11 @@
             this.btAnnuler.UseVisualStyleBackColor = false;
             this.btAnnuler.Click += new System.EventHandler(this.btAnnuler_Click);
             // 
-            // lbNomRub
-            // 
-            this.lbNomRub.AutoSize = true;
-            this.lbNomRub.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lbNomRub.Location = new System.Drawing.Point(198, 39);
-            this.lbNomRub.Name = "lbNomRub";
-            this.lbNomRub.Size = new System.Drawing.Size(70, 15);
-            this.lbNomRub.TabIndex = 22;
-            this.lbNomRub.Text = "NomRub";
-            // 
-            // lbIRubrique
-            // 
-            this.lbIRubrique.AutoSize = true;
-            this.lbIRubrique.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIRubrique.Location = new System.Drawing.Point(6, 35);
-            this.lbIRubrique.Name = "lbIRubrique";
-            this.lbIRubrique.Size = new System.Drawing.Size(97, 19);
-            this.lbIRubrique.TabIndex = 20;
-            this.lbIRubrique.Text = " Rubrique";
-            // 
             // txtBoxSujet
             // 
             this.txtBoxSujet.AutoSize = true;
             this.txtBoxSujet.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxSujet.Location = new System.Drawing.Point(396, 36);
+            this.txtBoxSujet.Location = new System.Drawing.Point(6, 39);
             this.txtBoxSujet.Name = "txtBoxSujet";
             this.txtBoxSujet.Size = new System.Drawing.Size(146, 19);
             this.txtBoxSujet.TabIndex = 19;
@@ -252,7 +228,7 @@
             // 
             this.lbDate.AutoSize = true;
             this.lbDate.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lbDate.Location = new System.Drawing.Point(210, 88);
+            this.lbDate.Location = new System.Drawing.Point(668, 39);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(40, 15);
             this.lbDate.TabIndex = 17;
@@ -273,7 +249,7 @@
             this.lblDateEnvoi.AutoSize = true;
             this.lblDateEnvoi.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateEnvoi.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblDateEnvoi.Location = new System.Drawing.Point(6, 84);
+            this.lblDateEnvoi.Location = new System.Drawing.Point(449, 36);
             this.lblDateEnvoi.Name = "lblDateEnvoi";
             this.lblDateEnvoi.Size = new System.Drawing.Size(177, 19);
             this.lblDateEnvoi.TabIndex = 14;
@@ -310,8 +286,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btAnnuler;
-        private System.Windows.Forms.Label lbNomRub;
-        private System.Windows.Forms.Label lbIRubrique;
         private System.Windows.Forms.Label txtBoxSujet;
         private System.Windows.Forms.Button btQuitter;
         private System.Windows.Forms.RichTextBox txtBoxTextSujet;

@@ -27,9 +27,7 @@ namespace DAO
                 _Instance = new UtilisateurDAO();
             return _Instance;
         }
-
-
-
+        
         public DataSet GetUtilisateurs()
         {
 

@@ -51,9 +51,9 @@ namespace TribuneDevWinPhone
             DataContext = _reponseViewModel;
 
             // On fixe le titre de la page
-            txtTitre.Text = txtTitre.Text + _reponseViewModel.IdSujet;
+            //txtTitre.Text = txtTitre.Text; //+ _reponseViewModel.IdSujet;
 
-            txtNomUser.Text = txtNomUser.Text + _reponseViewModel.IdUser;
+            //txtNomUser.Text = txtNomUser.Text;
             txtDateEnvoi.Text = txtDateEnvoi.Text + _reponseViewModel.DateEnvoiRep;
             txtTextRep.Text = txtTextRep.Text + _reponseViewModel.TextRep;
             
@@ -79,8 +79,15 @@ namespace TribuneDevWinPhone
 
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
-            e.Handled = true;
-            Frame.Navigate(typeof(MainPage));
+            //e.Handled = true;
+            //Frame.Navigate(typeof(MainPage));
+
+            // Retour à la fenêtre appelante
+            if (Frame.CanGoBack)
+            {
+                e.Handled = true;
+                Frame.GoBack();
+            }
         }
 
         private void mnuQuitter_Click_1(object sender, RoutedEventArgs e)

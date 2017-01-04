@@ -65,8 +65,12 @@ namespace TribuneDevWinPhone
 
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
-            // On interdit la sortie de l'application par ce bouton
-            e.Handled = true;
+            // Retour à la fenêtre appelante
+            if (Frame.CanGoBack)
+            {
+                e.Handled = true;
+                Frame.GoBack();
+            }
         }
 
         private void mnuQuitter_Click_1(object sender, RoutedEventArgs e)

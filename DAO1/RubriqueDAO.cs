@@ -26,9 +26,7 @@ namespace DAO
                 _Instance = new RubriqueDAO();
             return _Instance;
         }
-
         
-
         public DataSet GetRubriques()
         {
 

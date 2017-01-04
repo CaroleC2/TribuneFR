@@ -30,7 +30,7 @@ namespace IHM
          {
              if (modif)
              {
-                lbNomRub.Text = rubrique.NomRub;
+               
                 lbDate.Text = sujet.DateCreatSujet.ToString();
                 utilisateur = new Utilisateur();
                 utilisateur = BLLOutils.BLL.ListUtilisateursById(sujet.IdUser);

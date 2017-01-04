@@ -52,7 +52,17 @@ namespace TribuneDevMETIER
             }
 
 
-            public Reponse()
+        [DataMember]
+        private string _NomUser;
+
+        public string NomUser
+        {
+            get { return _NomUser; }
+            set { _NomUser = value; }
+        }
+
+
+        public Reponse()
             {
 
             }

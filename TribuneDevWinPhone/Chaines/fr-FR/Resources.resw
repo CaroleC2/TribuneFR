@@ -151,6 +151,9 @@
     <value>Valider</value>
   </data>
   <data name="ReponsePage_Sujet.Text" xml:space="preserve">
-    <value>Titre Sujet</value>
+    <value />
+  </data>
+  <data name="SujetPage_Titre.Text" xml:space="preserve">
+    <value>Liste des Sujets</value>
   </data>
 </root>

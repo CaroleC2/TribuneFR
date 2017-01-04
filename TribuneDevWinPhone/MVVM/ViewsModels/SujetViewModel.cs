@@ -21,6 +21,7 @@ namespace TribuneDevWinPhone
         private string _titresujet;
         private string _textsujet;
         private DateTime _datecreatsujet;
+        private string _nomuser;
         private ObservableCollection<ReponseViewModel> _colReponsesViewModel;
         
         #region Constructeurs
@@ -34,6 +35,7 @@ namespace TribuneDevWinPhone
             _titresujet = sujet.TitreSujet;
             _textsujet = sujet.TextSujet;
             _datecreatsujet = sujet.DateCreatSujet;
+            _nomuser = sujet.NomUser;
             _colReponsesViewModel = new ObservableCollection<ReponseViewModel>();
             _consumeWSR = consumeWSR;
 
@@ -108,7 +110,7 @@ namespace TribuneDevWinPhone
             }
         }
 
-        public DateTime DateCreateSujet
+        public DateTime DateCreatSujet
         {
             get { return _datecreatsujet; }
             private set
@@ -116,6 +118,19 @@ namespace TribuneDevWinPhone
                 if (_datecreatsujet != value)
                 {
                     _datecreatsujet = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public string NomUser
+        {
+            get { return _nomuser; }
+            private set
+            {
+                if (_nomuser != value)
+                {
+                    _nomuser = value;
                     RaisePropertyChanged();
                 }
             }

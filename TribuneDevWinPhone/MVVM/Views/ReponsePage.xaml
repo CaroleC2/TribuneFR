@@ -25,7 +25,7 @@
 
         <TextBlock x:Name="lblLogo" x:Uid="MainPage_Logo" Grid.Row="0" Text="Tribune Dev 2ISA" Style="{StaticResource StyleLogo}"/>
 
-        <TextBlock x:Name="lblSujet" x:Uid="ReponsePage_Sujet" Grid.Row="1" Text="{Binding TitreSujet}" Style="{StaticResource StyleTitres}"/>
+        <TextBlock x:Name="lblSujet"  Grid.Row="1" Text="{Binding TitreSujet}" Style="{StaticResource StyleTitres}"/>
 
         
 

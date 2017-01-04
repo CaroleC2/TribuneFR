@@ -34,13 +34,13 @@
 
         <TextBlock x:Name="lblLogo" x:Uid="MainPage_Logo" Grid.Row="0" Grid.ColumnSpan="2" Text="Tribune Dev 2ISA" Style="{StaticResource StyleLogo}"/>
 
-        <TextBlock Style="{StaticResource StyleTitres}"  x:Name="txtTitre" x:Uid="DetailsPage_Titre"  Text="Titre" Grid.Row="1" Grid.ColumnSpan="2"   />
+        <TextBlock Style="{StaticResource StyleTitres}"  x:Name="txtTitre" Text="{Binding TitreSujet}" Grid.Row="1" Grid.ColumnSpan="2"   />
 
         <TextBlock x:Name="lblTitre" x:Uid="DetailsPage_DetailRep" Grid.Row="2" Grid.ColumnSpan="2" Text="Détail Réponse" Style="{StaticResource StyleTitres2}"/>
 
 
         <TextBlock x:Uid="DetailsPage_NomUser" Grid.Row="3" Grid.Column="0"  Text="Nom Auteur :"  FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-        <TextBox x:Name="txtNomUser" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="10,0,0,10" />
+        <TextBox x:Name="txtNomUser" Text="{Binding NomUser}" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="10,0,0,10" />
 
         <TextBlock x:Uid="DetailsPage_DateEnvoi" Grid.Row="4" Grid.Column="0"  Text="Date Envoi :"  FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <TextBox x:Name="txtDateEnvoi" Grid.Row="4" Grid.Column="1" FontSize="16" Margin="10,0,0,10"  />
@@ -49,7 +49,9 @@
         <TextBox x:Name="txtTextRep" Grid.Row="5" Grid.Column="1" FontSize="16" Margin="10,0,0,10" TextWrapping="Wrap"  />
 
 
-        <TextBlock Style="{StaticResource StyleErreur}" x:Name="txtError"  Grid.ColumnSpan="2" Grid.Row="6" TextWrapping="Wrap" Text="LabelError" VerticalAlignment="Top"/>
+       
+
+       
 
 
     </Grid>

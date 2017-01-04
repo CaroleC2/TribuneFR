@@ -59,7 +59,16 @@ namespace TribuneDevMETIER
                 set { _DateCreatSujet = value; }
             }
 
-            public Sujet()
+        [DataMember]
+        private string _NomUser;
+
+        public string NomUser
+        {
+            get { return _NomUser; }
+            set { _NomUser = value; }
+        }
+
+        public Sujet()
             {
 
             }
