@@ -32,6 +32,8 @@ namespace IHM
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReponse));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBoxSujet = new System.Windows.Forms.TextBox();
+            this.txtBoxUser = new System.Windows.Forms.TextBox();
             this.btAnnuler = new System.Windows.Forms.Button();
             this.lbTitreSujet = new System.Windows.Forms.Label();
             this.lbNomUtilisateur = new System.Windows.Forms.Label();
@@ -46,8 +48,6 @@ namespace IHM
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.bindingSourceRep = new System.Windows.Forms.BindingSource(this.components);
-            this.txtBoxUser = new System.Windows.Forms.TextBox();
-            this.txtBoxSujet = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -88,6 +88,22 @@ namespace IHM
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ajout Réponse";
+            // 
+            // txtBoxSujet
+            // 
+            this.txtBoxSujet.Location = new System.Drawing.Point(902, 29);
+            this.txtBoxSujet.Name = "txtBoxSujet";
+            this.txtBoxSujet.ReadOnly = true;
+            this.txtBoxSujet.Size = new System.Drawing.Size(198, 22);
+            this.txtBoxSujet.TabIndex = 25;
+            // 
+            // txtBoxUser
+            // 
+            this.txtBoxUser.Location = new System.Drawing.Point(533, 33);
+            this.txtBoxUser.Name = "txtBoxUser";
+            this.txtBoxUser.Size = new System.Drawing.Size(206, 22);
+            this.txtBoxUser.TabIndex = 24;
+            this.txtBoxUser.TextChanged += new System.EventHandler(this.txtBoxUser_TextChanged);
             // 
             // btAnnuler
             // 
@@ -149,6 +165,7 @@ namespace IHM
             this.txtBoxRep.Size = new System.Drawing.Size(609, 317);
             this.txtBoxRep.TabIndex = 18;
             this.txtBoxRep.Text = "";
+            this.txtBoxRep.TextChanged += new System.EventHandler(this.txtBoxRep_TextChanged);
             // 
             // btAjoutRep
             // 
@@ -239,21 +256,6 @@ namespace IHM
             this.label2.Size = new System.Drawing.Size(134, 58);
             this.label2.TabIndex = 0;
             this.label2.Text = "2isa";
-            // 
-            // txtBoxUser
-            // 
-            this.txtBoxUser.Location = new System.Drawing.Point(533, 33);
-            this.txtBoxUser.Name = "txtBoxUser";
-            this.txtBoxUser.Size = new System.Drawing.Size(206, 22);
-            this.txtBoxUser.TabIndex = 24;
-            // 
-            // txtBoxSujet
-            // 
-            this.txtBoxSujet.Location = new System.Drawing.Point(902, 29);
-            this.txtBoxSujet.Name = "txtBoxSujet";
-            this.txtBoxSujet.ReadOnly = true;
-            this.txtBoxSujet.Size = new System.Drawing.Size(198, 22);
-            this.txtBoxSujet.TabIndex = 25;
             // 
             // FormReponse
             // 

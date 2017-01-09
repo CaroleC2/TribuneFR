@@ -47,7 +47,6 @@
             this.comboBoxSujet = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxRub = new System.Windows.Forms.ComboBox();
-            this.btnConnexion = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -242,7 +241,6 @@
             this.gbRubriques.Controls.Add(this.comboBoxSujet);
             this.gbRubriques.Controls.Add(this.label1);
             this.gbRubriques.Controls.Add(this.comboBoxRub);
-            this.gbRubriques.Controls.Add(this.btnConnexion);
             this.gbRubriques.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbRubriques.Font = new System.Drawing.Font("Broadway", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbRubriques.ForeColor = System.Drawing.SystemColors.MenuHighlight;
@@ -256,10 +254,10 @@
             // txtBoxSujet
             // 
             this.txtBoxSujet.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxSujet.Location = new System.Drawing.Point(498, 23);
+            this.txtBoxSujet.Location = new System.Drawing.Point(646, 23);
             this.txtBoxSujet.Name = "txtBoxSujet";
             this.txtBoxSujet.ReadOnly = true;
-            this.txtBoxSujet.Size = new System.Drawing.Size(451, 96);
+            this.txtBoxSujet.Size = new System.Drawing.Size(504, 96);
             this.txtBoxSujet.TabIndex = 14;
             this.txtBoxSujet.Text = "";
             // 
@@ -280,7 +278,7 @@
             this.comboBoxSujet.FormattingEnabled = true;
             this.comboBoxSujet.Location = new System.Drawing.Point(207, 92);
             this.comboBoxSujet.Name = "comboBoxSujet";
-            this.comboBoxSujet.Size = new System.Drawing.Size(262, 27);
+            this.comboBoxSujet.Size = new System.Drawing.Size(356, 27);
             this.comboBoxSujet.TabIndex = 11;
             this.comboBoxSujet.SelectedIndexChanged += new System.EventHandler(this.comboBoxSujet_SelectedIndexChanged);
             // 
@@ -301,24 +299,9 @@
             this.comboBoxRub.FormattingEnabled = true;
             this.comboBoxRub.Location = new System.Drawing.Point(207, 39);
             this.comboBoxRub.Name = "comboBoxRub";
-            this.comboBoxRub.Size = new System.Drawing.Size(262, 27);
+            this.comboBoxRub.Size = new System.Drawing.Size(356, 27);
             this.comboBoxRub.TabIndex = 8;
             this.comboBoxRub.SelectedIndexChanged += new System.EventHandler(this.comboBoxRub_SelectedIndexChanged);
-            // 
-            // btnConnexion
-            // 
-            this.btnConnexion.BackColor = System.Drawing.SystemColors.GrayText;
-            this.btnConnexion.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConnexion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConnexion.Image = ((System.Drawing.Image)(resources.GetObject("btnConnexion.Image")));
-            this.btnConnexion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConnexion.Location = new System.Drawing.Point(985, 30);
-            this.btnConnexion.Name = "btnConnexion";
-            this.btnConnexion.Size = new System.Drawing.Size(165, 42);
-            this.btnConnexion.TabIndex = 7;
-            this.btnConnexion.Text = "Connexion";
-            this.btnConnexion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnConnexion.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -384,7 +367,7 @@
             this.labelError.Size = new System.Drawing.Size(64, 19);
             this.labelError.TabIndex = 1;
             this.labelError.Text = "label6";
-            this.labelError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // fnAccueil
             // 
@@ -426,7 +409,6 @@
         private System.Windows.Forms.DataGridView dgvReponse;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox gbRubriques;
-        private System.Windows.Forms.Button btnConnexion;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.Label label1;

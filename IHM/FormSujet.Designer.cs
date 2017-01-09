@@ -123,6 +123,7 @@
             this.txtBoxUser.Name = "txtBoxUser";
             this.txtBoxUser.Size = new System.Drawing.Size(195, 22);
             this.txtBoxUser.TabIndex = 27;
+            this.txtBoxUser.TextChanged += new System.EventHandler(this.txtBoxUser_TextChanged);
             // 
             // txtBoxTitreSujet
             // 
@@ -130,6 +131,7 @@
             this.txtBoxTitreSujet.Name = "txtBoxTitreSujet";
             this.txtBoxTitreSujet.Size = new System.Drawing.Size(195, 22);
             this.txtBoxTitreSujet.TabIndex = 26;
+            this.txtBoxTitreSujet.TextChanged += new System.EventHandler(this.txtBoxTitreSujet_TextChanged);
             // 
             // lbTitre
             // 
@@ -207,6 +209,7 @@
             this.txtBoxTextSujet.Size = new System.Drawing.Size(686, 256);
             this.txtBoxTextSujet.TabIndex = 18;
             this.txtBoxTextSujet.Text = "";
+            this.txtBoxTextSujet.TextChanged += new System.EventHandler(this.txtBoxTextSujet_TextChanged);
             // 
             // btAjoutSujet
             // 

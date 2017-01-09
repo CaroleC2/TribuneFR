@@ -34,31 +34,35 @@ namespace IHM
             //Utilise des methodes d'accès qui renvoient un Dataset 
             //bindingSourceRub.DataSource = objRubDAO.GetRubriques().Tables[0];
             txtBoxSujet.Text = sujet.TitreSujet;
+            GestionGrisage();
         }
 
         private void btAjoutRep_Click(object sender, EventArgs e)
         {
-            
-            //string idSujet = lbSujet.Text;
-            //string NomUser = lbUser.Text;
-            //string textRep = txtBoxRep.Text;
-            //string now = lbDate.Text;
-
-            //BLLOutils.BLL.NewReponse(int.Parse(lbSujet.Text), lbUser.Text,txtBoxRep.Text, Convert.ToDateTime(lbDate.Text));
-
-            if (BLLOutils.BLL.NewReponse(sujet.IdSujet, txtBoxUser.Text, txtBoxRep.Text, Convert.ToDateTime(lbDate.Text)) == 1)
+            if (!String.IsNullOrWhiteSpace(txtBoxRep.Text) && !String.IsNullOrWhiteSpace(txtBoxUser.Text))
             {
-                
-                MessageBox.Show("Validation de l'ajout de votre réponse ");
+                btAjoutRep.Enabled = true;
 
-                this.Close();
+                //string idSujet = lbSujet.Text;
+                //string NomUser = lbUser.Text;
+                //string textRep = txtBoxRep.Text;
+                //string now = lbDate.Text;
+
+                //BLLOutils.BLL.NewReponse(int.Parse(lbSujet.Text), lbUser.Text,txtBoxRep.Text, Convert.ToDateTime(lbDate.Text));
+
+                if (BLLOutils.BLL.NewReponse(sujet.IdSujet, txtBoxUser.Text, txtBoxRep.Text, Convert.ToDateTime(lbDate.Text)) == 1)
+                {
+
+                    MessageBox.Show("Validation de l'ajout de votre réponse ");
+
+                    this.Close();
+                }
+
+                else
+                {
+                    MessageBox.Show("Echec de l'ajout de votre réponse ");
+                }
             }
-
-            else
-            {
-                MessageBox.Show("Echec de l'ajout de votre réponse ");
-            }
-
         }
 
         private void btAnnuler_Click(object sender, EventArgs e)
@@ -80,6 +84,23 @@ namespace IHM
                 Application.Exit();
             }
 
+        }
+
+        private void txtBoxUser_TextChanged(object sender, EventArgs e)
+        {
+            GestionGrisage();
+        }
+
+        private void txtBoxRep_TextChanged(object sender, EventArgs e)
+        {
+            GestionGrisage();
+        }
+
+        private void GestionGrisage()
+        {
+            btAjoutRep.Enabled = !String.IsNullOrWhiteSpace(txtBoxRep.Text) && !String.IsNullOrWhiteSpace(txtBoxUser.Text);
+            btAnnuler.Enabled = true;
+            
         }
     }
 }

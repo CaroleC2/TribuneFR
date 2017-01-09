@@ -30,7 +30,8 @@ namespace IHM
          {
              if (modif)
              {
-               
+                btAjoutSujet.Visible = false;
+
                 lbDate.Text = sujet.DateCreatSujet.ToString();
                 utilisateur = new Utilisateur();
                 utilisateur = BLLOutils.BLL.ListUtilisateursById(sujet.IdUser);
@@ -38,44 +39,47 @@ namespace IHM
                 txtBoxTitreSujet.Text = sujet.TitreSujet;
                 txtBoxTextSujet.Text = sujet.TextSujet;
             }
-             
-         }
+            else
+            {
+                GestionGrisage();
+                btModifSujet.Visible = false;
+            }
+        }
 
         private void btAjoutSujet_Click(object sender, EventArgs e)
         {
-            if (BLLOutils.BLL.NewSujet(rubrique.IdRub, txtBoxUser.Text, txtBoxTitreSujet.Text, txtBoxTextSujet.Text, Convert.ToDateTime(lbDate.Text)) == 1)
+            if (!String.IsNullOrWhiteSpace(txtBoxTextSujet.Text) && !String.IsNullOrWhiteSpace(txtBoxTitreSujet.Text) && !String.IsNullOrWhiteSpace(txtBoxUser.Text))
             {
-                 
-                   MessageBox.Show("Validation de l'ajout de votre sujet ");
+                btAjoutSujet.Enabled = true;
 
-                this.Close();
+                if (BLLOutils.BLL.NewSujet(rubrique.IdRub, txtBoxUser.Text, txtBoxTitreSujet.Text, txtBoxTextSujet.Text, Convert.ToDateTime(lbDate.Text)) == 1)
+                {
+
+                    MessageBox.Show("Validation de l'ajout de votre sujet ", "Valider Ajout", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                    this.Close();
+                }
+
+                else
+                {
+                    MessageBox.Show("Echec de l'ajout de votre sujet ", "Erreur Ajout", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-
-            else
-            {
-                MessageBox.Show("Echec de l'ajout de votre sujet ");
-            }
-            
-            
-
-            
-
+          
         }
-
         
-
         private void btModifSujet_Click(object sender, EventArgs e)
         {
             if (BLLOutils.BLL.UpdateSujet(sujet.IdSujet,txtBoxTitreSujet.Text,sujet.TitreSujet,txtBoxTextSujet.Text, sujet.TextSujet) == 1)
             {
-                MessageBox.Show("Validation de la modification de votre sujet ");
+                MessageBox.Show("Validation de la modification de votre sujet ","Valider Modification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 this.Close();
             }
 
             else
             {
-                MessageBox.Show("Echec de la modificaton de votre sujet ");
+                MessageBox.Show("Echec de la modificaton de votre sujet ","Erreur Modification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -98,6 +102,31 @@ namespace IHM
             }
         }
 
-      
+       
+
+        private void GestionGrisage()
+        {
+            btAjoutSujet.Enabled = !String.IsNullOrWhiteSpace(txtBoxTextSujet.Text) && !String.IsNullOrWhiteSpace(txtBoxTitreSujet.Text) && !String.IsNullOrWhiteSpace(txtBoxUser.Text);
+            btAnnuler.Enabled = true;
+
+           // btModifSujet.Enabled = !String.IsNullOrWhiteSpace(txtBoxTextSujet.Text) && !String.IsNullOrWhiteSpace(txtBoxTitreSujet.Text) && !String.IsNullOrWhiteSpace(txtBoxUser.Text);
+           
+
+        }
+
+        private void txtBoxUser_TextChanged(object sender, EventArgs e)
+        {
+            GestionGrisage();
+        }
+
+        private void txtBoxTitreSujet_TextChanged(object sender, EventArgs e)
+        {
+            GestionGrisage();
+        }
+
+        private void txtBoxTextSujet_TextChanged(object sender, EventArgs e)
+        {
+            GestionGrisage();
+        }
     }
 }
