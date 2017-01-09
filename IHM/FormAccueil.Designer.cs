@@ -56,6 +56,7 @@
             this.bindingSourceSujet = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSourceRub = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSourceRep = new System.Windows.Forms.BindingSource(this.components);
+            this.labelError = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.gbModerateur.SuspendLayout();
             this.gbUser.SuspendLayout();
@@ -321,6 +322,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.labelError);
             this.panel2.Controls.Add(this.dgvReponse);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 286);
@@ -372,6 +374,18 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "2isa";
             // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(551, 67);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(64, 19);
+            this.labelError.TabIndex = 1;
+            this.labelError.Text = "label6";
+            this.labelError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // fnAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -395,6 +409,7 @@
             this.gbRubriques.ResumeLayout(false);
             this.gbRubriques.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSujet)).EndInit();
@@ -432,6 +447,7 @@
         private System.Windows.Forms.ComboBox comboBoxSujet;
         private System.Windows.Forms.BindingSource bindingSourceRep;
         private System.Windows.Forms.RichTextBox txtBoxSujet;
+        private System.Windows.Forms.Label labelError;
     }
 }
 

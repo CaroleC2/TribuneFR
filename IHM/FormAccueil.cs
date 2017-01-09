@@ -27,7 +27,8 @@ namespace IHM
         #region Load Fenêtre
         private void fnAccueil_Load(object sender, EventArgs e)
         {
-          
+            dgvReponse.Visible = true;
+
             //ComboBox Rubrique
             comboBoxRub.DisplayMember = "nomrub";
             comboBoxRub.ValueMember = "idrub";
@@ -73,7 +74,31 @@ namespace IHM
 
                 bindingSourceSujet.DataSource = sujets;
                 Sujet sujetCourant = (Sujet)comboBoxSujet.SelectedItem;
-                txtBoxSujet.Text = sujetCourant.TextSujet;
+
+                if(sujetCourant!= null)
+                {
+                    labelError.Visible = false;
+                    btDeleteRep.Visible = true;
+                    btDeleteSujet.Visible = true;
+                    btModifSujet.Visible = true;
+                    btAjoutRep.Visible = true;
+                    txtBoxSujet.Text = sujetCourant.TextSujet;
+                }
+                else
+                {
+                    txtBoxSujet.Text = "";
+                    dgvReponse.Visible = false;
+                    labelError.Text = "La rubrique sélectionnée ne comporte pas de sujets";
+                    labelError.Visible = true;
+                    btDeleteRep.Visible = false;
+                    btDeleteSujet.Visible = false;
+                    btModifSujet.Visible = false;
+                    btAjoutRep.Visible = false;
+                    //MessageBox.Show("La rubrique sélectionnée ne comporte pas de sujets","Erreur Rubrique",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+                    
+                }
+
 
 
             }
@@ -82,19 +107,39 @@ namespace IHM
         private void comboBoxSujet_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+
             if (comboBoxSujet != null)
             {
+                 List<Reponse> reponses = BLL.ListReponsesByIdSujet(int.Parse(comboBoxSujet.SelectedValue.ToString()));
+                if ( reponses.Count != 0)
+                {
+                    bindingSourceRep.DataSource = reponses;
+                    dgvReponse.Visible = true;
+                    labelError.Visible = false;
+                    btDeleteRep.Visible = true;
+                    dgvReponse.DataSource = bindingSourceRep;
+                    dgvReponse.Columns["IDREP"].Visible = false;
+                    dgvReponse.Columns["IDSUJET"].Visible = false;
+                    dgvReponse.Columns["IDUSER"].Visible = false;
+
+                    dgvReponse.Columns["TEXTREP"].HeaderText = "Texte";
+                    dgvReponse.Columns["DATEENVOIREP"].HeaderText = "Date d'envoi";
+                }
+                else
+                {
+                    dgvReponse.Visible = false;
+                    labelError.Text = "Le sujet sélectionné ne comporte pas de réponses";
+                    labelError.Visible = true;
+                    btDeleteRep.Visible = false;
+
+                    //MessageBox.Show("Le sujet sélectionné ne comporte pas de réponses", "Erreur Réponse", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 
-                bindingSourceRep.DataSource = BLL.ListReponsesByIdSujet(int.Parse(comboBoxSujet.SelectedValue.ToString()));
+
+              
             }
 
-            dgvReponse.DataSource = bindingSourceRep;
-            dgvReponse.Columns["IDREP"].Visible = false;
-            dgvReponse.Columns["IDSUJET"].Visible = false;
-            dgvReponse.Columns["IDUSER"].Visible = false;
-
-            dgvReponse.Columns["TEXTREP"].HeaderText = "Texte";
-            dgvReponse.Columns["DATEENVOIREP"].HeaderText = "Date d'envoi";
+           
 
             
             Sujet sujetCourant = (Sujet)comboBoxSujet.SelectedItem;
