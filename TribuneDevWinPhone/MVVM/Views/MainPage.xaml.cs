@@ -48,10 +48,23 @@ namespace TribuneDevWinPhone
             // On s'abonne à l'événement système 'HardwareButtons_BackPressed'          
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 
-            
-                // On rafraichit la liste des rubriques
-                await _monitorViewModel.GetListRubriques(CancellationToken.None);
            
+
+            prAfficheRub.IsActive = true;
+            prAfficheRub.Visibility = Visibility.Visible;
+
+            //btCategorie.Visibility = Visibility.Collapsed;
+
+            //btCategorie.Visibility = Visibility.Visible;
+
+
+            // On rafraichit la liste des rubriques
+            await _monitorViewModel.GetListRubriques(CancellationToken.None);
+           
+
+            prAfficheRub.IsActive = false;
+            prAfficheRub.Visibility = Visibility.Collapsed;
+
            
                     // On lance la fenêtre de paramètrage
                     //Frame.Navigate(typeof(ParamsPage));

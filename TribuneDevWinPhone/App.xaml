@@ -7,6 +7,9 @@
 
     <Application.Resources>
 
+        <Image x:Name="MonImage" Source="/Assets/Images/rond.png" Width="60" Height="60" />
+
+
         <!--<SolidColorBrush x:Key="BrushRouge" Color="Red"/>-->
         
         <Style x:Key="StyleLogo" TargetType="TextBlock">

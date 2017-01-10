@@ -71,7 +71,17 @@ namespace TribuneDevMETIER
                     "Texte :" + TextRub;
         }
 
+        //public override bool Equals(Rubrique rub)
+        //{
+        //    // Check for null values and compare run-time types.
+        //    if (rub == null || GetType() != rub.GetType())
+        //        return false;
 
+        //    Rubrique r = (Rubrique)rub;
+        //    return (IdRub == r.IdRub) && (NomRub == r.NomRub) && (TextRub == r.TextRub);
+
+
+        //}
         #endregion
 
     }

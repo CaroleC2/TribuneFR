@@ -16,6 +16,14 @@
     </Page.BottomAppBar>
 
     <Grid x:Name="grdLst" Margin="5">
+
+        <Grid.Background>
+            
+            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets\SplashScreen.png" Opacity="0.2"/>
+            
+        </Grid.Background>
+
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -26,6 +34,8 @@
         <TextBlock x:Name="lblLogo" x:Uid="MainPage_Logo" Grid.Row="0" Text="Tribune Dev 2ISA" Style="{StaticResource StyleLogo}"/>
 
         <TextBlock x:Name="lblTitre" x:Uid="MainPage_Titre" Grid.Row="1" Text="Liste des Rubriques" Style="{StaticResource StyleTitres}"/>
+
+        <ProgressRing x:Name="prAfficheRub" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center" />
 
         <ListView x:Name="lstvRubriques" Grid.Row="2" ItemsSource="{Binding Rubriques}" Background="Transparent" HorizontalAlignment ="Center" VerticalAlignment="Top" >
             <ListView.ItemContainerStyle>
