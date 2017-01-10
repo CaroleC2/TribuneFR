@@ -75,6 +75,8 @@ namespace IHM
                 MessageBox.Show("Validation de la modification de votre sujet ","Valider Modification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 this.Close();
+
+                
             }
 
             else

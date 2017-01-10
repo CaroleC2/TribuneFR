@@ -253,23 +253,28 @@ namespace IHM
                 formModifSujet.modif = true;
                 formModifSujet.rubrique = (Rubrique)comboBoxRub.SelectedItem;
                 formModifSujet.sujet = (Sujet)comboBoxSujet.SelectedItem;
-                
+
                 formModifSujet.Text = string.Format("Modifier le sujet {0} dans la rubrique {1}", formModifSujet.sujet.TextSujet, formModifSujet.rubrique.NomRub);
 
                 formModifSujet.ShowDialog();
 
-                List<Sujet> sujets = BLL.ListSujetsByIdRub((int)comboBoxSujet.SelectedValue);
-                if( bindingSourceRep.Count != 0)
-                {
-                    dgvReponse.DataSource = bindingSourceRep;
-                    dgvReponse.Columns["IDREP"].Visible = false;
-                    dgvReponse.Columns["IDSUJET"].Visible = false;
-                    dgvReponse.Columns["IDUSER"].Visible = false;
 
-                    dgvReponse.Columns["TEXTREP"].HeaderText = "Texte";
-                    dgvReponse.Columns["DATEENVOIREP"].HeaderText = "Date d'envoi";
-                }
             }
+            List<Sujet> sujets = BLL.ListSujetsByIdRub((int)comboBoxRub.SelectedValue);
+            comboBoxSujet.DataSource = sujets;
+            if (bindingSourceRep.Count != 0)
+            {
+                dgvReponse.DataSource = bindingSourceRep;
+                dgvReponse.Columns["IDREP"].Visible = false;
+                dgvReponse.Columns["IDSUJET"].Visible = false;
+                dgvReponse.Columns["IDUSER"].Visible = false;
+
+                dgvReponse.Columns["TEXTREP"].HeaderText = "Texte";
+                dgvReponse.Columns["DATEENVOIREP"].HeaderText = "Date d'envoi";
+
+
+            }
+        
         }
 
         //private void dgvReponse_CellContentClick(object sender, DataGridViewCellEventArgs e)

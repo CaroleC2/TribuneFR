@@ -22,6 +22,7 @@ namespace TribuneDevWinPhone
         private string _textsujet;
         private DateTime _datecreatsujet;
         private string _nomuser;
+        private string _errorMessage;
         private ObservableCollection<ReponseViewModel> _colReponsesViewModel;
         
         #region Constructeurs
@@ -136,6 +137,19 @@ namespace TribuneDevWinPhone
             }
         }
 
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            private set
+            {
+                if (_errorMessage != value)
+                {
+                    _errorMessage = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         public ReadOnlyObservableCollection<ReponseViewModel> Reponses
         {
             get { return new ReadOnlyObservableCollection<ReponseViewModel>(_colReponsesViewModel); }
@@ -153,8 +167,8 @@ namespace TribuneDevWinPhone
             MAJ_ListeReponse(reponses);
 
         }
-        
-        
+
+
 
         #endregion Méthodes
 
@@ -163,19 +177,27 @@ namespace TribuneDevWinPhone
 
         private void MAJ_ListeReponse(List<Reponse> lstReponses)
         {
-            _colReponsesViewModel.Clear();
-
-            // Ajout des nouvelles rubriques
-            foreach (Reponse rep in lstReponses)
+            if (lstReponses.Count != 0)
             {
-                ReponseViewModel reponseVm = new ReponseViewModel(rep, _consumeWSR);
+                _colReponsesViewModel.Clear();
 
-                if (!_colReponsesViewModel.Contains(reponseVm))
+                // Ajout des nouvelles rubriques
+                foreach (Reponse rep in lstReponses)
                 {
-                    // On utilise la méthode d'extention de la classe 'IListExtensions'
-                    _colReponsesViewModel.AddSorted(reponseVm);
+                    ReponseViewModel reponseVm = new ReponseViewModel(rep, _consumeWSR);
+
+                    if (!_colReponsesViewModel.Contains(reponseVm))
+                    {
+                        // On utilise la méthode d'extention de la classe 'IListExtensions'
+                        _colReponsesViewModel.AddSorted(reponseVm);
+                    }
                 }
             }
+            else
+            {
+                ErrorMessage = "Le sujet sélectionné ne contient pas de réponses.";
+            }
+            
         }
 
         

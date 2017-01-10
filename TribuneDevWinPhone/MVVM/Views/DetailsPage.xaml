@@ -36,7 +36,7 @@
 
         <TextBlock Style="{StaticResource StyleTitres}"  x:Name="txtTitre" Text="{Binding TitreSujet}" Grid.Row="1" Grid.ColumnSpan="2"   />
 
-        <TextBlock x:Name="lblTitre" x:Uid="DetailsPage_DetailRep" Grid.Row="2" Grid.ColumnSpan="2" Text="Détail Réponse" Style="{StaticResource StyleTitres2}"/>
+        <TextBlock x:Name="lblTitre" x:Uid="DetailsPage_DetailRep" Grid.Row="1" Text="Détail Réponse" Style="{StaticResource StyleTitres2}" Grid.Column="1" Height="26" Margin="13.167,32.167,108,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
 
 
         <TextBlock x:Uid="DetailsPage_NomUser" Grid.Row="3" Grid.Column="0"  Text="Nom Auteur :"  FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
@@ -49,9 +49,9 @@
         <TextBox x:Name="txtTextRep" Grid.Row="5" Grid.Column="1" FontSize="16" Margin="10,0,0,10" TextWrapping="Wrap"  />
 
 
-       
 
-       
+
+
 
 
     </Grid>

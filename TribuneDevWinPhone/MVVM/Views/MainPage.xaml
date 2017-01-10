@@ -17,12 +17,7 @@
 
     <Grid x:Name="grdLst" Margin="5">
 
-        <Grid.Background>
-            
-            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets\SplashScreen.png" Opacity="0.2"/>
-            
-        </Grid.Background>
-
+        
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -62,7 +57,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <TextBlock x:Name="txtErreur" Grid.Row="3" Text="{Binding ErrorMessage}"  Style="{StaticResource StyleErreur}" />
+        <TextBlock x:Name="txtErreur" Grid.Row="3" Text="{Binding ErrorMessage}" TextWrapping="WrapWholeWords" Style="{StaticResource StyleErreur}" TextAlignment="Justify"  />
 
 
     </Grid>
