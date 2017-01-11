@@ -52,7 +52,7 @@ namespace IHM
 
                 if (BLLOutils.BLL.NewReponse(sujet.IdSujet, txtBoxUser.Text, txtBoxRep.Text, Convert.ToDateTime(lbDate.Text)) == 1)
                 {
-
+                   
                     MessageBox.Show("Validation de l'ajout de votre réponse ");
 
                     this.Close();

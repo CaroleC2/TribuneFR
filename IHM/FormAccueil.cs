@@ -83,7 +83,10 @@ namespace IHM
                         btModifSujet.Visible = true;
                         btAjoutRep.Visible = true;
                         txtBoxSujet.Text = sujetCourant.TextSujet;
+                        comboBoxSujet.Enabled = true;
                     }
+                    
+                }
                     else
                     {
                         txtBoxSujet.Text = "";
@@ -94,14 +97,15 @@ namespace IHM
                         btDeleteSujet.Visible = false;
                         btModifSujet.Visible = false;
                         btAjoutRep.Visible = false;
+                        comboBoxSujet.DataSource = null;
+                        comboBoxSujet.Enabled = false;
                     }
-                }
             }
         }
         
         private void comboBoxSujet_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxSujet != null)
+            if (comboBoxSujet.SelectedItem != null)
             {
                 List<Reponse> reponses = BLL.ListReponsesByIdSujet(int.Parse(comboBoxSujet.SelectedValue.ToString()));
                 if ( reponses.Count != 0)
@@ -125,12 +129,12 @@ namespace IHM
                     labelError.Visible = true;
                     btDeleteRep.Visible = false;
                 }
+                Sujet sujetCourant = (Sujet)comboBoxSujet.SelectedItem;
+                txtBoxSujet.Text = sujetCourant.TextSujet;
             }
             
-            Sujet sujetCourant = (Sujet)comboBoxSujet.SelectedItem;
-            txtBoxSujet.Text = sujetCourant.TextSujet;
+            
         }
-
         
         private void btDeleteRep_Click(object sender, EventArgs e)
         {
@@ -141,7 +145,7 @@ namespace IHM
             {
                 if (BLLOutils.BLL.DeleteReponse((int)dgvReponse.SelectedRows[0].Cells["IDREP"].Value) !=1)
                 {
-                   MessageBox.Show(Properties.Resources.SupprReponseText, Properties.Resources.SupprReponseTitre);
+                   MessageBox.Show(Properties.Resources.SupprReponseText, Properties.Resources.SupprReponseTitre, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 }
                 List<Reponse> reponses = BLL.ListReponsesByIdSujet((int)comboBoxSujet.SelectedValue);
                 if (reponses != null)
@@ -154,12 +158,12 @@ namespace IHM
 
                     dgvReponse.Columns["TEXTREP"].HeaderText = "Texte";
                     dgvReponse.Columns["DATEENVOIREP"].HeaderText = "Date d'envoi";
+
+                    bindingSourceRep.DataSource = reponses;
                 }
             }
 
         }
-
-        
         
         private void btDeleteSujet_Click(object sender, EventArgs e)
         {
@@ -169,7 +173,7 @@ namespace IHM
             {
                 if (BLLOutils.BLL.DeleteSujet((int)comboBoxSujet.SelectedValue) != 1)
                 {
-                    MessageBox.Show(Properties.Resources.ErreurSupprSujetText, Properties.Resources.ErreurSupprSujetTitre);
+                    MessageBox.Show(Properties.Resources.ErreurSupprSujetText, Properties.Resources.ErreurSupprSujetTitre, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 }
                 List<Sujet> sujets = BLL.ListSujetsByIdRub((int)comboBoxSujet.SelectedValue);
                 if (sujets != null)
@@ -181,16 +185,8 @@ namespace IHM
 
                     dgvReponse.Columns["TEXTREP"].HeaderText = "Texte";
                     dgvReponse.Columns["DATEENVOIREP"].HeaderText = "Date d'envoi";
+                    bindingSourceRep.DataSource = sujets;
 
-
-
-                    //DialogResult res = MessageBox.Show("Voulez vous supprimer ce sujet ?", "Validation de la suppression",
-                    //    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    //if (res == DialogResult.Yes)
-                    //{
-                    //    BLL.DeleteSujet((int)comboBoxSujet.SelectedValue);
-                    //}
-                    
                 }
             }
 
@@ -229,14 +225,14 @@ namespace IHM
 
                     dgvReponse.Columns["TEXTREP"].HeaderText = "Texte";
                     dgvReponse.Columns["DATEENVOIREP"].HeaderText = "Date d'envoi";
+                    bindingSourceRep.DataSource = reponses ;
                 }
-                //BLLOutils.BLL.NewReponse(Convert.ToInt32(formReponse.lbSujet.Text), formReponse.lbUser.Text,formReponse.txtBoxRep.Text, Convert.ToDateTime(formReponse.txtBoxRep.Text));
-
+               
             }
 
         }
 
-    private void btQuitter_Click(object sender, EventArgs e)
+        private void btQuitter_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Voulez-vous quitter l'application ?", "Quitter l'application", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
@@ -276,21 +272,6 @@ namespace IHM
             }
         
         }
-
-        //private void dgvReponse_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //        {
-        //            int CurrentRow = e.RowIndex;
-        //            DataGridViewRow row = dgvReponse.Rows[CurrentRow];
-
-        //            using (FormReponse formReponse = new FormReponse())
-        //            {
-        //                formReponse.reponse.TextRep = row.Cells["Texte"].Value.ToString();
-        //                formReponse.ShowDialog();
-        //            }
-
-
-
-        //        }
 
         #endregion
 

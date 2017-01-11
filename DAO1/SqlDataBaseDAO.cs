@@ -33,14 +33,18 @@ namespace DAO
         public SqlConnection GetConnection()
         {
             //Tester les Exceptions
+           
             SqlConnection cn = new SqlConnection();
 
             //Pour lire la chaine de connexion dans le fichier App.config, le projet a besoin d'une référence sur System.Configuration
 
-            cn.ConnectionString = "Data Source=176.31.114.215; Initial Catalog=user10 ;Persist Security Info = true; User Id=user10;Password=026user10";
+            cn.ConnectionString = "Data Source=176.31.114.215; Initial Catalog=user10 ;Persist Security Info = true; User Id=user10;Password=026user10 ;Connection Timeout=60";
             //cn.ConnectionString = ConfigurationManager.ConnectionStrings["SQL"].ConnectionString;
             cn.Open(); //En mode déconnecté, le système ouvre la connexion, si elle n'est pas ouverte 
             return cn;
+            
+
+           
         }
 
         //Creation d'un DataSet à partir d'une requête passée en paramètre
