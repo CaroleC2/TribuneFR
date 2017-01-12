@@ -10,7 +10,7 @@ namespace TribuneDevMETIER
     #region PROPRIETES
 
     [DataContract]
-    public class Rubrique
+    public class Rubrique 
     {
         [DataMember]
         private int _IdRub;
@@ -71,18 +71,39 @@ namespace TribuneDevMETIER
                     "Texte :" + TextRub;
         }
 
-        //public override bool Equals(Rubrique rub)
+        public override bool Equals(Object obj)
+        {
+            // Check for null values and compare run-time types.
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            Rubrique r = (Rubrique)obj;
+            return (IdRub == r.IdRub && NomRub == r.NomRub)  ;
+
+
+        }
+
+        //public bool Equals(Rubrique x, Rubrique y)
         //{
-        //    // Check for null values and compare run-time types.
-        //    if (rub == null || GetType() != rub.GetType())
-        //        return false;
+        //    if (object.ReferenceEquals(x, y)) return true;
 
-        //    Rubrique r = (Rubrique)rub;
-        //    return (IdRub == r.IdRub) && (NomRub == r.NomRub) && (TextRub == r.TextRub);
+        //    if (object.ReferenceEquals(x, null) || object.ReferenceEquals(y, null)) return false;
 
-
+        //    return x.IdRub == y.IdRub && x.NomRub == y.NomRub && x.TextRub == y.TextRub;
         //}
+
+        public int GetHashCode(Rubrique rub)
+        {
+            if (object.ReferenceEquals(rub, null)) return 0;
+
+            int hashCodeIdRub = rub.IdRub == null ? 0 : rub.IdRub.GetHashCode();
+            int hashCodeNomRub = rub.NomRub.GetHashCode();
+            int hasCodeTextRub = rub.TextRub.GetHashCode();
+
+            return hashCodeIdRub ^ hashCodeNomRub ^ hasCodeTextRub;
+        }
+    }
         #endregion
 
     }
-}
+

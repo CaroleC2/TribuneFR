@@ -9,11 +9,8 @@ namespace TestsUnitaires
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestRubriques()
         {
-            //try
-            //{
-
             //Arranger
             List<Rubrique> rubriques = new List<Rubrique>();
             Rubrique rub1 = new Rubrique();
@@ -30,29 +27,27 @@ namespace TestsUnitaires
             rub5.IdRub = 5;
             rub6.IdRub = 6;
 
-            rub1.NomRub = "developpement";
-            rub2.NomRub = "developpement web";
-            rub3.NomRub = "questions diverses";
-            rub4.NomRub = "stage en entreprise";
-            rub5.NomRub = "espace detente";
-            rub6.NomRub = "adresses utiles";
-
+            rub1.NomRub = "Developpement";
+            rub2.NomRub = "Developpement Web";
+            rub3.NomRub = "Questions Diverses";
+            rub4.NomRub = "Stage En Entreprise";
+            rub5.NomRub = "Espace Detente";
+            rub6.NomRub = "Adresses Utiles";
+            
             rubriques.Add(rub1);
+            rubriques.Add(rub2);
+            rubriques.Add(rub3);
+            rubriques.Add(rub4);
+            rubriques.Add(rub5);
+            rubriques.Add(rub6);
+            
             //Agir
             List<Rubrique> resultat = BLLOutils.BLL.ListAllRubriques();
 
              // Auditer
 
-             Assert.AreEqual(rubriques, resultat);
-
-               // Assert.Fail("Une exception du type ArgumentException est attendue");
-
-
-            //}
-            //catch (ArgumentException) { }
-
-
-
+             CollectionAssert.AreEqual(rubriques, resultat);
+ 
         }
     }
 }
