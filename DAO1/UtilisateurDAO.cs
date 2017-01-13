@@ -8,11 +8,11 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
+    /// <summary>
+    /// Classe d'accès aux entités Utilisateur
+    /// </summary>
     public class UtilisateurDAO
-    {
-
-        //Classe d'accès aux entites Sujet
-        //Cette classe utilise les méthodes de la classe AccessDataBaseDAO
+    {            
         private static UtilisateurDAO _Instance;
 
         private SqlDataBaseDAO _Database;
@@ -21,13 +21,22 @@ namespace DAO
         {
             _Database = SqlDataBaseDAO.GetInstance();
         }
+
+        /// <summary>
+        /// /// Mise en place du singleton
+        /// </summary>
+        /// <returns>UtilisateurDAO</returns>
         public static UtilisateurDAO GetInstance()
         {
             if (_Instance == null)
                 _Instance = new UtilisateurDAO();
             return _Instance;
         }
-        
+
+        /// <summary>
+        /// Récupère toutes les utilisateurs
+        /// </summary>
+        /// <returns>Dataset</returns>
         public DataSet GetUtilisateurs()
         {
 
@@ -44,6 +53,11 @@ namespace DAO
             return objDataSet;
         }
 
+        /// <summary>
+        /// Récupère un utilisateur par nom
+        /// </summary>
+        /// <param name="nomuser"></param>
+        /// <returns>Dataset</returns>
         public DataSet GetUtilisateurByNom(string nomuser)
         {
             SqlCommand cmd = new SqlCommand();
@@ -61,6 +75,12 @@ namespace DAO
             return objDataSet;
         }
 
+
+        /// <summary>
+        /// /// Récupère un utilisateur par id user
+        /// </summary>
+        /// <param name="iduser"></param>
+        /// <returns>Dataset</returns>
         public DataSet GetUtilisateurById(int iduser)
         {
             SqlCommand cmd = new SqlCommand();

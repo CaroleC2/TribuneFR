@@ -13,14 +13,19 @@ using BLLOutils;
 
 namespace WcfWSTribuneREST
 {
-   
+   /// <summary>
+   /// Classe Service Tribune
+   /// </summary>
     public class ServiceTribune : IServiceTribune
     {
-
-
+        
         #region SUJET
 
-
+        /// <summary>
+        /// Renvoie les réponses par id sujet
+        /// </summary>
+        /// <param name="idsujet"></param>
+        /// <returns>List Reponse</returns>
         public IList<Reponse> GetReponsesByIdSujet(string idsujet)
         {
             int r;
@@ -34,20 +39,15 @@ namespace WcfWSTribuneREST
                 return null;
             }
         }
-
-
-
-
-
-
-
-
-
+        
 
         #endregion
-
+        
         #region RUBRIQUE
-
+        /// <summary>
+        /// Renvoie toutes les rubriques
+        /// </summary>
+        /// <returns></returns>
         public IList<Rubrique> GetRubriques()
         {
             return BLL.ListAllRubriques();
@@ -57,7 +57,11 @@ namespace WcfWSTribuneREST
 
         #region REPONSE
         
-
+        /// <summary>
+        /// Renvoie les sujets par id rubrique
+        /// </summary>
+        /// <param name="idrub"></param>
+        /// <returns></returns>
         public IList<Sujet> GetSujetByIdRub(string idrub)
         {
             int r;

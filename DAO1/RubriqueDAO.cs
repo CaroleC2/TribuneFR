@@ -8,10 +8,11 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
+    /// <summary>
+    /// Classe d'accès aux entites Rubrique
+    /// </summary>
     public class RubriqueDAO
     {
-        //Classe d'accès aux entites Sujet
-        //Cette classe utilise les méthodes de la classe AccessDataBaseDAO
         private static RubriqueDAO _Instance;
 
         private SqlDataBaseDAO _Database;
@@ -20,6 +21,11 @@ namespace DAO
         {
             _Database = SqlDataBaseDAO.GetInstance();
         }
+
+        /// <summary>
+        /// Mise en place du singleton
+        /// </summary>
+        /// <returns>RubriqueDAO</returns>
         public static RubriqueDAO GetInstance()
         {
             if (_Instance == null)
@@ -27,6 +33,10 @@ namespace DAO
             return _Instance;
         }
         
+        /// <summary>
+        /// Récupère toutes les rubriques 
+        /// </summary>
+        /// <returns>Dataset</returns>
         public DataSet GetRubriques()
         {
 
@@ -43,6 +53,11 @@ namespace DAO
             return objDataSet;
         }
 
+        /// <summary>
+        /// Récupère la rubrique par Nom Rubrique
+        /// </summary>
+        /// <param name="nomrub"></param>
+        /// <returns>Dataset</returns>
         public DataSet GetRubriqueByNomRub(string nomrub)
         {
             SqlCommand cmd = new SqlCommand();
@@ -59,7 +74,11 @@ namespace DAO
 
             return objDataSet;
         }
-
+        /// <summary>
+        /// Récupère la rubrique par Id Rubrique
+        /// </summary>
+        /// <param name="idrub"></param>
+        /// <returns>Dataset</returns>
         public DataSet GetRubriqueByIdRub(int idrub)
         {
             SqlCommand cmd = new SqlCommand();
@@ -76,84 +95,11 @@ namespace DAO
 
             return objDataSet;
         }
-      
-        
-
-
-
-
+     
     }
 }
 
 
-        //#region Propriété
-
-        //private static SqlConnection cn = SqlDataBaseDAO.GetConnection();
-
-        //#endregion
-
-        
-
-        //#region Méthodes
-
-        //public static List<Rubrique> GetAllRubriques()
-        //{
-           
-        //    SqlCommand cmd = cn.CreateCommand();
-        //    cmd.CommandText = "GetAllRubriques";
-        //    cmd.CommandType = CommandType.StoredProcedure;
-
-        //    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-        //    DataTable datatable = new DataTable("Rubrique");
-        //    adapter.Fill(datatable);
-            
-
-        //    if (datatable.Rows.Count >= 1)
-        //    {
-        //        List<Rubrique> ListeRubriques = new List<Rubrique>();
-        //        foreach (DataRow row in datatable.Rows)
-        //        {
-        //            Rubrique rubrique = new Rubrique();
-        //            rubrique.IdRub = (int)row["IDRUB"];
-        //            rubrique.NomRub = row["NOMRUB"].ToString();
-        //            rubrique.TextRub = row["TEXTRUB"].ToString();
-        //            ListeRubriques.Add(rubrique);
-        //        }
-        //        return ListeRubriques;
-        //    }
-        //    return null;
-        //}
-
-       
-
-        //public static Rubrique GetRubriqueById(int idrub)
-        //{
-        
-        //    SqlCommand cmd = cn.CreateCommand();
-        //    cmd.CommandText = "GetRubriqueById";
-        //    cmd.CommandType = CommandType.StoredProcedure;
-
-        //    SqlParameter param = cmd.CreateParameter();
-        //    param.ParameterName = "@IDRUB";
-        //    param.Value = idrub;
-        //    cmd.Parameters.Add(param);
-        //    Rubrique rubrique;
-        //    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-        //    DataTable datatable = new DataTable("Rubriques");
-        //    adapter.Fill(datatable);
-            
-
-        //    if (datatable.Rows.Count == 1)
-        //    {
-
-        //        DataRow row = datatable.Rows[0]; //On obtient la ligne à l'index specifié, ici 0 c'est la 1ère ligne
-        //        rubrique = new Rubrique(idrub, row["NOMRUB"].ToString(), row["TEXTRUB"].ToString());
-        //        return rubrique;
-        //    }
-        //    return null;
-
-        //}
-
-        //#endregion
+     
 
     

@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,7 +12,9 @@ namespace WcfWSTribuneREST
 
  
 {
-
+    /// <summary>
+    /// Interface du web service
+    /// </summary>
     [ServiceContract]
     public interface IServiceTribune
     {
@@ -22,10 +22,10 @@ namespace WcfWSTribuneREST
 
 
         /// <summary>
-        /// Renvoi les sujets par id rubrique
+        /// Récupère les sujets par id rubrique
         /// </summary>
-        /// <param name="idsujet"></param>
-        /// <returns></returns>
+        /// <param name="idrub"></param>
+        /// <returns>Liste Sujet</returns>
         [OperationContract]
 
         [WebGet(UriTemplate = "Sujet/{idrub}")]
@@ -37,9 +37,12 @@ namespace WcfWSTribuneREST
 
         #region RUBRIQUE
        
-
+        /// <summary>
+        /// Récupère toutes les rubriques
+        /// </summary>
+        /// <returns>Liste Rubrique</returns>
         [OperationContract]
-      
+        
         [WebGet(UriTemplate = "Rubrique")]
         IList<Rubrique> GetRubriques();
 
@@ -49,7 +52,11 @@ namespace WcfWSTribuneREST
 
         #region REPONSE
         
-
+        /// <summary>
+        /// Récupère les reponses par Id Sujet
+        /// </summary>
+        /// <param name="idsujet"></param>
+        /// <returns>Liste Reponse</returns>
         [OperationContract]
         
         [WebGet(UriTemplate = "Reponse/{idsujet}")]

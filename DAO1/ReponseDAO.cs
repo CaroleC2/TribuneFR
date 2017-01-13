@@ -9,11 +9,11 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
+    /// <summary>
+    /// Classe d'accès aux entités Réponse
+    /// </summary>
     public class ReponseDAO
-    {
-
-        //Classe d'accès aux entites Sujet
-        //Cette classe utilise les méthodes de la classe AccessDataBaseDAO
+    {     
         private static ReponseDAO _Instance;
 
         private SqlDataBaseDAO _Database;
@@ -22,6 +22,12 @@ namespace DAO
         {
             _Database = SqlDataBaseDAO.GetInstance();
         }
+
+
+        /// <summary>
+        /// Mise en place du singleton
+        /// </summary>
+        /// <returns>ReponseDAO</returns>
         public static ReponseDAO GetInstance()
         {
             if (_Instance == null)
@@ -29,7 +35,10 @@ namespace DAO
             return _Instance;
         }
 
-
+        /// <summary>
+        /// Récupère toutes les réponses
+        /// </summary>
+        /// <returns>Dataset</returns>
         public DataSet GetReponses()
         {
 
@@ -46,7 +55,11 @@ namespace DAO
             return objDataSet;
         }
 
-
+        /// <summary>
+        /// Récupère une réponse par Id réponse
+        /// </summary>
+        /// <param name="idrep"></param>
+        /// <returns>Dataset</returns>
         public DataSet GetReponseById(int idrep)
         {
             SqlCommand cmd = new SqlCommand();
@@ -64,6 +77,11 @@ namespace DAO
             return objDataSet;
         }
 
+        /// <summary>
+        /// Récupère une réponse par Id Sujet
+        /// </summary>
+        /// <param name="idsujet"></param>
+        /// <returns>Dataset</returns>
         public DataSet GetReponseByIdSujet(int idsujet)
         {
             SqlCommand cmd = new SqlCommand();
@@ -81,7 +99,14 @@ namespace DAO
             return objDataSet;
         }
 
-       
+       /// <summary>
+       /// Création d'une réponse
+       /// </summary>
+       /// <param name="idSujet"></param>
+       /// <param name="nomUser"></param>
+       /// <param name="textrep"></param>
+       /// <param name="dateenvoirep"></param>
+       /// <returns></returns>
         public int NewReponse( int idSujet,string nomUser, string textrep, DateTime dateenvoirep)
         {
             SqlCommand cmd = new SqlCommand();
@@ -100,20 +125,17 @@ namespace DAO
 
             SqlParameter pDateenvoirep = new SqlParameter("DATEENVOIREP", dateenvoirep);
             cmd.Parameters.Add(pDateenvoirep);
-
-            // Ou .......... :
-            //cmd.Parameters.Add(new SqlParameter("IDUSER", idUser));
-            //cmd.Parameters.Add(new SqlParameter("IDSUJET", idSujet));
-            //cmd.Parameters.Add(new SqlParameter("TEXTREP", textrep));
-
-
+            
             int nbLigne = cmd.ExecuteNonQuery();
-   
         
             return nbLigne;
         }
 
-        
+        /// <summary>
+        /// Suppression d'une réponse
+        /// </summary>
+        /// <param name="idRep"></param>
+        /// <returns></returns>
         public static int DeleteReponse(int idRep )
         {
             SqlCommand cmd = new SqlCommand();
@@ -128,8 +150,5 @@ namespace DAO
            
             return nbLigne;
         }
-
-
-        
     }
 }

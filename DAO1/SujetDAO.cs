@@ -8,11 +8,11 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
+    /// <summary>
+    /// Classe d'accès aux entités Sujet
+    /// </summary>
     public class SujetDAO
-    {
-        
-        //Classe d'accès aux entites Sujet
-        //Cette classe utilise les méthodes de la classe AccessDataBaseDAO
+    {   
         private static SujetDAO _Instance;
 
         private SqlDataBaseDAO _Database;
@@ -21,13 +21,21 @@ namespace DAO
         {
             _Database = SqlDataBaseDAO.GetInstance();
         }
+
+        /// <summary>
+        /// /// Mise en place du singleton
+        /// </summary>
+        /// <returns>SujetDAO</returns>
         public static SujetDAO GetInstance()
         {
             if (_Instance == null)
                 _Instance = new SujetDAO();
             return _Instance;
         }
-
+        /// <summary>
+        /// Récupère tous les sujets
+        /// </summary>
+        /// <returns>Dataset</returns>
         public DataSet GetSujets()
         {
             SqlCommand cmd = new SqlCommand();
@@ -43,6 +51,11 @@ namespace DAO
             return objDataSet;
         }
 
+        /// <summary>
+        /// Récupère  un sujet par Id Rubrique
+        /// </summary>
+        /// <param name="idrub"></param>
+        /// <returns>Dataset</returns>
         public DataSet GetSujetByIdRub(int idrub)
         {
             SqlCommand cmd = new SqlCommand();
@@ -61,7 +74,15 @@ namespace DAO
             return objDataSet;
         }
 
-        
+        /// <summary>
+        /// Création d'un nouveau sujet
+        /// </summary>
+        /// <param name="idRub"></param>
+        /// <param name="nomUser"></param>
+        /// <param name="titresujet"></param>
+        /// <param name="textsujet"></param>
+        /// <param name="datecreatsujet"></param>
+        /// <returns></returns>
         public int NewSujet( int idRub, string nomUser,string titresujet, string textsujet, DateTime datecreatsujet)
         {
             SqlCommand cmd = new SqlCommand();
@@ -84,19 +105,16 @@ namespace DAO
             SqlParameter pDatecreatsujet = new SqlParameter("DATECREATSUJET", datecreatsujet);
             cmd.Parameters.Add(pDatecreatsujet);
 
-            // Ou .......... :
-            //cmd.Parameters.Add(new SqlParameter("IDUSER", idUser));
-            //cmd.Parameters.Add(new SqlParameter("IDSUJET", idSujet));
-            //cmd.Parameters.Add(new SqlParameter("TEXTREP", textrep));
-
-
             int nbLigne = cmd.ExecuteNonQuery();
-
 
             return nbLigne;
         }
 
-
+        /// <summary>
+        /// Suppression d'un sujet
+        /// </summary>
+        /// <param name="idSujet"></param>
+        /// <returns></returns>
         public static int DeleteSujet(int idSujet)
         {
             SqlCommand cmd = new SqlCommand();
@@ -112,7 +130,15 @@ namespace DAO
             return nbLigne;
         }
 
-
+        /// <summary>
+        /// Modification d'un sujet
+        /// </summary>
+        /// <param name="idSujet"></param>
+        /// <param name="titresujet"></param>
+        /// <param name="ancientitre"></param>
+        /// <param name="textsujet"></param>
+        /// <param name="ancientext"></param>
+        /// <returns></returns>
         public int UpdateSujet(int idSujet,  string titresujet,string ancientitre, string textsujet, string ancientext)
         {
             SqlCommand cmd = new SqlCommand();
@@ -122,9 +148,6 @@ namespace DAO
 
             SqlParameter pISujet = new SqlParameter("IDSUJET", idSujet);
             cmd.Parameters.Add(pISujet);
-
-            //SqlParameter pNomUser = new SqlParameter("NOMUSER", nomUser);
-            //cmd.Parameters.Add(pNomUser);
 
             SqlParameter pTitresujet = new SqlParameter("TITRESUJET", titresujet);
             cmd.Parameters.Add(pTitresujet);
@@ -137,23 +160,10 @@ namespace DAO
 
             SqlParameter pAncienText = new SqlParameter("ANCIENTEXT", ancientext);
             cmd.Parameters.Add(pAncienText);
-
-            //SqlParameter pDatecreatsujet = new SqlParameter("DATECREATSUJET", datecreatsujet);
-            //cmd.Parameters.Add(pDatecreatsujet);
-
-            // Ou .......... :
-            //cmd.Parameters.Add(new SqlParameter("IDUSER", idUser));
-            //cmd.Parameters.Add(new SqlParameter("IDSUJET", idSujet));
-            //cmd.Parameters.Add(new SqlParameter("TEXTREP", textrep));
-
-
+                       
             int nbLigne = cmd.ExecuteNonQuery();
-
-
+            
             return nbLigne;
-        }
-
-
-
+        }      
     }
 }

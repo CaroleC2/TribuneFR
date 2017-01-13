@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace TribuneDevMETIER
 {
+    /// <summary>
+    /// Classe Métier Utilisateur
+    /// </summary>
     public class Utilisateur
     {
         private int _IdUser;
-
+        /// <summary>
+        /// Identifiant de l'utilisateur
+        /// </summary>
         public int IdUser
         {
             get { return _IdUser; }
@@ -19,7 +24,9 @@ namespace TribuneDevMETIER
 
 
         private string _NomUser;
-
+        /// <summary>
+        /// Nom de l'utilisateur
+        /// </summary>
         public string NomUser
         {
             get { return _NomUser; }
@@ -28,7 +35,9 @@ namespace TribuneDevMETIER
 
 
         private string _MdpUser;
-
+        /// <summary>
+        /// Mot de passe de l'utilisateur
+        /// </summary>
         public string MdpUser
         {
             get { return _MdpUser; }
@@ -36,19 +45,30 @@ namespace TribuneDevMETIER
         }
 
         private int _DroitUser;
-
+        /// <summary>
+        /// Droit de l'utilisateur
+        /// </summary>
         public int DroitUser
         {
             get { return _DroitUser; }
             set { _DroitUser = value; }
         }
 
-
+        /// <summary>
+        /// Constructeur par défaut
+        /// </summary>
         public Utilisateur()
         {
 
         }
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="idUser"></param>
+        /// <param name="nomUser"></param>
+        /// <param name="mdpUser"></param>
+        /// <param name="droitUser"></param>
         public Utilisateur(int idUser, string nomUser, string mdpUser, int droitUser)
         {
 

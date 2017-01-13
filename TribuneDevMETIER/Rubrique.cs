@@ -9,12 +9,17 @@ namespace TribuneDevMETIER
 {
     #region PROPRIETES
 
+    /// <summary>
+    /// Classe Métier Rubrique
+    /// </summary>
     [DataContract]
     public class Rubrique 
     {
         [DataMember]
         private int _IdRub;
-
+        /// <summary>
+        /// Identifiant de la rubrique
+        /// </summary>
         public int IdRub
         {
             get { return _IdRub; }
@@ -24,7 +29,9 @@ namespace TribuneDevMETIER
 
         [DataMember]
         private string _NomRub;
-
+        /// <summary>
+        /// Nom de la rubrique
+        /// </summary>
         public string NomRub
         {
             get { return _NomRub; }
@@ -33,7 +40,9 @@ namespace TribuneDevMETIER
 
         [DataMember]
         private string _TextRub;
-
+        /// <summary>
+        /// Texte de la rubrique
+        /// </summary>
         public string TextRub
         {
             get { return _TextRub; }
@@ -51,7 +60,12 @@ namespace TribuneDevMETIER
         { }
 
 
-
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="idRub"></param>
+        /// <param name="nomRub"></param>
+        /// <param name="textRub"></param>
         public Rubrique(int idRub, string nomRub, string textRub)
         {
             this.IdRub = idRub;
@@ -83,14 +97,6 @@ namespace TribuneDevMETIER
 
         }
 
-        //public bool Equals(Rubrique x, Rubrique y)
-        //{
-        //    if (object.ReferenceEquals(x, y)) return true;
-
-        //    if (object.ReferenceEquals(x, null) || object.ReferenceEquals(y, null)) return false;
-
-        //    return x.IdRub == y.IdRub && x.NomRub == y.NomRub && x.TextRub == y.TextRub;
-        //}
 
         public int GetHashCode(Rubrique rub)
         {
